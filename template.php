@@ -217,23 +217,6 @@ function phptemplate_preprocess_node(&$vars) {
     $vars['last_edit'] = t('Last edited by !name about @time ago.', 
     array('!name' => $edited_by, '@time' => $time_ago));
     
-    // Group wiki variable for group wiki pages
-    if ($node->type == "group") {
-      $group_wiki_nid = db_result(db_query("SELECT nid 
-        FROM {content_type_group_wiki} WHERE field_associated_group_nid = %d", $node->nid));
-
-      // Load node
-      $groupwiki_node = node_load(array("nid" => $group_wiki_nid));
-
-      // Theme content
-      node_view($groupwiki_node);
-
-      // Set variables
-      $vars['group_wiki'] .= "<h2>". $node->title ." Wiki</h2>";
-      $vars['group_wiki'] .= $groupwiki_node->content['body']['#value'];
-      $vars['group_wiki_edit_link'] = "<h3>". l("Edit the ". $node->title  ." Wiki", 
-      "node/". $group_wiki_nid ."/edit") ."</h3>";
-    }
 }
 
 /**
