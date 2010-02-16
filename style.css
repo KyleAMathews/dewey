@@ -1,0 +1,423 @@
+body {
+  background: url(images/gradient.jpg) repeat-x #9797A1;
+}
+a:hover {
+ text-decoration: underline;
+}
+a {
+  color: #282828;
+  text-decoration: none;
+}
+.node a, .comment a {
+  color: #009;
+  text-decoration: none;
+}
+.node a:focus, .comment a:focus, .node a:hover, .comment a:hover {
+  color: #009;
+  text-decoration: underline;
+}
+.box {
+  padding: 1.5em;
+  margin-bottom: 1.5em;
+  background: #F2F2F2;
+}
+#site-header {
+  margin-bottom: 10px;
+  width: 850px;
+}
+#content-container {
+  position: relative;
+  background: white;
+  padding: 20px 0 0 10px;
+  overflow: hidden;
+  width:840px;
+  float: left;
+  -moz-box-shadow: 7px 7px 14px #888;
+  -webkit-box-shadow: 7px 7px 14px #888;
+  box-shadow: 7px 7px 14px #888;
+}
+#sidebar-right {
+  padding-top: 40px
+}
+#feature-tabs {
+  position: relative;
+  height: 300px;
+  width: 110px;
+  float: left;
+}
+#feature-tabs ul {
+}
+#feature-tabs ul li {
+  padding: 0;
+}
+#feature-tabs ul li a{
+  background: #282828;
+  display: block;
+  width: 100px;
+  padding: 5px;
+  margin-bottom: 5px;
+  text-decoration: none;
+  color: white;
+  -moz-box-shadow: 7px 7px 14px #888;
+  -webkit-box-shadow: 7px 7px 14px #888;
+  box-shadow: 7px 7px 14px #888;
+}
+#feature-tabs ul li.active a{
+  background: white;
+  color: #282828;
+  border-top: 1px solid #282828;
+  border-right: 1px solid #282828;
+  border-bottom: 1px solid #282828;
+}
+#feature-tabs ul li a:hover{
+ background: #565656;
+ color: white;
+}
+#feature-tabs ul li.active a:hover{
+ background: white;
+ color: #282828;
+}
+#global_nav {
+  background: #565656;
+  height: 25px;
+}
+#global_nav .links {
+  margin-top:4px;
+  float: left;
+}
+#global_nav li {
+  padding: 0;
+  margin-left: 15px;
+}
+#global_nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 12px;
+}
+#global_nav a:hover {
+  color: #E6E6E6;
+}
+.user-account{
+  float:right;
+  margin:3px 10px 0 0 
+}
+#branding {
+  background: #282828;
+  height: 45px;
+}
+/** Pagers **/
+.item-list .pager li, .pager li a {
+  background: #282828;
+  color: white;
+}
+.item-list .pager li.pager-current {
+  background: white;
+  color: #282828;
+  border: 1px solid #282828;
+}
+#space-title h2 {
+  font-family: helvatica, arial, sans-serif;
+  font-weight: bolder;
+  font-size: 300%;
+  margin: 0px 0 15px 0;
+  line-height: 30px;
+}
+#space-title h2 a {
+  color: black;
+  text-decoration: none;
+}
+#my-groups {
+  background: white;
+  position: absolute;
+  left: 634px;
+  top: 23px;
+  display: none;
+  z-index: 101;
+  padding: 15px;
+  border: 5px solid #565656;
+}
+#my-groups p {
+  margin: 7px 0 0 0;
+}
+#my-groups h2 {
+  margin-bottom: 0;
+}
+#my-groups hr {
+  margin-top: 0;
+}
+#my-groups a {
+  color: #565656;
+  text-decoration: none;
+  display: block;
+  padding: 3px;
+}
+#my-groups a:hover {
+  background: #282828;
+  color: white;
+}
+.create-new-group {
+  font-size: 110%;
+}
+
+/* Node Styles */
+.node {
+  border-bottom: 1px solid #565656;
+  padding-bottom: 10px;
+}
+.meta {
+  margin-bottom: 10px;
+}
+.meta-info {
+  margin-top: 10px;
+}
+h2.node-title {
+  margin-bottom: 0;
+  line-height: 25px;
+}
+h2.node-title a {
+  text-decoration: none;
+  color: #282828;
+}
+h2.node-title a:hover {
+  text-decoration: underline;
+}
+.node-submitted {
+  display:table-cell;
+  vertical-align:middle
+}
+.node-submitted, .node-submitted a {
+  color: #565656;
+}
+.node-submitted a {
+  text-decoration: none;
+}
+.node-submitted a:hover {
+  text-decoration: underline;
+}
+.conversation-bubble-container {
+  margin-top: -70px;
+}
+.conversation-bubble-container a {
+  text-decoration: none;
+  color: #565656;
+}
+.conversation-teaser a:hover {
+  text-decoration: underline;
+}
+.conversation-bubble {
+  border: 1px solid black;
+  padding: 10px; 
+  line-height: 1.2em;
+  position: relative;
+  margin-bottom: 30px;
+}
+.conversation-bubble img {
+  position: absolute;
+  left: 86px;
+  bottom: -25px;
+}
+.conversation-bubble img.imagecache {
+  position: relative;
+  bottom: 0;
+  left: 0;
+  margin-right: 2px;
+}
+.conversation-teaser {
+  float: right;
+}
+ul.links {
+  font-size: 1em;
+  float: none;
+}
+ul.links li {
+  padding: 0;
+}
+ul.links a {
+  text-decoration: underline;
+  color: #565656;
+}
+ul.links a:hover {
+  color: #565656;
+}
+
+/* User Pictures + submitted stuff in comments */
+#comments {
+  padding: 10px;
+}
+#page .author {
+  background: #FFFFE8;
+}
+.comment.odd {
+    background: #F2F2F2;
+}
+.comment.even {
+    background: white;
+}
+h3#comment-number {
+        border-bottom: 1px #BBBBBB solid;
+        padding-bottom: 5px;
+}
+.new {
+  color: #F08514;
+  float: right;
+  margin-right: 10px;
+  padding: 10px;
+  font-weight: bold;
+}
+div.comment-submitted {
+  line-height: 30px;
+  background: #EBEBEB;
+  height: 30px;
+  padding: 0 5px 0 0;
+}
+div.comment-submitted a.user-picture {
+  text-indent:100px;
+  overflow:hidden;
+  display:block;
+  background-repeat:no-repeat;
+  height: 30px;
+  }
+  
+div.comment-submitted div.picture {
+  float: left;
+  margin: 0 10px 0 0;
+  height: 30px;
+  width: 30px;
+}
+
+.views-field-picture .user-picture {
+  display: block;
+  width: 30px;
+  height: 30px;
+  text-indent: -900px;
+}
+div.comment .username a {
+  font-size: 11px;
+  font-weight: bold;
+  vertical-align: baseline;
+  text-decoration: none;
+  color: #282828;
+}
+div.comment .username a:hover {
+ text-decoration: underline;
+}
+.comment .date {
+  float: right;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  background: #fff;
+  line-height: 20px;
+  padding: 0 10px;
+  margin: 5px 0;
+  text-align: center;
+}
+.comment .date a:hover, .comment .date a:focus {
+  text-decoration: underline;
+}
+.comment .date a {
+  color: #282828;
+  text-decoration: none;
+}
+div.comment div.meta {
+  margin-bottom: 10px;
+}
+div.comment-content {
+  width: 100%;
+}
+
+div#comments div.comment .odd {
+  background: #F7FBFF;
+}
+
+div.container .author {
+  background: #FFFFE8;
+}
+/**** Context Links ****/
+#context-links {
+  position: absolute;
+  right: 30px;
+}
+
+/** Button CSS code borrowed from http://code.google.com/p/sexybuttons/ **/
+div.button ul {
+  margin: 0;
+}
+a.button, div.button a {
+  text-decoration: none;
+  position: relative; 
+  padding: 5px 10px 5px;
+  font: inherit;
+  font-size: 13px !important;
+  font-style: normal !important; 
+  font-weight: bold !important; 
+  color: #fff !important;
+  line-height: 1; 
+  
+  /* Special effects */
+  text-shadow: 0 -1px 1px rgba(0,0,0,0.25), -2px 0 1px rgba(0,0,0,0.25); 
+  border-radius: 5px; 
+  -moz-border-radius: 5px; 
+  -webkit-border-radius: 5px; 
+  -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.5); 
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.5);
+  
+  /* IE only stuff */
+  border-bottom: 1px solid transparent\9;
+  _background-image: none;
+  
+  /* Cross browser inline block hack - http://blog.mozilla.com/webdev/2009/02/20/cross-browser-inline-block/ */
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: middle;
+  *display: inline !important;
+  position: relative;
+  
+  /* Force hasLayout in IE */
+  zoom: 1;
+  
+  /* Disable text selection (Firefox only)*/
+  -moz-user-select: none;
+  
+  background-color: #565656;
+  margin-left: 10px;
+  z-index: 100;
+}
+
+
+a.button:hover,
+a.button:focus,
+div.button a:hover,
+div.button a:focus {
+  background-position: 0 -50px; 
+  color: #fff !important;
+}
+
+a.button:active,
+div.button a:active { 
+  background-position: 0 100%; 
+  -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.7); 
+  /* Unfortunately, Safari doesn't support inset yet */
+  -webkit-box-shadow: none;
+  
+  /* IE only stuff */
+  border-bottom: 0\9;
+  border-top: 1px solid #666\9;
+}
+
+div.messages {
+  margin-bottom: 1.5em;
+  padding: 0.68em;
+  font-weight: bold;
+  background: window;
+}
+
+div.messages.success {
+  border: 1px solid #7AC142;
+  color: #55872E;
+  background: #F1F8EB;
+}
+
+div.messages ul {
+  margin-bottom: 0;
+}
+

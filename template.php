@@ -1,91 +1,51 @@
 <?php
-
 /**
- * Uncomment the following line during development to automatically
- * flush the theme cache when you load the page. That way it will
- * always look for new tpl files.
+ * Preprocessor for page.tpl.php template file.
  */
-// drupal_flush_all_caches();
-
-/**
- * Menu item theme override. Adds a child element to expanded/expandable
- * elements so that a spite icon can be added.
- */
-function phptemplate_menu_item($link, $has_children, $menu = '', $in_active_trail = FALSE, $extra_class = NULL) {
-  if ($has_children) {
-    $icon = "<span class='icon'></span>";
-    $link = "{$icon} $link";
-  }
-  return theme_menu_item($link, $has_children, $menu, $in_active_trail, $extra_class);
-}
-
-/**
- * Intercept page template variables
- *
- * @param $vars
- *   A sequential array of variables passed to the theme function.
- */
-function phptemplate_preprocess_page(&$vars) {
+function dewey_preprocess_page(&$vars, $hook) {
   global $user;
-  //dpm($vars);
+  $space = spaces_get_space();
+  $vars['space'] = $space;
+  
+  // Remove "Leave this group" link for people already members. We let people
+  // unsubscribe elsewhere.
+  if (in_array($space->sid, array_keys($user->og_groups))) {
+    unset($vars['space_user_links']);
+  }
+  // Path to theme
   $vars['path'] = base_path() . path_to_theme() .'/';
-  $vars['user'] = $user;
-
-  // Fixup the $head_title and $title vars to display better.
-  $title = drupal_get_title();
-  $headers = drupal_set_header();
   
-  if($space = spaces_get_space()) {
-    $vars['space_title'] = l($space->title, $space->purl . "/" . $space->settings['home']);
-    //$title = $space->title;
+  // Create login or account page.
+  if ($user->uid) {
+    $vars['user_account'] = l($user->name, 'user', array('attributes' => array('class' => 'user-account')));
   }
-  
-  // wrap taxonomy listing pages in quotes and prefix with topic
-  if (arg(0) == 'taxonomy' && arg(1) == 'term' && is_numeric(arg(2))) {
-    $title = t('Topic') .' &#8220;'. $title .'&#8221;';
-  }
-  // if this is a 403 and they aren't logged in, tell them they need to log in
-  else if (strpos($headers, 'HTTP/1.1 403 Forbidden') && !$user->uid) {
-    $title = t('Please login to continue');
-  }
-  $vars['title'] = $title;
-
-  if (!drupal_is_front_page()) {
-    $vars['head_title'] = $title .' | '. $vars['site_name'];
-    if ($vars['site_slogan'] != '') {
-      $vars['head_title'] .= ' &ndash; '. $vars['site_slogan'];
-    }
-  }
-
-  // determine layout
-  // 3 columns
-  if ($vars['layout'] == 'both') {
-    $vars['left_classes'] = 'col-left span-5';
-    $vars['right_classes'] = 'col-right span-5 last';
-    $vars['center_classes'] = 'col-center span-12';
-    $vars['body_classes'] .= ' col-3 ';
-  }
-  // 2 columns
-  else if ($vars['layout'] != 'none') {
-    // left column & center
-    if ($vars['layout'] == 'left') {
-      $vars['left_classes'] = 'col-left span-5';
-      $vars['center_classes'] = 'col-center span-18 last';
-    }
-    // right column & center
-    else if ($vars['layout'] == 'right') {
-      $vars['right_classes'] = 'col-right span-5 last';
-      $vars['center_classes'] = 'col-center span-18';
-    }
-    $vars['body_classes'] .= ' col-2 ';
-  }
-  // 1 column
   else {
-
-    $vars['center_classes'] = 'col-center span-24';
-    $vars['body_classes'] .= ' col-1 ';
+    $vars['user_account'] = l('Login', 'user', array('attributes' => array('class' => 'user-account')));
   }
+  
+  // Set title
+  if ($space) {
+    if (!empty($space->title)) {
+      $vars['space_title'] = l(strtoupper($space->title), '<front>');
+    }
+  }
+  else {
+    $vars['space_title'] = $vars['title'];
+  }
+  
+  // Create the menu item for the group settings tab for group admins.
+  if ($space->type == 'og') {
+    $result = db_result(db_query("SELECT uid
+                        FROM {og_uid}
+                        WHERE is_admin = 1
+                        AND nid = %d
+                        AND uid = %d", $space->sid, $user->uid));
 
+    if ($result || $user->uid == 1) {
+      $vars['space_settings'] = '<ul class="links"><li class="space-settings first">' . l("Group Settings", "node/" . $space->sid . "/edit") . '</li></ul>';
+    }
+  }
+  
   $vars['meta'] = '';
   // SEO optimization, add in the node's teaser, or if on the homepage, the mission statement
   // as a description of the page that appears in search engines
@@ -112,121 +72,22 @@ function phptemplate_preprocess_page(&$vars) {
     $vars['meta'] .= '<meta name="robots" content="noindex,follow" />'. "\n";
   }
 
-  /* I like to embed the Google search in various places, uncomment to make use of this
-  // setup search for custom placement
-  $search = module_invoke('google_cse', 'block', 'view', '0');
-  $vars['search'] = $search['content'];
-  */
-  
-  /* to remove specific CSS files from modules use this trick
-  // Remove stylesheets
-  $css = $vars['css'];
-  unset($css['all']['module']['sites/all/modules/contrib/plus1/plus1.css']);
-  $vars['styles'] = drupal_get_css($css);   
-  */
-  
-  // Stuff I add
-  
-  // Check if page is a group page
-    $nid = arg(1);
-    if (is_numeric($nid)) {
-      $vars['is_group'] = db_result(db_query("SELECT nid FROM {node}
-      WHERE nid = %d AND type = 'group'", $nid));
-    }
-    $gid = $vars['is_group'];
-    
-    // if this is a group, assemble the html for the group wiki tab
-    if ($gid) {
-      $tabs .= '<ul id="group-tabs">';
-      $tabs .= '<li id="group-wiki-tab"></li>';
-#      $tabs .= '<li id="group-stats">Groups Stats</li>';
-//      $tabs .= '<li id="group-status">Groups Status Updates</li>';
-      $tabs .= '</ul>';
-      
-      $vars['group_tabs'] = $tabs;
-    }
 }
 
 /**
- * Intercept node template variables
- *
- * @param $vars
- *   A sequential array of variables passed to the theme function.
+ * Preprocessor for node.tpl.php template file.
  */
-function phptemplate_preprocess_node(&$vars) {
-  //dpm($vars);
-  $node = $vars['node']; // for easy reference
-  
-  $vars['submitted'] = dewey_node_submitted($node);
-  
-  // Theme $terms
-  $terms = "";
-  foreach($vars['taxonomy'] as $term) {
-  	$terms .= l($term['title'], $term['href']) .", ";
+function dewey_preprocess_node(&$vars) {
+  // Create conversation bubble.
+  if ($vars['teaser']) {
+    $vars['conversation_bubble'] = dewey_make_conversation_bubble($vars); 
   }
-  $terms = trim($terms, " , ");
- 
-  // Add groups variable
-  $groups_string = "";
-    if ($vars['og_groups_both']) {
-      $groups_string .= '<span class="og_groups">';
-        
-          $count=count($vars['og_groups_both']);
-          if ($count > 1) {
-            $groups_string .= t('Groups: ');
-          }
-          else {
-            $groups_string .= t('Group: ');
-          }
-          $counter=0;
-          foreach($vars['og_groups_both'] as $link => $name) {
-            $counter++;
-            if ($count>$counter){
-              $sep=",";
-            }
-            else{
-            $sep="";
-            }
-            $groups_string .= l($name,'node/'.$link) . $sep." ";}
-      $groups_string .= '</span>';
-      $groups_string .= '<br />';
-  }
-  
-  $vars['groups_string'] = $groups_string;
-    
-  
-  
-  $vars['terms'] = $terms;
-  // for easy variable adding for different node types
-  switch ($node->type) {
-    case 'page':
-      break;
-  }
-  
-      // Get html for last person to edit the page
-    $uid = db_result(db_query("SELECT uid FROM node_revisions WHERE vid = %d", $vars['vid']));
-    $userobj = user_load(array('uid' => $uid));
-    $edited_by = theme('username', $userobj);
-    
-    if ($vars['type'] == 'group_wiki' || $vars['type'] == 'wiki'
-    && $vars['created'] != $vars['changed']) {
-    	$time_ago = format_interval(time() - $vars['changed'], 1);
-    }
-    
-    /* Adding the variable. */
-    $vars['last_edit'] = t('Last edited by !name about @time ago.', 
-    array('!name' => $edited_by, '@time' => $time_ago));
-    
 }
 
-/**
- * Intercept comment template variables
- *
- * @param $vars
- *   A sequential array of variables passed to the theme function.
+/*
+ * Preprocessor for comment.tpl.php template file
  */
-function phptemplate_preprocess_comment(&$vars) {
-  static $comment_count = 1; // keep track the # of comments rendered
+function dewey_preprocess_comment(&$vars) {
   global $user;
   // if the author of the node comments as well, highlight that comment
   $node = node_load($vars['comment']->nid);
@@ -241,51 +102,10 @@ function phptemplate_preprocess_comment(&$vars) {
                 array('attributes' => array('class' => 'edit-this-comment')));
 
   }
-      
-  // only show links for users that can administer links
-  if (!user_access('administer comments')) {
-    $vars['links'] = '';
-  }
-  // if subjects in comments are turned off, don't show the title then
-  if (!variable_get('comment_subject_field', 1)) {
-    $vars['title'] = '';
-  }
-
-  $vars['comment_count'] = $comment_count++;  
-}
-
-/**
- * Override or insert variables into the block templates.
- *
- * @param $vars
- *   An array of variables to pass to the theme template.
- * @param $hook
- *   The name of the template being rendered ("block" in this case.)
- */
-function phptemplate_preprocess_block(&$vars, $hook) {
-  $block = $vars['block'];
-
-  // Special classes for blocks.
-  $classes = array('block');
-  $classes[] = 'block-' . $block->module;
-  $classes[] = 'region-' . $vars['block_zebra'];
-  $classes[] = $vars['zebra'];
-  $classes[] = 'region-count-' . $vars['block_id'];
-  $classes[] = 'count-' . $vars['id'];
-
-  $vars['edit_links_array'] = array();
-  $vars['edit_links'] = '';
   
-  if (user_access('administer blocks')) {
-    include_once './' . drupal_get_path('theme', 'dewey') . '/template.block-editing.inc';
-    phptemplate_preprocess_block_editing($vars, $hook);
-    $classes[] = 'with-block-editing';
-  }
-
-  // Render block classes.
-  $vars['classes'] = implode(' ', $classes);
+  // Override default picture size.
+  dewey_comment_user_picture($vars);
 }
-
 
 /**
  * Intercept box template variables
@@ -300,132 +120,6 @@ function phptemplate_preprocess_box(&$vars) {
   }
 }
 
-/**
- * Override, remove "not verified", confusing
- *
- * Format a username.
- *
- * @param $object
- *   The user object to format, usually returned from user_load().
- * @return
- *   A string containing an HTML link to the user's page if the passed object
- *   suggests that this is a site user. Otherwise, only the username is returned.
- */
-function dewey_username($object, $nohtml = false) {
-  if ($object->uid && $object->name) {
-    
-  	// Pull the name from the user profile node
-    $fullname = db_result(db_query("SELECT c.field_name_value FROM 
-    {content_type_uprofile} c JOIN {node} n WHERE c.nid = n.nid AND uid = %d", 
-    $object->uid));
-
-    if (empty($fullname)) {
-      $fullname = $object->name;
-    }
-    
-    if ($nohtml) {
-      return $fullname;
-    }
-    
-    // Shorten the name when it is too long or it will break many tables.
-    if (drupal_strlen($fullname) > 30) {
-      $name = drupal_substr($fullname, 0, 25) .'...';
-    }
-    else {
-      $name = $fullname;
-    }
-
-    if (user_access('access user profiles')) {
-      $output = l($name, 'user/'. $object->uid, array('attributes' =>
-              array('class' => 'username', 'title' => t('View user profile.'))));
-    }
-    else {
-      $output = check_plain($name);
-    }
-  }
-  else if ($object->name) {
-    // Sometimes modules display content composed by people who are
-    // not registered members of the site (e.g. mailing list or news
-    // aggregator modules). This clause enables modules to display
-    // the true author of the content.
-    if (!empty($object->homepage)) {
-      $output = l($object->name, $object->homepage, array('attributes' => array('rel' => 'nofollow')));
-    }
-    else {
-      $output = check_plain($object->name);
-    }
-  }
-  else {
-    $output = variable_get('anonymous', t('Anonymous'));
-  }
-
-  return $output;
-}
-
-/**
- * Override, make sure Drupal doesn't return empty <P>
- *
- * Return a themed help message.
- *
- * @return a string containing the helptext for the current page.
- */
-function dewey_help() {
-  $help = menu_get_active_help();
-  // Drupal sometimes returns empty <p></p> so strip tags to check if empty
-  if (strlen(strip_tags($help)) > 1) {
-    return '<div class="help">'. $help .'</div>';
-  }
-}
-
-/**
- * Override, use a better default breadcrumb separator.
- *
- * Return a themed breadcrumb trail.
- *
- * @param $breadcrumb
- *   An array containing the breadcrumb links.
- * @return a string containing the breadcrumb output.
- */
-function dewey_breadcrumb($breadcrumb) {
-  if (count($breadcrumb) > 1) {
-    $breadcrumb[] = drupal_get_title();
-    return '<div class="breadcrumb">'. implode(' &rsaquo; ', $breadcrumb) .'</div>';
-  }
-}
-
-/**
- * Rewrite of theme_form_element() to suppress ":" if the title ends with a punctuation mark.
- */
-function dewey_form_element($element, $value) {
-  $args = func_get_args();
-  return preg_replace('@([.!?]):\s*(</label>)@i', '$1$2', call_user_func_array('theme_form_element', $args));
-}
-
-/**
- * Set status messages to use Blueprint CSS classes.
- */
-function dewey_status_messages($display = NULL) {
-  $output = '';
-  foreach (drupal_get_messages($display) as $type => $messages) {
-    // dewey can either call this success or notice
-    if ($type == 'status') {
-      $type = 'success';
-    }
-    $output .= "<div class=\"messages $type\">\n";
-    if (count($messages) > 1) {
-      $output .= " <ul>\n";
-      foreach ($messages as $message) {
-        $output .= '  <li>'. $message ."</li>\n";
-      }
-      $output .= " </ul>\n";
-    }
-    else {
-      $output .= $messages[0];
-    }
-    $output .= "</div>\n";
-  }
-  return $output;
-}
 
 /**
  * Override comment wrapper to show you must login to comment.
@@ -454,50 +148,87 @@ function dewey_comment_wrapper($content, $node) {
   return $output .'</div>';
 }
 
-/**
- * Override, use better icons, source: http://drupal.org/node/102743#comment-664157
- *
- * Format the icon for each individual topic.
- *
- * @ingroup themeable
- */
-function dewey_forum_icon($new_posts, $num_posts = 0, $comment_mode = 0, $sticky = 0) {
-  // because we are using a theme() instead of copying the forum-icon.tpl.php into the theme
-  // we need to add in the logic that is in preprocess_forum_icon() since this isn't available
-  if ($num_posts > variable_get('forum_hot_topic', 15)) {
-    $icon = $new_posts ? 'hot-new' : 'hot';
+function dewey_make_conversation_bubble($vars) {
+  //dpm($vars);
+  $output .= '<div class="grid-3 conversation-bubble-container">';
+  if ($vars['comment_count'] > 0) {
+    
+    // Fetch text of first comment and format.
+    $first_comment = db_result(db_query("SELECT comment
+                                        FROM {comments}
+                                        WHERE nid = %d
+                                        ORDER BY timestamp
+                                        LIMIT 1", $vars['node']->nid));
+    $first_comment = dewey_trim_text($first_comment);
+    
+    // Fetch pictures of commenters
+    $results = db_query("SELECT DISTINCT c.uid, c.cid, u.picture
+                        FROM {comments} c
+                        JOIN {users} u
+                        WHERE c.uid = u.uid
+                        AND nid = %d
+                        ORDER BY c.timestamp
+                        LIMIT 20", $vars['node']->nid);
+    $commenters = array();
+    while ($data = db_fetch_array($results)) {
+      $commenters[$data['uid']] = array('cid' => $data['cid'],
+                                        'picture' => $data['picture']);
+    }
+    
+    $output .= '<p class="conversation-bubble">';
+    $output .= "<em>" . l($first_comment, "node/" . $vars['node']->nid) . "</em>";
+    $output .= "<img src='http://lh/edully/sites/all/themes/dewey/images/conversation-angle.png' />";
+    $output .= '<br /><br />';
+    // Add pictures
+    $output .= dewey_add_conversation_bubble_pictures($commenters, $vars['node']->nid);
+    $output .= '</p>';
+    if ($vars['comment_count'] > 1) {
+      $output .= '<p class="conversation-teaser">' . l('See all ' . $vars['comment_count']
+          . ' comments >>', "node/" . $vars['node']->nid) . '</p>';
+    }
+    else {
+      $output .= '<p class="conversation-teaser">' . l('See the ' . $vars['comment_count']
+          . ' comment >>', "node/" . $vars['node']->nid) . '</p>';
+      
+    }
   }
-  else {
-    $icon = $new_posts ? 'new' : 'default';
-  }
-
-  if ($comment_mode == COMMENT_NODE_READ_ONLY || $comment_mode == COMMENT_NODE_DISABLED) {
-    $icon = 'closed';
-  }
-
-  if ($sticky == 1) {
-    $icon = 'sticky';
-  }
-
-  $output = theme('image', path_to_theme() . "/images/icons/forum-$icon.png");
-
-  if ($new_posts) {
-    $output = "<a name=\"new\">$output</a>";
-  }
-
+  
+  $output .= '</div>';
+  
   return $output;
 }
 
-/**
- * Override, remove previous/next links for forum topics
- *
- * Makes forums look better and is great for performance
- * More: http://www.sysarchitects.com/node/70
- */
-function dewey_forum_topic_navigation($node) {
-  return '';
+function dewey_add_conversation_bubble_pictures($commenters, $nid) {
+  foreach ($commenters as $uid => $data) {
+    if (isset($data['picture']) && module_exists('imagecache')) {
+      $attr = array('class' => 'commenter-picture');
+      $preset = '25x25_crop';
+      
+      $attr['class'] .= ' picture-'. $preset;
+      if (file_exists($data['picture'])) {
+        $image = theme('imagecache', $preset, $data['picture']);
+      }
+      else {
+        $default_image = variable_get('user_picture_default', '');
+        $image = theme("imagecache", $preset, $default_image);
+      }
+      $path = 'node/'. $nid;
+      $fragment = $data['cid'];
+      $output .= l($image, $path, array('attributes' => $attr,
+                                        'fragment' => $fragment,
+                                        'html' => true));
+    }
+  }
+  
+  return $output;
 }
-
+/*
+ * Implementation of hook_link_alter().
+ */
+function dewey_link_alter(&$links, $node) {
+  dpm("Inside link_alter");
+  dpm($links);
+}
 
 /*
  * Override $submit in comments and nodes
@@ -522,13 +253,39 @@ function dewey_comment_submitted($comment) {
 }
 
 function dewey_node_submitted($node) {
-  return t('!username <span class="date">!datetime</span>',
+  return t('<em>!username, <span class="date">!datetime</span></em>',
     array(
       '!username' => theme('username', $node),
       '!datetime' => format_date($node->created, 'custom', "j M Y - g:i A"),
     ));
 }
 
+function dewey_comment_user_picture(&$vars) {
+  $picture = $vars['comment']->picture;
+  if (isset($picture) && module_exists('imagecache')) {
+    $attr = array('class' => 'user-picture');
+    $preset = '30x30_crop';
+    
+    $attr['class'] .= ' picture-'. $preset;
+    if (file_exists($picture)) {
+      $image = imagecache_create_url($preset, $picture);
+      $attr['style'] = 'background-image: url('. $image .')';
+    }
+    else {
+      $default_image = variable_get('user_picture_default', '');
+      $image = imagecache_create_url($preset, $default_image);
+      $attr['style'] = 'background-image: url('. $image .')';
+    }
+    $path = 'user/'. $account->uid;
+
+    $vars['picture'] = l("k", $path, array('attributes' => $attr));
+    $vars['preset'] = $preset;
+  }
+}
+
+/****************
+ * Utility functions
+ ****************/
 /**
  * Trim a post to a certain number of characters, removing all HTML.
  */
@@ -549,37 +306,4 @@ function dewey_trim_text($text, $length = 150) {
   return $text;
 }
 
-// Theme the signup form (we just want a signup button for now).
-function phptemplate_signup_user_form($node) {
-  return array();
-}
-
-/**
- * Implementation of hook_preprocess_user_picture().
- * @TODO: Consider switching to imgaecache_profiles for this.
- */
-function dewey_preprocess_user_picture(&$vars) {
-  $account = $vars['account'];
-  //dpm($vars['picture']);
-  if (isset($account->picture) && module_exists('imagecache')) {
-    $attr = array('class' => 'user-picture');
-    $preset = '30x30_crop';
-    
-    $attr['class'] .= ' picture-'. $preset;
-    if (file_exists($account->picture)) {
-      $image = imagecache_create_url($preset, $account->picture);
-      $attr['style'] = 'background-image: url('. $image .')';
-    }
-    else {
-      $default_image = variable_get('user_picture_default', '');
-      $image = imagecache_create_url($preset, $default_image);
-      $attr['style'] = 'background-image: url('. $image .')';
-    }
-    $path = 'user/'. $account->uid;
-    //dpm($attr);
-    //drupal_set_message("a message");
-    $vars['picture'] = l("k", $path, array('attributes' => $attr));
-    $vars['preset'] = $preset;
-  }
-}
-
+  

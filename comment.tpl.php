@@ -1,31 +1,31 @@
 <div class="clear-block comment<?php print ($comment->new) ? ' comment-new' : ''; print(isset($comment->status) && $comment->status == COMMENT_NOT_PUBLISHED) ? ' comment-unpublished' : ''; if (isset($author_comment)) print ' author'; print ' '. $zebra; ?>">
 
   <div class="comment-content">
-    <div class="meta">
+    <div class="meta clear-block">
       <div class="permalink clearfix">
-        <?php if ($comment->new) : ?>
-          <a id="new"></a>
-          <span class="new"><?php print drupal_ucfirst($new) ?></span>
-        <?php endif; ?>
         
       </div>
       <?php if ($submitted): ?>
         <div class="comment-submitted">
-          <div class="picture">
+          <div class="picture grid-1 alpha">
             <?php print $picture ?>
           </div>
-          <span class="username">
+          <div class="username grid-9">
           <?php print theme('username', $comment); ?>
-          </span> 
-          <span class="date">
+          </div> 
+          <div class="date grid-3">
            <?php
              print $submitted;
            ?>
-          </span>
+          </div>
         </div>
       <?php endif; ?>
     </div>
     
+    <?php if ($comment->new) : ?>
+      <div class="new">new</div>
+    <?php endif; ?>
+        
     <div class="content">
       
       <?php print $content ?>

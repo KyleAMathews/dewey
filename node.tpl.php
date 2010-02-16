@@ -1,28 +1,33 @@
-<div id="node-<?php print $node->nid; ?>" class="node<?php if ($sticky) { print ' sticky'; } ?><?php if (!$status) { print ' node-unpublished'; } ?> clear-block">
+<div id="node-<?php print $node->nid; ?>" class="container-10 node<?php if ($sticky) { print ' sticky'; } ?><?php if (!$status) { print ' node-unpublished'; } ?> clear-block">
 
-<h2 class="node-title"><a href="<?php print $node_url ?>" title="<?php print $title ?>"><?php print $title ?></a></h2>
-
-<?php if ($submitted): ?>
-  <div class="meta">
-  <?php if ($submitted): ?>
-    <div class="node-submitted clear-block"><?php print $picture ?><?php print $submitted ?></div>
-  <?php endif; ?>
+  <div class="meta container-10 clear-block">
+    <div class="user-picture grid-2 alpha">
+      <?php print $picture ?>
+    </div>
+    <div class="grid-8 meta-info">
+      <?php if ($teaser): ?>
+        <h2 class="node-title"><a href="<?php print $node_url ?>" title="<?php print $title ?>"><?php print $title ?></a></h2>
+      <?php endif; ?>
+      <?php if ($submitted): ?>
+        <div class="node-submitted clear-block"><?php print $submitted ?></div>
+      <?php endif; ?>
+    </div>
   </div>
-<?php endif; ?>
 
-  <div class="content clear-block">
+  <div class="content alpha grid-10 clear-block">
     <?php print $content ?>
   </div>
   
+  <?php print $conversation_bubble; ?>
   <?php print $groups_string; ?>
   <?php if (!empty($terms)): ?>
-    <div class="terms"><?php print "Tags: ". $terms ?></div>
+    <div class="terms alpha grid-10"><?php print "<strong>TAGS</strong>: ". $terms ?></div>
   <?php endif;?>
   
-<?php
-  if ($links) {
-    print '<div class="node-links">'. $links .'</div>';
-  }
-?>
-
+  <?php
+    if ($links) {
+      print '<div class="node-links alpha grid-10"><strong>LINKS:</strong> '. $links .'</div>';
+    }
+  ?>
+  
 </div>
