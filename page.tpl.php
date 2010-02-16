@@ -30,8 +30,8 @@
       <a class="logo grid-10 alpha" title="<?php print $site_name; ?><?php if ($site_slogan != '') print ' &ndash; '. $site_slogan; ?>" href="<?php print base_path() ?>">
     	<img id="logo-image" src= "<?php print $path; ?>images/island-logo.png" />
       </a>
-      <?php if ($search_box_disabled): ?>
-        <div id="search-box" class="grid-6"><?php print $search_box; ?></div>
+      <?php if ($search_box): ?>
+        <div id="search-box"><?php print $search_box; ?></div>
       <?php endif; ?>
       </div>
 
@@ -43,7 +43,7 @@
       <?php endif; ?>
     </div>
     
-    <div id="feature-tabs" class="grid-16">
+    <div id="feature-tabs" class="grid-16 alpha">
       <?php if ($main_menu_links && $space): ?>
         <?php print $main_menu_links; ?>
       <?php endif; ?>
@@ -67,16 +67,16 @@
   
       <div id="main" class="column <?php print ns('grid-16', $right, 3); ?>">
         <?php //print $breadcrumb; ?>
-        <?php if ($title): ?>
-          <h1 class="title" id="page-title"><?php print $title; ?></h1>
+        <?php if ($title && $space): ?>
+          <h1 class="title grid-13" id="page-title"><?php print $title; ?></h1>
         <?php endif; ?>
         <?php if ($tabs): ?>
-          <div class="tabs"><?php print $tabs; ?></div>
+          <div class="tabs grid-13"><?php print $tabs; ?></div>
         <?php endif; ?>
         <?php print $messages; ?>
         <?php print $help; ?>
             
-        <div id="main-content" class="region clear-block">      
+        <div id="main-content" class="region alpha <?php print ns('grid-16', $right, 3); ?>">      
           <?php print $content; ?>
         </div>
   

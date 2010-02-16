@@ -26,7 +26,7 @@
       <div class="new">new</div>
     <?php endif; ?>
         
-    <div class="content">
+    <div class="content grid-12 clear-block">
       
       <?php print $content ?>
       <?php if ($signature): ?>
@@ -38,7 +38,7 @@
     </div>
 
     <?php if ($links): ?>
-      <div class="links"><?php print $links ?></div>
+      <div class="links grid-12"><?php print $links ?></div>
     <?php endif; ?>
   </div>
 </div>
