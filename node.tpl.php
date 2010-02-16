@@ -14,7 +14,7 @@
     </div>
   </div>
 
-  <div class="content alpha grid-10 clear-block">
+  <div class="content alpha grid-12 clear-block">
     <?php print $content ?>
   </div>
   

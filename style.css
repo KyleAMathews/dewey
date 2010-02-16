@@ -23,14 +23,12 @@ a {
 }
 #site-header {
   margin-bottom: 10px;
-  width: 850px;
 }
 #content-container {
   position: relative;
   background: white;
   padding: 20px 0 0 10px;
   overflow: hidden;
-  width:840px;
   float: left;
   -moz-box-shadow: 7px 7px 14px #888;
   -webkit-box-shadow: 7px 7px 14px #888;
@@ -40,22 +38,19 @@ a {
   padding-top: 40px
 }
 #feature-tabs {
-  position: relative;
-  height: 300px;
-  width: 110px;
-  float: left;
 }
 #feature-tabs ul {
+  float: left;
+}
+#feature-tabs ul.admin-links {
+  margin-left: 30px;
 }
 #feature-tabs ul li {
   padding: 0;
 }
 #feature-tabs ul li a{
   background: #282828;
-  display: block;
-  width: 100px;
   padding: 5px;
-  margin-bottom: 5px;
   text-decoration: none;
   color: white;
   -moz-box-shadow: 7px 7px 14px #888;
@@ -67,7 +62,7 @@ a {
   color: #282828;
   border-top: 1px solid #282828;
   border-right: 1px solid #282828;
-  border-bottom: 1px solid #282828;
+  border-left: 1px solid #282828;
 }
 #feature-tabs ul li a:hover{
  background: #565656;

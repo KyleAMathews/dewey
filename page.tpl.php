@@ -37,12 +37,21 @@
 
     </div>
 
-    <div id="space-title" class="clear-block grid-14 alpha">
+    <div id="space-title" class="clear-block grid-16 alpha">
       <?php if ($space_title): ?>
         <h2><?php print $space_title; ?></h2>
       <?php endif; ?>
     </div>
     
+    <div id="feature-tabs" class="grid-16">
+      <?php if ($main_menu_links && $space): ?>
+        <?php print $main_menu_links; ?>
+      <?php endif; ?>
+      <?php if ($space_settings): ?>
+        <?php print $space_settings; ?>
+      <?php endif; ?>
+    </div>
+
     <div id="content-container">
       <div id="context-links">
         <?php if ($space_user_links): ?>
@@ -56,7 +65,7 @@
         <?php endif; ?>
       </div>
   
-      <div id="main" class="column <?php print ns('grid-14', $right, 3); ?>">
+      <div id="main" class="column <?php print ns('grid-16', $right, 3); ?>">
         <?php //print $breadcrumb; ?>
         <?php if ($title): ?>
           <h1 class="title" id="page-title"><?php print $title; ?></h1>
@@ -84,7 +93,7 @@
       
       <div id="footer" class="prefix-1 suffix-1">
         <?php if ($footer): ?>
-          <div id="footer-region" class="region grid-14 clear-block">
+          <div id="footer-region" class="region grid-16 clear-block">
             <?php print $footer; ?>
           </div>
         <?php endif; ?>
@@ -97,15 +106,6 @@
       </div>
     </div>
     
-    <div id="feature-tabs">
-      <?php if ($main_menu_links && $space): ?>
-        <?php print $main_menu_links; ?>
-      <?php endif; ?>
-      <?php if ($space_settings): ?>
-        <?php print $space_settings; ?>
-      <?php endif; ?>
-    </div>
-
   </div>
   <?php print $scripts; ?>
   <?php print $closure; ?>

@@ -42,7 +42,7 @@ function dewey_preprocess_page(&$vars, $hook) {
                         AND uid = %d", $space->sid, $user->uid));
 
     if ($result || $user->uid == 1) {
-      $vars['space_settings'] = '<ul class="links"><li class="space-settings first">' . l("Group Settings", "node/" . $space->sid . "/edit") . '</li></ul>';
+      $vars['space_settings'] = '<ul class="links admin-links"><li class="space-settings first">' . l("Group Settings", "node/" . $space->sid . "/edit") . '</li></ul>';
     }
   }
   
