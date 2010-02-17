@@ -121,25 +121,6 @@ function phptemplate_preprocess_box(&$vars) {
 }
 
 /**
-* Override or insert PHPTemplate variables into the search_theme_form template.
-*
-* @param $vars
-*   A sequential array of variables to pass to the theme template.
-* @param $hook
-*   The name of the theme function being called (not used in this case.)
-*/
-
-function dewey_search_theme_form(&$vars, $hook) {
-  dpm($vars);
-  // Modify elements of the search form
-  $vars['form']['search_theme_form']['#title'] = t('');
-  dpm($vars);
-  // Rebuild the rendered version (search form only, rest remains unchanged)
-  unset($vars['form']['search_theme_form']['#printed']);
-  $vars['search']['search_theme_form'] = drupal_render($vars['form']['search_theme_form']);
-}
-
-/**
  * Override comment wrapper to show you must login to comment.
  */
 function dewey_comment_wrapper($content, $node) {

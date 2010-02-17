@@ -460,3 +460,33 @@ div.messages ul {
 div.help {
   float: left;
 }
+
+/** Recent activity **/
+.activity-item {
+  border-bottom: 1px solid #B4B4B4;
+  margin-bottom: 15px;
+}
+.view-eduglu-recent-activity .item-list li {
+  list-style: none;
+  margin: 0;
+}
+.view-eduglu-recent-activity h2 {
+  margin-bottom: 0;
+}
+.view-eduglu-recent-activity p {
+  margin-bottom: 0;
+}
+.activity-teaser a {
+  text-decoration: underline;
+}
+.activity-meta, .activity-meta a {
+  font-style: italic;
+  font-size: 90%;
+  color: #B4B4B4;
+}
+.activity-item-group-name, .activity-item-group-name a{
+  color: #565656;
+}
+.activity-body {
+  display: none;
+}
