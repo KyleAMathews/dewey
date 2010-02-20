@@ -44,7 +44,7 @@ else {
     <h3>
       <?php
         print "<span class='activity-item-group-name'>[" . l($group_name, "node/" . $group_id) . "]</span> ";
-        print $fields['title']->content;  
+        print "<span class='activity-node-title'>" . $fields['title']->content . "</span>";  
       ?>
     </h3>
   </div>
@@ -55,12 +55,12 @@ else {
   </div>
   
   <div class='grid-12 activity-body omega'>
-    <?php print $fields['body']->content; ?>
+    <?php print check_markup($fields['body']->raw); ?>
   </div>
 
   <div class="grid-8 activity-meta">
     <?php print $fields['created']->content; ?> by <?php print $fields['name']->content; ?>
-    |
+    | <span class="activity-comment-count">
     <?php
       if (!empty($comment_count)) {
           print l($comment_count . " " . format_plural($comment_count, "comment", "comments"),
@@ -70,7 +70,10 @@ else {
         print l("No comments", "node/" . $fields['nid']->raw);
       }
       ?>
+      </span>
+      <span class="activity-new-comments">
     <?php if ($fields['new_comments']->raw) {print "| " . $fields['new_comments']->content;} ?>
+      </span>
   </div>
 </div>
 <br />

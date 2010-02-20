@@ -176,7 +176,7 @@ function dewey_make_conversation_bubble($vars) {
     
     $output .= '<p class="conversation-bubble">';
     $output .= "<em>" . l($first_comment, "node/" . $vars['node']->nid) . "</em>";
-    $output .= "<img src='http://lh/edully/sites/all/themes/dewey/images/conversation-angle.png' />";
+    $output .= "<img src='" . base_path() . path_to_theme() . "/images/conversation-angle.png' />";
     $output .= '<br /><br />';
     // Add pictures
     $output .= dewey_add_conversation_bubble_pictures($commenters, $vars['node']->nid);
@@ -257,6 +257,69 @@ function dewey_node_submitted($node) {
       '!username' => theme('username', $node),
       '!datetime' => format_date($node->created, 'custom', "j M Y - g:i A"),
     ));
+}
+
+
+/**
+ * Override, remove "not verified", confusing
+ *
+ * Format a username.
+ *
+ * @param $object
+ *   The user object to format, usually returned from user_load().
+ * @return
+ *   A string containing an HTML link to the user's page if the passed object
+ *   suggests that this is a site user. Otherwise, only the username is returned.
+ */
+function dewey_username($object, $nohtml = false) {
+  if ($object->uid && $object->name) {
+    
+  	// Pull the name from the user profile node
+    $fullname = db_result(db_query("SELECT c.field_name_value FROM 
+    {content_type_uprofile} c JOIN {node} n WHERE c.nid = n.nid AND uid = %d", 
+    $object->uid));
+
+    if (empty($fullname)) {
+      $fullname = $object->name;
+    }
+    
+    if ($nohtml) {
+      return $fullname;
+    }
+    
+    // Shorten the name when it is too long or it will break many tables.
+    if (drupal_strlen($fullname) > 30) {
+      $name = drupal_substr($fullname, 0, 25) .'...';
+    }
+    else {
+      $name = $fullname;
+    }
+
+    if (user_access('access user profiles')) {
+      $output = l($name, 'user/'. $object->uid, array('attributes' =>
+              array('class' => 'username', 'title' => t('View user profile.'))));
+    }
+    else {
+      $output = check_plain($name);
+    }
+  }
+  else if ($object->name) {
+    // Sometimes modules display content composed by people who are
+    // not registered members of the site (e.g. mailing list or news
+    // aggregator modules). This clause enables modules to display
+    // the true author of the content.
+    if (!empty($object->homepage)) {
+      $output = l($object->name, $object->homepage, array('attributes' => array('rel' => 'nofollow')));
+    }
+    else {
+      $output = check_plain($object->name);
+    }
+  }
+  else {
+    $output = variable_get('anonymous', t('Anonymous'));
+  }
+
+  return $output;
 }
 
 function dewey_comment_user_picture(&$vars) {

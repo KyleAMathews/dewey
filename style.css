@@ -5,7 +5,7 @@ a:hover {
  text-decoration: underline;
 }
 a {
-  color: #282828;
+  color: #183152;
   text-decoration: none;
 }
 .node a, .comment a {
@@ -33,7 +33,7 @@ a {
   width: 960px;
   margin-left: -5px;
   float: left;
-  border-top: 1px solid #282828;
+  border-top: 1px solid #183152;
   -moz-box-shadow: 7px 7px 14px #888;
   -webkit-box-shadow: 7px 7px 14px #888;
   box-shadow: 7px 7px 14px #888;
@@ -56,7 +56,7 @@ a {
   padding: 0;
 }
 #feature-tabs ul li a {
-  background: #282828;
+  background: #183152;
   padding: 1px 5px 0;
   float: left;
   text-align: center;
@@ -68,21 +68,21 @@ a {
 }
 #feature-tabs ul li.active a{
   background: white;
-  color: #282828;
-  border-top: 1px solid #282828;
-  border-right: 1px solid #282828;
-  border-left: 1px solid #282828;
+  color: #183152;
+  border-top: 1px solid #183152;
+  border-right: 1px solid #183152;
+  border-left: 1px solid #183152;
 }
 #feature-tabs ul li a:hover{
- background: #565656;
+ background: #375D81;
  color: white;
 }
 #feature-tabs ul li.active a:hover{
  background: white;
- color: #282828;
+ color: #183152;
 }
 #global_nav {
-  background: #565656;
+  background: #375D81;
   height: 25px;
 }
 #global_nav .links {
@@ -106,17 +106,17 @@ a {
   margin:3px 10px 0 0 
 }
 #branding {
-  background: #282828;
+  background: #183152;
   height: 45px;
 }
 .block {
   padding-left: 10px;
-  border-left: 3px ridge #282828;
+  border-left: 3px ridge #183152;
 }
 #footer-message {
   text-align: center;
   padding: 5px;
-  border-top: 1px solid #282828;
+  border-top: 1px solid #183152;
 }
 
 /** Search box **/
@@ -126,7 +126,7 @@ a {
   float: left;
 }
 #search-box .form-text {
-  border: #282828;
+  border: #183152;
 }
 #search-box .form-item {
   float: left;
@@ -135,21 +135,21 @@ a {
 #search-box label {
   display: none;
 }
-#search-box #edit-submit {
-  border: #282828;
+#search-box .form-submit {
+  border: #183152;
   float: left;
   margin-left: 5px;
 }
 
 /** Pagers **/
 .item-list .pager li, .pager li a {
-  background: #282828;
+  background: #183152;
   color: white;
 }
 .item-list .pager li.pager-current {
   background: white;
-  color: #282828;
-  border: 1px solid #282828;
+  color: #183152;
+  border: 1px solid #183152;
 }
 #space-title h2 {
   font-family: helvatica, arial, sans-serif;
@@ -170,7 +170,7 @@ a {
   display: none;
   z-index: 101;
   padding: 15px;
-  border: 5px solid #565656;
+  border: 5px solid #375D81;
 }
 #my-groups p {
   margin: 7px 0 0 0;
@@ -182,13 +182,13 @@ a {
   margin-top: 0;
 }
 #my-groups a {
-  color: #565656;
+  color: #375D81;
   text-decoration: none;
   display: block;
   padding: 3px;
 }
 #my-groups a:hover {
-  background: #282828;
+  background: #183152;
   color: white;
 }
 .create-new-group {
@@ -197,7 +197,7 @@ a {
 
 /* Node Styles */
 .node {
-  border-bottom: 1px solid #565656;
+  border-bottom: 1px solid #375D81;
   padding-bottom: 10px;
 }
 .meta {
@@ -212,7 +212,7 @@ h2.node-title {
 }
 h2.node-title a {
   text-decoration: none;
-  color: #282828;
+  color: #183152;
 }
 h2.node-title a:hover {
   text-decoration: underline;
@@ -222,7 +222,7 @@ h2.node-title a:hover {
   vertical-align:middle
 }
 .node-submitted, .node-submitted a {
-  color: #565656;
+  color: #375D81;
 }
 .node-submitted a {
   text-decoration: none;
@@ -235,7 +235,7 @@ h2.node-title a:hover {
 }
 .conversation-bubble-container a {
   text-decoration: none;
-  color: #565656;
+  color: #375D81;
 }
 .conversation-teaser a:hover {
   text-decoration: underline;
@@ -270,10 +270,10 @@ ul.links li {
 }
 ul.links a {
   text-decoration: underline;
-  color: #565656;
+  color: #375D81;
 }
 ul.links a:hover {
-  color: #565656;
+  color: #375D81;
 }
 
 /* User Pictures + submitted stuff in comments */
@@ -333,7 +333,7 @@ div.comment .username a {
   font-weight: bold;
   vertical-align: baseline;
   text-decoration: none;
-  color: #282828;
+  color: #183152;
 }
 div.comment .username a:hover {
  text-decoration: underline;
@@ -352,7 +352,7 @@ div.comment .username a:hover {
   text-decoration: underline;
 }
 .comment .date a {
-  color: #282828;
+  color: #183152;
   text-decoration: none;
 }
 div.comment div.meta {
@@ -415,7 +415,7 @@ a.button, div.button a {
   /* Disable text selection (Firefox only)*/
   -moz-user-select: none;
   
-  background-color: #565656;
+  background-color: #375D81;
   margin-left: 10px;
   z-index: 100;
 }
@@ -463,7 +463,7 @@ div.help {
 
 /** Recent activity **/
 .activity-item {
-  border-bottom: 1px solid #B4B4B4;
+  border-bottom: 1px solid #808080;
   margin-bottom: 15px;
 }
 .view-eduglu-recent-activity .item-list li {
@@ -473,20 +473,80 @@ div.help {
 .view-eduglu-recent-activity h2 {
   margin-bottom: 0;
 }
-.view-eduglu-recent-activity p {
-  margin-bottom: 0;
-}
 .activity-teaser a {
   text-decoration: underline;
 }
 .activity-meta, .activity-meta a {
   font-style: italic;
   font-size: 90%;
-  color: #B4B4B4;
+  color: #808080;
 }
 .activity-item-group-name, .activity-item-group-name a{
-  color: #565656;
+  color: #375D81;
 }
 .activity-body {
   display: none;
 }
+.activity-node-title {
+  text-decoration: underline;
+}
+
+/** front page marketing stuff -- will remove **/
+#front-page-marketing {
+  border-collapse: collapse;
+  border-top: 1px solid black;
+  border-bottom: 2px solid black;
+  margin: -20px 0 30px -20px;
+  color: #212629;
+}
+#front-page-marketing td {
+  /*border-right: 2px solid black;*/*/
+  padding: 5px;
+}
+#front-page-marketing div {
+  height: 260px;
+  width: 268px;
+  padding: 20px;
+  position: relative;
+}
+#front-page-marketing li {
+  font-size: 14px;
+}
+.join-now {
+  font-size: 16px;
+  margin-left: 1em;
+  position: absolute;
+  bottom: 0;
+}
+#front-teachers {
+  background: #E1E6FA;
+}
+#front-students {
+  background: #C4D7ED;
+}
+#front-alumni {
+  background: #ABC8E2;
+}
+
+#front-header-search {
+  background-color: #F0F0FE;
+  margin: -3px -10px 0 -20px;
+  padding-left: 100px;
+  font-size: 125%;
+  width: 880px;
+}
+#front-header-search h2 {
+  font-style: italic;
+  float: left;
+  margin-top: 10px;
+}
+
+#front-header-search #search-theme-form {
+  float: left;
+  padding-left: 80px;
+  padding-top: 20px;
+}
+#user-login {
+  margin-left: 210px;
+}
+/*** End frontpage marketing **/
