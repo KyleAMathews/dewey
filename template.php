@@ -17,11 +17,14 @@ function dewey_preprocess_page(&$vars, $hook) {
   
   // Create login or account page.
   if ($user->uid) {
-    $vars['user_account'] = l($user->name, 'user', array('attributes' => array('class' => 'user-account')));
+    $vars['user_account'] = l($user->name, 'user') . "   " 
+			. l('logout', 'logout');
   }
   else {
     $vars['user_account'] = l('Login', 'user', array('attributes' => array('class' => 'user-account')));
   }
+  $vars['user_account'] = "<span class='user-links'>"
+		 . $vars['user_account'] . "</span>";
   
   // Set title
   if ($space) {

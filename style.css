@@ -101,9 +101,12 @@ a {
 #global_nav a:hover {
   color: #E6E6E6;
 }
-.user-account{
+.user-links {
   float:right;
   margin:3px 10px 0 0 
+}
+.user-links a {
+  margin-left: 10px;
 }
 #branding {
   background: #183152;
