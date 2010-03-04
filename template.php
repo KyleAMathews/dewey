@@ -5,7 +5,9 @@
 function dewey_preprocess_page(&$vars, $hook) {
   global $user;
   $space = spaces_get_space();
+  $context = context_get();
   $vars['space'] = $space;
+  $vars['context'] = $context;
   
   // Remove "Leave this group" link for people already members. We let people
   // unsubscribe elsewhere.
@@ -48,7 +50,20 @@ function dewey_preprocess_page(&$vars, $hook) {
       $vars['space_settings'] = '<ul class="links admin-links"><li class="space-settings first">' . l("Group Settings", "node/" . $space->sid . "/edit") . '</li></ul>';
     }
   }
-  
+
+  // Add custom breadcrumb.
+  $breadcrumb .= "<div id='breadcrumb'";
+  $breadcrumb .= l("Home", base_path(), array('external' => true)) . " > ";
+  if (isset($space->sid)) {
+    $breadcrumb .= l($space->title, "") . " > ";
+    $breadcrumb .= l(strtoupper($context['spaces']['feature']), $context['spaces']['feature']);
+  }
+  else {
+    $breadcrumb = trim($breadcrumb, " >");
+  }
+  $breadcrumb .= "</div>";
+  $vars['breadcrumb'] = $breadcrumb;
+
   $vars['meta'] = '';
   // SEO optimization, add in the node's teaser, or if on the homepage, the mission statement
   // as a description of the page that appears in search engines

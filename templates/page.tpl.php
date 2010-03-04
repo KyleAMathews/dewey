@@ -66,7 +66,7 @@
       </div>
   
       <div id="main" class="column <?php print ns('grid-16', $right, 3); ?>">
-        <?php //print $breadcrumb; ?>
+        <?php print $breadcrumb; ?>
         <?php if ($title && $space): ?>
           <h1 class="title grid-13" id="page-title"><?php print $title; ?></h1>
         <?php endif; ?>

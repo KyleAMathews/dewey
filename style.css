@@ -65,6 +65,12 @@ a {
   min-width: 65px;
   text-decoration: none;
   color: white;
+  -moz-border-radius-topleft: 5px;
+  -moz-border-radius-topright: 5px;
+  -webkit-border-radius-topleft: 5px;
+  -webkit-border-radius-topright: 5px;
+  border-radius-topleft: 5px;
+  border-radius-topright: 5px;
 }
 #feature-tabs ul li.active a{
   background: white;
@@ -100,6 +106,12 @@ a {
 }
 #global_nav a:hover {
   color: #E6E6E6;
+}
+#breadcrumb {
+  margin: -10px 0 10px 0;
+}
+#breadcrumb a {
+  text-decoration: underline;
 }
 .user-links {
   float:right;
