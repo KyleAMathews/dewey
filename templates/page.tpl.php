@@ -13,7 +13,7 @@
   <?php print $styles; ?>
 </head>
 
-<body class="<?php print $body_classes; ?> show-grid">
+<body class="<?php print $body_classes; ?>">
   <?php print $my_groups; ?>
   <div id="page" class="container-16 clear-block">
 

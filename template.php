@@ -56,7 +56,7 @@ function dewey_preprocess_page(&$vars, $hook) {
   $breadcrumb .= l("Home", base_path(), array('external' => true)) . " > ";
   if (isset($space->sid)) {
     $breadcrumb .= l($space->title, "") . " > ";
-    $breadcrumb .= l(strtoupper($context['spaces']['feature']), $context['spaces']['feature']);
+    $breadcrumb .= l(capitalizeWords($context['spaces']['feature']), $context['spaces']['feature']);
   }
   else {
     $breadcrumb = trim($breadcrumb, " >");
@@ -386,4 +386,30 @@ function dewey_trim_text($text, $length = 150) {
   return $text;
 }
 
-  
+/**
+ * Capitalize all words
+ * @param string Data to capitalize
+ * @param string Word delimiters
+ * @return string Capitalized words
+ * Function taken from http://www.php.net/manual/en/function.ucwords.php#95325
+ */
+function capitalizeWords($words, $charList = null) {
+    // Use ucwords if no delimiters are given
+    if (!isset($charList)) {
+        return ucwords($words);
+    }
+
+    // Go through all characters
+    $capitalizeNext = true;
+
+    for ($i = 0, $max = strlen($words); $i < $max; $i++) {
+        if (strpos($charList, $words[$i]) !== false) {
+            $capitalizeNext = true;
+        } else if ($capitalizeNext) {
+            $capitalizeNext = false;
+            $words[$i] = strtoupper($words[$i]);
+        }
+    }
+
+    return $words;
+}
