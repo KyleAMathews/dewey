@@ -100,6 +100,12 @@ function dewey_preprocess_node(&$vars) {
   if ($vars['teaser']) {
     $vars['conversation_bubble'] = dewey_make_conversation_bubble($vars); 
   }
+
+  // Stick with node.tpl.php, not node-og-group-post
+  $key = array_search('node-og-group-post', $vars['template_files']);
+  if ($key !== FALSE) {
+    $vars['template_files'][$key] = NULL;
+  }
 }
 
 /*
