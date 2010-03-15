@@ -172,7 +172,6 @@ function dewey_comment_wrapper($content, $node) {
 }
 
 function dewey_make_conversation_bubble($vars) {
-  //dpm($vars);
   $output .= '<div class="grid-3 conversation-bubble-container">';
   if ($vars['comment_count'] > 0) {
     
@@ -236,7 +235,7 @@ function dewey_add_conversation_bubble_pictures($commenters, $nid) {
         $image = theme("imagecache", $preset, $default_image);
       }
       $path = 'node/'. $nid;
-      $fragment = $data['cid'];
+      $fragment = "comment-" . $data['cid'];
       $output .= l($image, $path, array('attributes' => $attr,
                                         'fragment' => $fragment,
                                         'html' => true));
@@ -244,13 +243,6 @@ function dewey_add_conversation_bubble_pictures($commenters, $nid) {
   }
   
   return $output;
-}
-/*
- * Implementation of hook_link_alter().
- */
-function dewey_link_alter(&$links, $node) {
-  dpm("Inside link_alter");
-  dpm($links);
 }
 
 /*
