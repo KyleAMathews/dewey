@@ -236,7 +236,7 @@ function dewey_add_conversation_bubble_pictures($commenters, $nid) {
         $image = theme("imagecache", $preset, $default_image);
       }
       $path = 'node/'. $nid;
-      $fragment = $data['cid'];
+      $fragment = "comment-" . $data['cid'];
       $output .= l($image, $path, array('attributes' => $attr,
                                         'fragment' => $fragment,
                                         'html' => true));
