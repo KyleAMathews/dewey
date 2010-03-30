@@ -172,7 +172,6 @@ function dewey_comment_wrapper($content, $node) {
 }
 
 function dewey_make_conversation_bubble($vars) {
-  //dpm($vars);
   $output .= '<div class="grid-3 conversation-bubble-container">';
   if ($vars['comment_count'] > 0) {
     
@@ -182,6 +181,11 @@ function dewey_make_conversation_bubble($vars) {
                                         WHERE nid = %d
                                         ORDER BY timestamp
                                         LIMIT 1", $vars['node']->nid));
+
+    // Remove any quotes if the comment came via email.
+    $first_comment = _og_mailinglist_remove_quotes($first_comment);
+
+    // Remove line breaks / html / and trim.
     $first_comment = dewey_trim_text($first_comment);
     
     // Fetch pictures of commenters
@@ -244,13 +248,6 @@ function dewey_add_conversation_bubble_pictures($commenters, $nid) {
   }
   
   return $output;
-}
-/*
- * Implementation of hook_link_alter().
- */
-function dewey_link_alter(&$links, $node) {
-  dpm("Inside link_alter");
-  dpm($links);
 }
 
 /*

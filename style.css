@@ -565,3 +565,21 @@ div.help {
   margin-left: 210px;
 }
 /*** End frontpage marketing **/
+
+/* Messages */
+.messages {
+  background-color: #fff;
+  border: 1px solid #b8d3e5;
+}
+div.status {
+  color: #33a333;
+  border-color: #c7f2c8;
+}
+div.error, tr.error {
+  color: #a30000;
+  background-color: #FFCCCC;
+}
+.form-item input.error, .form-item textarea.error {
+  border: 1px solid #c52020;
+  color: #363636;
+}
