@@ -181,6 +181,11 @@ function dewey_make_conversation_bubble($vars) {
                                         WHERE nid = %d
                                         ORDER BY timestamp
                                         LIMIT 1", $vars['node']->nid));
+
+    // Remove any quotes if the comment came via email.
+    $first_comment = _og_mailinglist_remove_quotes($first_comment);
+
+    // Remove line breaks / html / and trim.
     $first_comment = dewey_trim_text($first_comment);
     
     // Fetch pictures of commenters
