@@ -67,10 +67,10 @@ a {
   color: white;
   -moz-border-radius-topleft: 5px;
   -moz-border-radius-topright: 5px;
-  -webkit-border-radius-topleft: 5px;
-  -webkit-border-radius-topright: 5px;
-  border-radius-topleft: 5px;
-  border-radius-topright: 5px;
+  -webkit-border-top-left-radius: 5px;
+  -webkit-border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 #feature-tabs ul li.active a{
   background: white;
@@ -582,4 +582,8 @@ div.error, tr.error {
 .form-item input.error, .form-item textarea.error {
   border: 1px solid #c52020;
   color: #363636;
+}
+/* Vertical Tabs are too wide */
+div.vertical-tabs {
+  width: 716px;
 }

@@ -5,13 +5,15 @@
 function dewey_preprocess_page(&$vars, $hook) {
   global $user;
   $space = spaces_get_space();
+  //dpm($space);
+  //print_r($space);
   $context = context_get();
   $vars['space'] = $space;
   $vars['context'] = $context;
   
   // Remove "Leave this group" link for people already members. We let people
   // unsubscribe elsewhere.
-  if (in_array($space->sid, array_keys($user->og_groups))) {
+  if (in_array($space->id, array_keys($user->og_groups))) {
     unset($vars['space_user_links']);
   }
   // Path to theme
@@ -30,8 +32,8 @@ function dewey_preprocess_page(&$vars, $hook) {
   
   // Set title
   if ($space) {
-    if (!empty($space->title)) {
-      $vars['space_title'] = l(strtoupper($space->title), '<front>');
+    if (!empty($space->group->title)) {
+      $vars['space_title'] = l(strtoupper($space->group->title), '<front>');
     }
   }
   else {
@@ -47,16 +49,25 @@ function dewey_preprocess_page(&$vars, $hook) {
                         AND uid = %d", $space->sid, $user->uid));
 
     if ($result || $user->uid == 1) {
-      $vars['space_settings'] = '<ul class="links admin-links"><li class="space-settings first">' . l("Group Settings", "node/" . $space->sid . "/edit") . '</li></ul>';
+      $vars['space_settings'] = '<ul class="links admin-links"><li class="space-settings first">' . l("Group Settings", "node/" . $space->id . "/edit") . '</li></ul>';
     }
   }
-
+  
   // Add custom breadcrumb.
+  $active_menu = "";
+  $contexts = array_keys($context['context']);
+  foreach ($contexts as $item ) {
+    if (preg_match('/spaces-feature.*/', $item, $matches)) {
+      $active_menu = $context['context'][$item]->reactions['menu'];
+    }
+  }
   $breadcrumb .= "<div id='breadcrumb'";
   $breadcrumb .= l("Home", base_path(), array('external' => true)) . " > ";
-  if (isset($space->sid)) {
-    $breadcrumb .= l($space->title, "") . " > ";
-    $breadcrumb .= l(capitalizeWords($context['spaces']['feature']), $context['spaces']['feature']);
+  if (isset($space->id)) {
+    $breadcrumb .= l($space->group->title, "");
+    if (!empty($active_menu)) {
+      $breadcrumb .= " > "  . l(capitalizeWords($active_menu), $active_menu);
+    }
   }
   else {
     $breadcrumb = trim($breadcrumb, " >");
@@ -318,7 +329,9 @@ function dewey_username($object, $nohtml = false) {
 
     if (user_access('access user profiles')) {
       $output = l($name, 'user/'. $object->uid, array('attributes' =>
-              array('class' => 'username', 'title' => t('View user profile.'))));
+              array('class' => 'username', 'title' => t('View user profile.')),
+              'purl' => array('disabled' => TRUE)
+              ));
     }
     else {
       $output = check_plain($name);
@@ -330,7 +343,8 @@ function dewey_username($object, $nohtml = false) {
     // aggregator modules). This clause enables modules to display
     // the true author of the content.
     if (!empty($object->homepage)) {
-      $output = l($object->name, $object->homepage, array('attributes' => array('rel' => 'nofollow')));
+      $output = l($object->name, $object->homepage, array('attributes' => array('rel' => 'nofollow'),
+                                          'purl' => array('disabled' => TRUE)));
     }
     else {
       $output = check_plain($object->name);
@@ -361,7 +375,8 @@ function dewey_comment_user_picture(&$vars) {
     }
     $path = 'user/'. $account->uid;
 
-    $vars['picture'] = l("k", $path, array('attributes' => $attr));
+    $vars['picture'] = l("k", $path, array('attributes' => $attr,
+                             'purl' => array('disabled' => true)));
     $vars['preset'] = $preset;
   }
 }

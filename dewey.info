@@ -9,6 +9,7 @@ stylesheets[screen][] = "typography.css"
 stylesheets[screen][] = "form.css"
 stylesheets[screen][] = "style.css"
 
+regions[left] = "Left sidebar"
 regions[right] = "Right sidebar"
 regions[content] = "Content"
 regions[footer] = "Footer"
@@ -16,3 +17,5 @@ regions[branding] = "Branding"
 regions[spacetitle] = "Space title"
 regions[global_nav] = "Global navigation"
 regions[page_tools] = "Page tools"
+
+kitt = "1.0-draft"
