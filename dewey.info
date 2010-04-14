@@ -9,6 +9,7 @@ stylesheets[screen][] = "typography.css"
 stylesheets[screen][] = "form.css"
 stylesheets[screen][] = "style.css"
 
+regions[left] = "Left sidebar"
 regions[right] = "Right sidebar"
 regions[content] = "Content"
 regions[footer] = "Footer"

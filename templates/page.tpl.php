@@ -56,16 +56,18 @@
       <div id="context-links">
         <?php if ($space_user_links): ?>
           <div class="button">
-            <?php print $space_user_links ?>
+            <?php print $space_user_links; dpm($space_user_links); ?>
           </div>
         <?php endif; ?>
         
         <?php if ($context_links): ?>
-          <?php print $context_links; ?>
+					<div class="button">
+					  <?php print $context_links; ?>
+					</div>
         <?php endif; ?>
       </div>
   
-      <div id="main" class="column <?php print ns('grid-16', $right, 3); ?>">
+      <div id="main" class="column <?php print ns('grid-16', $left, 4, $right, 3) . ' ' . ns('push-4', !$left, 4); ?>">
         <?php print $breadcrumb; ?>
         <?php if ($title && $space): ?>
           <h1 class="title grid-13" id="page-title"><?php print $title; ?></h1>
@@ -76,15 +78,22 @@
         <?php print $messages; ?>
         <?php print $help; ?>
             
-        <div id="main-content" class="region alpha <?php print ns('grid-16', $right, 3); ?>">      
+        <div id="main-content" class="region alpha <?php print ns('grid-16', $left, 4, $right, 3) ?>">      
           <?php print $content; ?>
         </div>
   
-        <?php print $feed_icons; ?>
       </div>
-  
-
       
+      <span class="grid-1 prefix-1">  
+				<?php print $feed_icons; ?>
+      </span>
+  
+			<?php if ($left): ?>
+				<div id="sidebar-left" class="column sidebar region grid-4 <?php print ns('pull-12', $right, 3); ?>">
+					<?php print $left; ?>
+				</div>
+			<?php endif; ?>
+
       <div id="sidebar-right" class="column sidebar region grid-3">
         <?php if ($right): ?>
           <?php print $right; ?>

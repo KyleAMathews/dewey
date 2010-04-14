@@ -583,3 +583,7 @@ div.error, tr.error {
   border: 1px solid #c52020;
   color: #363636;
 }
+/* Vertical Tabs are too wide */
+div.vertical-tabs {
+  width: 716px;
+}
