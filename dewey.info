@@ -17,3 +17,5 @@ regions[branding] = "Branding"
 regions[spacetitle] = "Space title"
 regions[global_nav] = "Global navigation"
 regions[page_tools] = "Page tools"
+
+kitt = "1.0-draft"

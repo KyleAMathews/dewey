@@ -44,8 +44,8 @@
     </div>
     
     <div id="feature-tabs" class="grid-16 alpha">
-      <?php if ($main_menu_links && $space): ?>
-        <?php print $main_menu_links; ?>
+      <?php if ($primary_links && $space): ?>
+        <?php print theme('links', $primary_links, array('id' => 'features-menu', 'class' => 'links primary-links')) ?>
       <?php endif; ?>
       <?php if ($space_settings): ?>
         <?php print $space_settings; ?>
