@@ -28,7 +28,7 @@
       </div>
       <div id="branding" class="clear-block">
       <a class="logo grid-10 alpha" title="<?php print $site_name; ?><?php if ($site_slogan != '') print ' &ndash; '. $site_slogan; ?>" href="<?php print base_path() ?>">
-    	<img id="logo-image" src= "<?php print $path; ?>images/eduglu.png" />
+        <img id="logo-image" src= "<?php if (isset($logo)) {print $logo;} ?>" />
       </a>
       <?php if ($search_box): ?>
         <div id="search-box"><?php print $search_box; ?></div>
