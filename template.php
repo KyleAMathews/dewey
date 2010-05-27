@@ -46,7 +46,7 @@ function dewey_preprocess_page(&$vars, $hook) {
                         FROM {og_uid}
                         WHERE is_admin = 1
                         AND nid = %d
-                        AND uid = %d", $space->sid, $user->uid));
+                        AND uid = %d", $space->id, $user->uid));
 
     if ($result || $user->uid == 1) {
       $vars['space_settings'] = '<ul class="links admin-links"><li class="space-settings first">' . l("Group Settings", "node/" . $space->id . "/edit") . '</li></ul>';
@@ -55,10 +55,12 @@ function dewey_preprocess_page(&$vars, $hook) {
   
   // Add custom breadcrumb.
   $active_menu = "";
-  $contexts = array_keys($context['context']);
-  foreach ($contexts as $item ) {
-    if (preg_match('/spaces-feature.*/', $item, $matches)) {
-      $active_menu = $context['context'][$item]->reactions['menu'];
+  if (!empty($context['context'])) {
+    $contexts = array_keys($context['context']);
+    foreach ($contexts as $item ) {
+      if (preg_match('/spaces-feature.*/', $item, $matches)) {
+        $active_menu = $context['context'][$item]->reactions['menu'];
+      }
     }
   }
   $breadcrumb .= "<div id='breadcrumb'";
