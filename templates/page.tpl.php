@@ -44,7 +44,7 @@
     </div>
     
     <div id="feature-tabs" class="grid-16 alpha">
-      <?php if ($primary_links && $space): ?>
+      <?php if ($primary_links): ?>
         <?php print theme('links', $primary_links, array('id' => 'features-menu', 'class' => 'links primary-links')) ?>
       <?php endif; ?>
       <?php if ($space_settings): ?>
@@ -68,12 +68,12 @@
       </div>
   
       <div id="main" class="column <?php print ns('grid-16', $left, 4, $right, 3) . ' ' . ns('push-4', !$left, 4); ?>">
+			  <?php if ($tabs): ?>
+          <div class="tabs"><?php print $tabs; ?></div>
+        <?php endif; ?>
         <?php print $breadcrumb; ?>
         <?php if ($title && $space): ?>
           <h1 class="title grid-13" id="page-title"><?php print $title; ?></h1>
-        <?php endif; ?>
-        <?php if ($tabs): ?>
-          <div class="tabs grid-13"><?php print $tabs; ?></div>
         <?php endif; ?>
         <?php print $messages; ?>
         <?php print $help; ?>
@@ -82,11 +82,11 @@
           <?php print $content; ?>
         </div>
   
+        <span class="grid-1 prefix-1">  
+	  <?php print $feed_icons; ?>
+        </span>
       </div>
       
-      <span class="grid-1 prefix-1">  
-				<?php print $feed_icons; ?>
-      </span>
   
 			<?php if ($left): ?>
 				<div id="sidebar-left" class="column sidebar region grid-4 <?php print ns('pull-12', $right, 3); ?>">
