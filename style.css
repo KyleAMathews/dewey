@@ -39,7 +39,11 @@ a {
   box-shadow: 7px 7px 14px #888;
 }
 #sidebar-right {
-  padding-top: 40px
+  xpadding-top: 40px;
+  border-left: 3px solid #183152;
+  width: 157px;
+  margin-left: 0;
+  padding-left: 10px;
 }
 #feature-tabs {
   margin: -10px 0 -1px -10px;
@@ -125,8 +129,7 @@ a {
   height: 45px;
 }
 .block {
-  padding-left: 10px;
-  border-left: 3px ridge #183152;
+  xpadding-left: 10px;
 }
 #footer-message {
   text-align: center;
@@ -357,6 +360,7 @@ div.comment .username a:hover {
   float: right;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
+  border-radius: 10px;
   background: #fff;
   line-height: 20px;
   padding: 0 10px;
@@ -388,6 +392,7 @@ div.container .author {
 #context-links {
   position: absolute;
   right: 30px;
+  top: 40px;
 }
 
 /** Button CSS code borrowed from http://code.google.com/p/sexybuttons/ **/
@@ -586,4 +591,34 @@ div.error, tr.error {
 /* Vertical Tabs are too wide */
 div.vertical-tabs {
   width: 716px;
+}
+
+/* Override system.css css for tabs */
+.tabs{
+  border: none;
+  padding: 5px 10px;
+  margin: -15px 0 15px -20px;
+  width: 950px;
+  background: #375D81;
+}
+.tabs ul {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+ul.tabs li a {
+  border: none;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background-color: #375D81;
+  color: white;
+}
+ul.tabs li a:hover {
+  background-color: white;
+  color: black;
+}
+ul.tabs li.active a {
+  border: none;
+  color: black;
 }
