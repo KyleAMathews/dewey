@@ -35,12 +35,12 @@ else {
   $comment_count = $fields['comment_count']->content;
 }
 ?>
-<div class="grid-16 activity-item">
+<div class="grid-12 activity-item">
   <div class='grid-2 activity-picture alpha'>
     <?php print $fields['picture']->content; ?>
   </div>
 
-  <div class='grid-14 activity-title omega'>
+  <div class='grid-10 activity-title omega'>
     <h3>
       <?php
         print "<span class='activity-item-group-name'>[" . l($group_name, "node/" . $group_id) . "]</span> ";
@@ -49,12 +49,12 @@ else {
     </h3>
   </div>
   
-  <div class='grid-12 activity-teaser omega'>
+  <div class='grid-10 activity-teaser omega'>
     <?php print dewey_trim_text($fields['body']->content, 200); ?>
     <a href="#" class="activity-teaser-expand">Expand this post &raquo;</a>
   </div>
   
-  <div class='grid-12 activity-body omega'>
+  <div class='grid-10 activity-body omega'>
     <?php print check_markup($fields['body']->raw); ?>
   </div>
 
