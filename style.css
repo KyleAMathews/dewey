@@ -41,7 +41,6 @@ a {
 #sidebar-right {
   xpadding-top: 40px;
   border-left: 3px solid #183152;
-  width: 157px;
   margin-left: 0;
   padding-left: 10px;
 }
@@ -597,7 +596,7 @@ div.vertical-tabs {
 .tabs{
   border: none;
   padding: 5px 10px;
-  margin: -15px 0 15px -20px;
+  margin: -15px 0 15px -10px;
   width: 950px;
   background: #375D81;
 }

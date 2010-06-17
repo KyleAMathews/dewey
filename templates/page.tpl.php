@@ -67,7 +67,7 @@
         <?php endif; ?>
       </div>
   
-      <div id="main" class="column <?php print ns('grid-16', $left, 4, $right, 3) . ' ' . ns('push-4', !$left, 4); ?>">
+      <div id="main" class="column <?php print ns('grid-16', $left, 4, $right, 3) . ' ' . ns('push-4', !$left, 4) . ' ' . (!$left) ? 'alpha' : ''; ?>">
 			  <?php if ($tabs): ?>
           <div class="tabs"><?php print $tabs; ?></div>
         <?php endif; ?>
@@ -78,7 +78,7 @@
         <?php print $messages; ?>
         <?php print $help; ?>
             
-        <div id="main-content" class="region alpha <?php print ns('grid-16', $left, 4, $right, 3) ?>">      
+        <div id="main-content" class="region alpha <?php print ns('grid-16', $left, 4, $right, 3); ?>">
           <?php print $content; ?>
         </div>
   
@@ -88,13 +88,13 @@
       </div>
       
   
-			<?php if ($left): ?>
-				<div id="sidebar-left" class="column sidebar region grid-4 <?php print ns('pull-12', $right, 3); ?>">
-					<?php print $left; ?>
-				</div>
-			<?php endif; ?>
+      <?php if ($left): ?>
+        <div id="sidebar-left" class="column sidebar region alpha grid-4 <?php print ns('pull-12', $right, 3); ?>">
+          <?php print $left; ?>
+        </div>
+      <?php endif; ?>
 
-      <div id="sidebar-right" class="column sidebar region grid-3">
+      <div id="sidebar-right" class="column sidebar region grid-3 omega">
         <?php if ($right): ?>
           <?php print $right; ?>
         <?php endif; ?>
