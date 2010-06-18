@@ -61,24 +61,30 @@
         <?php endif; ?>
         
         <?php if ($context_links): ?>
-					<div class="button">
-					  <?php print $context_links; ?>
-					</div>
+          <div class="button">
+            <?php print $context_links; ?>
+          </div>
         <?php endif; ?>
       </div>
   
-      <div id="main" class="column <?php print ns('grid-16', $left, 4, $right, 3) . ' ' . ns('push-4', !$left, 4) . ' ' . (!$left) ? 'alpha' : ''; ?>">
-			  <?php if ($tabs): ?>
-          <div class="tabs"><?php print $tabs; ?></div>
+      <div id="main" class="column <?php print ns('grid-16', $left, 4, $right, 3) . ' ' . ns('push-4', !$left, 4); echo ($right) ? ' alpha' : ''; ?>">
+        <?php if ($tabs): ?>
+          <div class="tabs">
+            <?php print $tabs; ?>
+          </div>
         <?php endif; ?>
-        <?php print $breadcrumb; ?>
+        <?php if ($breadcrump): ?>
+          <?php print $breadcrumb;?>
+        <?php endif; ?>
         <?php if ($title && $space): ?>
-          <h1 class="title grid-13" id="page-title"><?php print $title; ?></h1>
+          <h1 class="title grid-13" id="page-title">
+            <?php print $title; ?>
+          </h1>
         <?php endif; ?>
         <?php print $messages; ?>
         <?php print $help; ?>
             
-        <div id="main-content" class="region alpha <?php print ns('grid-16', $left, 4, $right, 3); ?>">
+        <div id="main-content" class="region <?php print ns('grid-16', $left, 4, $right, 3); echo ($right) ? ' alpha' : ''; ?>">
           <?php print $content; ?>
         </div>
   
