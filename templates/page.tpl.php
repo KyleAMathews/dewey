@@ -84,7 +84,7 @@
         <?php print $messages; ?>
         <?php print $help; ?>
             
-        <div id="main-content" class="region <?php print ns('grid-16', $left, 4, $right, 3); echo ($right) ? ' alpha' : ''; ?>">
+        <div id="main-content" class="region alpha <?php print ns('grid-16', $left, 4, $right, 3); ?>">
           <?php print $content; ?>
         </div>
   
