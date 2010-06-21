@@ -600,6 +600,12 @@ div.vertical-tabs {
   width: 950px;
   background: #375D81;
 }
+.grid-16 .tabs {
+  margin-left: -20px;
+}
+.grid-16 .tabs .tabs {
+  margin: 0;
+}
 .tabs ul {
   margin: 0;
   padding: 0;
