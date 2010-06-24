@@ -21,6 +21,9 @@ a {
   margin-bottom: 1.5em;
   background: #F2F2F2;
 }
+#main {
+  min-height: 297px;
+}
 #site-header {
   margin-bottom: 10px;
   width: 970px;
