@@ -101,6 +101,10 @@ a {
   margin-top:4px;
   float: left;
 }
+/* Hide my groups from non-logged-in folks */
+.not-logged-in .secondary-menu .last {
+  display: none;
+}
 #global_nav li {
   padding: 0;
   margin-left: 15px;
