@@ -5,6 +5,8 @@ core = "6.x"
 engine = "phptemplate"
 base theme = ninesixty 
 
+scripts[] = dewey.js
+
 stylesheets[screen][] = "typography.css"
 stylesheets[screen][] = "form.css"
 stylesheets[screen][] = "style.css"
