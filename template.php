@@ -375,8 +375,7 @@ function dewey_comment_user_picture(&$vars) {
       $image = imagecache_create_url($preset, $default_image);
       $attr['style'] = 'background-image: url('. $image .')';
     }
-    $path = 'user/'. $account->uid;
-
+    $path = 'user/'. $vars['comment']->uid;
     $vars['picture'] = l("k", $path, array('attributes' => $attr,
                              'purl' => array('disabled' => true)));
     $vars['preset'] = $preset;
