@@ -67,7 +67,7 @@
         <?php endif; ?>
       </div>
   
-      <div id="main" class="column <?php print ns('grid-16', $left, 4, $right, 3) . ' ' . ns('push-4', !$left, 4); echo ($right) ? ' alpha' : ''; ?>">
+      <div id="main" class="column <?php print ns('grid-16', $left, 4, $right, 3) . ' ' . ns('push-4', !$left, 4); echo ($right) ? " alpha" : ""; ?>">
         <?php if ($tabs): ?>
           <div class="tabs">
             <?php print $tabs; ?>
@@ -84,7 +84,7 @@
         <?php print $messages; ?>
         <?php print $help; ?>
             
-        <div id="main-content" class="region alpha <?php print ns('grid-16', $left, 4, $right, 3); ?>">
+        <div id="main-content" class="region <?php print ns('grid-16', $left, 4, $right, 3); ?>">
           <?php print $content; ?>
         </div>
   
@@ -100,7 +100,7 @@
         </div>
       <?php endif; ?>
 
-      <div id="sidebar-right" class="column sidebar region grid-3 omega">
+      <div id="sidebar-right" class="column sidebar region omega grid-3">
         <?php if ($right): ?>
           <?php print $right; ?>
         <?php endif; ?>

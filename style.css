@@ -32,8 +32,8 @@ a {
 #content-container {
   position: relative;
   background: white;
-  padding: 20px 0 0 10px;
-  width: 960px;
+  padding: 20px 0 0 0;
+  width: 970px;
   margin-left: -5px;
   float: left;
   border-top: 1px solid #183152;
@@ -603,12 +603,12 @@ div.vertical-tabs {
 .tabs{
   border: none;
   padding: 5px 10px;
-  margin: -15px 0 15px -10px;
+  margin: -15px 0 15px 0;
   width: 950px;
   background: #375D81;
 }
 .grid-16 .tabs {
-  margin-left: -20px;
+  margin-left: -10px;
 }
 .grid-16 .tabs .tabs {
   margin: 0;
