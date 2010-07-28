@@ -51,32 +51,46 @@
         <?php print $space_settings; ?>
       <?php endif; ?>
     </div>
-
+    <?php $title_tabs = FALSE; ?>
     <div id="content-container">
-      <div id="context-links">
-        <?php if ($space_user_links): ?>
-          <div class="button">
-            <?php print $space_user_links; ?>
+      <?php if ($tabs || $space_user_links || $context_links): ?>
+        <div id = "context-links" class="grid-16">
+          <?php if ($tabs): ?>
+            <div class="tabs alpha grid-13">
+              <?php print $tabs; ?>
+            </div>
+          <?php endif; ?>
+          <div id="space-context-links" class="omega grid-3 <?php if (!$tabs) { echo "prefix-13"; } ?> ">
+            <?php if ($space_user_links): ?>
+              <div class="button">
+                <?php print $space_user_links; ?>
+              </div>
+            <?php endif; ?>
+            
+            <?php if ($context_links): ?>
+              <div class="button">
+                <?php print $context_links; ?>
+              </div>
+            <?php endif; ?>
           </div>
-        <?php endif; ?>
-        
-        <?php if ($context_links): ?>
-          <div class="button">
-            <?php print $context_links; ?>
-          </div>
-        <?php endif; ?>
-      </div>
+        </div>
+      <?php else: ?>
+        <div id = "context-links" class="grid-16">
+          <?php if ($title && $space && $logged_in): ?>
+            <?php $title_tabs = TRUE ?>
+            <h2 class="title grid-13" id="page-title">
+              <?php print $title; ?>
+            </h2>
+          <?php endif; ?>        
+        </div>
+      
+      <?php endif; ?>
   
-      <div id="main" class="column <?php print ns('grid-16', $left, 4, $right, 3) . ' ' . ns('push-4', !$left, 4); echo ($right) ? " alpha" : ""; ?>">
-        <?php if ($tabs): ?>
-          <div class="tabs">
-            <?php print $tabs; ?>
-          </div>
-        <?php endif; ?>
+      <div id="main" class="column <?php print ns('grid-16', $left, 4, $right, 3) . ' ' . ns('push-4', !$left, 4); echo ($right) ? ' alpha' : ''; ?>">
         <?php if ($breadcrump): ?>
           <?php print $breadcrumb;?>
         <?php endif; ?>
-        <?php if ($title && $space): ?>
+        <?php if ($title && $space && !$title_tabs): ?>
           <h1 class="title grid-13" id="page-title">
             <?php print $title; ?>
           </h1>
@@ -84,7 +98,7 @@
         <?php print $messages; ?>
         <?php print $help; ?>
             
-        <div id="main-content" class="region <?php print ns('grid-16', $left, 4, $right, 3); ?>">
+        <div id="main-content" class="region alpha <?php print ns('grid-16', $left, 4, $right, 3); ?>">
           <?php print $content; ?>
         </div>
   
@@ -100,7 +114,7 @@
         </div>
       <?php endif; ?>
 
-      <div id="sidebar-right" class="column sidebar region omega grid-3">
+      <div id="sidebar-right" class="column sidebar region grid-3 omega">
         <?php if ($right): ?>
           <?php print $right; ?>
         <?php endif; ?>
