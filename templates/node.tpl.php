@@ -20,13 +20,12 @@
   
   <?php print $conversation_bubble; ?>
   <?php print $groups_string; ?>
-  <?php if (!empty($terms)): ?>
-    <div class="terms alpha grid-10"><?php print "<strong>TAGS</strong>: ". $terms ?></div>
-  <?php endif;?>
-  
   <?php
-    if ($links) {
-      print '<div class="node-links alpha grid-10"><strong>LINKS:</strong> '. $links .'</div>';
+    if ($links || $terms) {
+      print '<div class="node-links alpha grid-10 prefix-5 suffix-1">';
+      if (!empty($links)) { print $links; }
+      if (!empty($terms)) { print $terms; }
+      print '</div>';
     }
   ?>
   
