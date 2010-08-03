@@ -6,16 +6,16 @@ function dewey_preprocess_page(&$vars, $hook) {
   global $user;
   $space = spaces_get_space();
   //dpm($space);
-  //print_r($space);
   $context = context_get();
   $vars['space'] = $space;
   $vars['context'] = $context;
   
-  // Remove "Leave this group" link for people already members. We let people
-  // unsubscribe elsewhere.
-  if (in_array($space->id, array_keys($user->og_groups))) {
-    unset($vars['space_user_links']);
+  // If user is not a member of the group, add an "Join group" button.
+  if ($space && !in_array($space->id, array_keys($user->og_groups)) && empty($vars['context_links'])) {
+    $add_group = array('add-group' => array('title' => t('Join group'), 'href' => 'og/subscribe/' . $space->id));
+    $vars['context_links'] = theme('links', $add_group);
   }
+
   // Path to theme
   $vars['path'] = base_path() . path_to_theme() .'/';
   
@@ -102,7 +102,6 @@ function dewey_preprocess_page(&$vars, $hook) {
   if (isset($_GET['page']) || isset($_GET['sort'])) {
     $vars['meta'] .= '<meta name="robots" content="noindex,follow" />'. "\n";
   }
-
 }
 
 /**
