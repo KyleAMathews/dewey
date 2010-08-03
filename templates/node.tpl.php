@@ -22,7 +22,7 @@
   <?php print $groups_string; ?>
   <?php
     if ($links || $terms) {
-      print '<div class="node-links alpha grid-10 prefix-5 suffix-1">';
+      print '<div class="node-links alpha grid-10">';
       if (!empty($links)) { print $links; }
       if (!empty($terms)) { print $terms; }
       print '</div>';

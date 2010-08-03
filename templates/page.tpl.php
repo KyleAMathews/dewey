@@ -78,9 +78,9 @@
         <div id = "context-links" class="grid-16">
           <?php if ($title && $space && $logged_in): ?>
             <?php $title_tabs = TRUE ?>
-            <h2 class="title grid-13" id="page-title">
+            <h3 class="title grid-13" id="page-title">
               <?php print $title; ?>
-            </h2>
+            </h3>
           <?php endif; ?>        
         </div>
       

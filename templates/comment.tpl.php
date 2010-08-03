@@ -38,7 +38,7 @@
     </div>
 
     <?php if ($links): ?>
-      <div class="links grid-12"><?php print $links ?></div>
+      <div class="links grid-15"><?php print $links ?></div>
     <?php endif; ?>
   </div>
 </div>
