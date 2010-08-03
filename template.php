@@ -5,13 +5,13 @@
 function dewey_preprocess_page(&$vars, $hook) {
   global $user;
   $space = spaces_get_space();
-  //dpm($space);
+  //print_r($space);
   $context = context_get();
   $vars['space'] = $space;
   $vars['context'] = $context;
   
   // If user is not a member of the group, add an "Join group" button.
-  if ($space && !in_array($space->id, array_keys($user->og_groups)) && empty($vars['context_links'])) {
+  if (($space->controllers->variable->space_type == "og") && !in_array($space->id, array_keys($user->og_groups))) {
     $add_group = array('add-group' => array('title' => t('Join group'), 'href' => 'og/subscribe/' . $space->id));
     $vars['context_links'] = theme('links', $add_group);
   }
