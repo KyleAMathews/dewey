@@ -108,6 +108,7 @@ function dewey_preprocess_page(&$vars, $hook) {
  * Preprocessor for node.tpl.php template file.
  */
 function dewey_preprocess_node(&$vars) {
+  $node = $vars['node'];
   // Create conversation bubble.
   if ($vars['teaser']) {
     $vars['conversation_bubble'] = dewey_make_conversation_bubble($vars); 
@@ -129,6 +130,8 @@ function dewey_preprocess_node(&$vars) {
   
   // Overwrite the $links variable with our new links.
   $vars['links'] = theme('links', $new_links, array('class' => 'links inline'));
+  
+  $vars['last_changed'] = "<em>Last changed " . format_date($vars['changed']) . "</em>";
 }
 
 /*
