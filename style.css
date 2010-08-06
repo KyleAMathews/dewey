@@ -741,4 +741,13 @@ span.diff-changed {
 span.diff-added {
   background:#cfc;
   border-color:#9c9;
-  }
+}
+.blank-slate }
+  border: 1px solid #C7F2C8;
+  color: #33A333;
+  margin-top: 10px;
+  padding: 10px;
+  display: block;
+  text-align: center;
+  background-color: window;
+}
