@@ -16,6 +16,12 @@ function dewey_preprocess_page(&$vars, $hook) {
     $vars['context_links'] = theme('links', $add_group);
   }
 
+  // If we're on on a user page or a group page, add an add group link.
+  if (empty($vars['context_links']) && !in_array($space->controllers->variable->space_type, array('og', 'user'))) {
+    $add_group = array('add-group' => array('title' => t('Add Group'), 'href' => 'node/add/group'));
+    $vars['context_links'] = theme('links', $add_group);
+  }
+
   // Path to theme
   $vars['path'] = base_path() . path_to_theme() .'/';
   
