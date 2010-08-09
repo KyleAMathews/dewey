@@ -128,12 +128,14 @@ function dewey_preprocess_node(&$vars) {
   
   // Remove the comment count from node teasers.
   $new_links = array();
-  foreach ($vars['node']->links as $key => $values) {
-    if ($key != "comment_comments") {
-      $new_links[$key] = $values;
+  if (!empty($vars['node']->links)) {
+    foreach ($vars['node']->links as $key => $values) {
+      if ($key != "comment_comments") {
+        $new_links[$key] = $values;
+      }
     }
   }
-  
+
   // Overwrite the $links variable with our new links.
   $vars['links'] = theme('links', $new_links, array('class' => 'links inline'));
   
