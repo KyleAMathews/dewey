@@ -26,15 +26,18 @@ function dewey_preprocess_page(&$vars, $hook) {
   $vars['path'] = base_path() . path_to_theme() .'/';
   
   // Create login or account page.
+  list($user_picture, $user_picture_preset) = dewey_comment_user_picture($user->picture, $user->uid);
+  $user_picture = "<div class='picture grid-1'>" . $user_picture . "</div>";
+  $vars['user_picture'] = $user_picture;
   if ($user->uid) {
-    $vars['user_account'] = l($user->name, 'user') . "   " 
-			. l('logout', 'logout');
+    $vars['user_account'] = $user_picture . " " . l($user->name, 'user') . "   " 
+      . l('logout', 'logout');
   }
   else {
     $vars['user_account'] = l('Login', 'user', array('attributes' => array('class' => 'user-account')));
   }
   $vars['user_account'] = "<span class='user-links'>"
-		 . $vars['user_account'] . "</span>";
+    . $vars['user_account'] . "</span>";
   
   // Set title
   if ($space) {
@@ -82,7 +85,7 @@ function dewey_preprocess_page(&$vars, $hook) {
   }
   $breadcrumb .= "</div>";
   $vars['breadcrumb'] = $breadcrumb;
-
+  
   $vars['meta'] = '';
   // SEO optimization, add in the node's teaser, or if on the homepage, the mission statement
   // as a description of the page that appears in search engines
@@ -162,7 +165,9 @@ function dewey_preprocess_comment(&$vars) {
   }
   
   // Override default picture size.
-  dewey_comment_user_picture($vars);
+  list($picture, $preset) = dewey_comment_user_picture($vars['comment']->picture, $vars['comment']->uid);
+  $vars['picture'] = $picture;
+  $vars['preset'] = $preset;
 }
 
 /**
@@ -380,8 +385,7 @@ function dewey_username($object, $nohtml = false) {
   return $output;
 }
 
-function dewey_comment_user_picture(&$vars) {
-  $picture = $vars['comment']->picture;
+function dewey_comment_user_picture($picture, $uid) {
   if (isset($picture) && module_exists('imagecache')) {
     $attr = array('class' => 'user-picture');
     $preset = '30x30_crop';
@@ -396,10 +400,10 @@ function dewey_comment_user_picture(&$vars) {
       $image = imagecache_create_url($preset, $default_image);
       $attr['style'] = 'background-image: url('. $image .')';
     }
-    $path = 'user/'. $vars['comment']->uid;
-    $vars['picture'] = l("k", $path, array('attributes' => $attr,
+    $path = 'user/'. $uid;
+    $picture = l("k", $path, array('attributes' => $attr,
                              'purl' => array('disabled' => true)));
-    $vars['preset'] = $preset;
+    return array($picture, $preset);
   }
 }
 

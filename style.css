@@ -114,12 +114,10 @@ fieldset {
  color: #183152;
 }
 #global_nav {
-  background: #375D81;
-  height: 25px;
+  margin-top: 12px;
 }
 #global_nav .links {
-  margin-top:4px;
-  float: left;
+  float: right;
 }
 /* Hide my groups from non-logged-in folks */
 .not-logged-in .secondary-menu .last {
@@ -127,15 +125,29 @@ fieldset {
 }
 #global_nav li {
   padding: 0;
-  margin-left: 15px;
+  margin-left: 10px;
 }
 #global_nav a {
   color: white;
   text-decoration: none;
-  font-size: 12px;
+  font-size: 13px;
 }
 #global_nav a:hover {
   color: #E6E6E6;
+}
+#global_nav .picture {
+  width: 30px;
+  height: 30px;
+  margin: -4px 5px 0 0;
+}
+#global_nav .picture a {
+  background-repeat:no-repeat;
+  display:block;
+  height:30px;
+  width: 30px;
+  overflow-x:hidden;
+  overflow-y:hidden;
+  text-indent:100px;
 }
 #breadcrumb {
   margin: -10px 0 10px 0;
@@ -144,14 +156,14 @@ fieldset {
   text-decoration: underline;
 }
 .user-links {
-  float:right;
-  margin:3px 10px 0 0 
+  float: right;
+  margin-right:40px;
 }
 .user-links a {
   margin-left: 10px;
 }
 #branding {
-  background: #183152;
+  background: #375D81;
   height: 45px;
 }
 .block {
@@ -166,8 +178,6 @@ fieldset {
 /** Search box **/
 #search-box {
   margin-top: 12px;
-  padding-left: 170px;
-  float: left;
 }
 #search-box .form-text {
   border: #183152;
@@ -214,7 +224,7 @@ fieldset {
   display: none;
   z-index: 101;
   padding: 15px;
-  border: 5px solid #375D81;
+  border: 5px solid #183152;
 }
 #my-groups p {
   margin: 7px 0 0 0;
