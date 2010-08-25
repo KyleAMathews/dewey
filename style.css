@@ -125,7 +125,10 @@ fieldset {
 }
 #global_nav li {
   padding: 0;
-  margin-left: 10px;
+  margin-right: 10px;
+}
+#global_nav li.last {
+  margin-right: 0;
 }
 #global_nav a {
   color: white;
@@ -157,7 +160,7 @@ fieldset {
 }
 .user-links {
   float: right;
-  margin-right:40px;
+  margin-right:50px;
 }
 .user-links a {
   margin-left: 10px;
@@ -760,4 +763,8 @@ span.diff-added {
   display: block;
   text-align: center;
   background-color: window;
+}
+/* Table overrides */
+tr.odd .form-item, tr.even .form-item {
+  max-width: 100%;
 }
