@@ -101,7 +101,9 @@
         <?php print $help; ?>
             
         <div id="main-content" class="region alpha <?php print ns('grid-16', $left, 4, $right, 3); ?>">
+          <?php print $pre_content; ?>
           <?php print $content; ?>
+          <?php print $post_content; ?>
         </div>
   
         <span class="grid-1 prefix-1">  

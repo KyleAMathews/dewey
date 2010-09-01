@@ -397,7 +397,7 @@ div.comment-submitted div.picture {
   text-indent: -900px;
 }
 div.comment .username a {
-  font-size: 11px;
+  font-size: 13px;
   font-weight: bold;
   vertical-align: baseline;
   text-decoration: none;
@@ -767,4 +767,8 @@ span.diff-added {
 /* Table overrides */
 tr.odd .form-item, tr.even .form-item {
   max-width: 100%;
+}
+.ahah-progress {
+  height: 26px;
+  float: none;
 }
