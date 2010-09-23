@@ -1,5 +1,5 @@
 name = "dewey"
-version = "6.x-1.0-alpha5"
+version = "6.x-1.0-alpha6"
 description = "Eduglu's default theme."
 version = "0.1"
 core = "6.x"
