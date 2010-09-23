@@ -359,8 +359,10 @@ ul.links a:hover {
     background: white;
 }
 h3#comment-number {
-        border-bottom: 1px #BBBBBB solid;
-        padding-bottom: 5px;
+  border-bottom: 1px #A6A6A6 solid;
+  padding: 10px;
+  font-size: 1.75em;
+  margin-top: -18px;    
 }
 .new {
   color: #F08514;
