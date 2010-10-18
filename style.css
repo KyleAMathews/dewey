@@ -510,8 +510,8 @@ div.messages {
   padding: 0.68em;
   font-weight: bold;
   background: window;
-  float: left;
   margin-left: 10px;
+  width: 720px;
 }
 div.messages.success {
   border: 1px solid #7AC142;
