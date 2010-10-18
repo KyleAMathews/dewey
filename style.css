@@ -644,7 +644,7 @@ div.vertical-tabs {
   padding: 5px 10px;
   margin: -20px 0 15px -10px;
   width: 950px;
-  height: 22px;
+  xheight: 22px;
   background: #F2F2F2;
   /* Yeah for css3! */
   background-image: -webkit-gradient(
@@ -663,10 +663,10 @@ div.vertical-tabs {
 #context-links .title {
   margin-top: 5px;
 }
-.grid-16 #context-links {
-  margin-left: -20px;
+#context-links {
+  margin-left: -10px;
 }
-.grid-16 .tabs .tabs {
+.tabs ul.primary {
   margin: 0;
 }
 .tabs {
@@ -680,16 +680,20 @@ div.vertical-tabs {
 ul.tabs li a {
   border: none;
   background-color: inherit;
+  padding: 5px 10px;
 }
-ul.tabs li a:hover {
-  color: white;
-  background-color: #375D81;
+.tabs .tabs li a:hover {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
   border-radus: 10px;
+  color:#333;
+  background:#ddd;
+  padding:4px 9px;
+  border:1px solid #ccc;
+  border-color:#ccc #ddd #fff;
 }
-ul.tabs li.active a, h
-ul.tabs li.active a:hover {
+.tabs ul.primary li.active a, h
+.tabs ul.primary li.active a:hover {
   -webkit-border-top-left-radius: 10px;
   -webkit-border-top-right-radius: 10px;
   -webkit-border-bottom-left-radius: 0;
@@ -711,6 +715,25 @@ ul.tabs li.active a:hover {
   border-bottom: 2px solid white;
   color: black;
 }
+.tabs ul.secondary {
+  margin-top: 7px;
+  padding: 5px;
+  background: white;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radus: 10px;
+}
+.tabs ul.secondary a.active, 
+.tabs ul.secondary a.active:hover {
+  color: white;
+  background-color: #375D81;
+  border: none;
+  padding: 4px 9px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radus: 10px;
+}
+
 .block-atrium_book h2 {
   font-size: 1em;
   margin: 0;
