@@ -512,6 +512,7 @@ div.messages {
   background: window;
   margin-left: 10px;
   width: 720px;
+  clear: both;
 }
 div.messages.success {
   border: 1px solid #7AC142;
