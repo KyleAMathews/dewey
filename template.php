@@ -1,4 +1,21 @@
 <?php
+
+/**
+ * Implementation of hook_theme().
+ */
+function dewey_theme() {
+  $items = array();
+
+  // Dropdown theme for group settings.
+  $items['group_settings_dropdown'] = array(
+    'arguments' => array('space' => NULL),
+    'template' => 'group_settings_dropdown',
+    'path' => drupal_get_path('theme', 'dewey') .'/templates',
+  );
+
+  return $items;
+}
+
 /**
  * Preprocessor for page.tpl.php template file.
  */
@@ -58,10 +75,10 @@ function dewey_preprocess_page(&$vars, $hook) {
                         AND uid = %d", $space->id, $user->uid));
 
     if ($result || $user->uid == 1) {
-      $vars['space_settings'] = '<ul class="links admin-links"><li class="space-settings first">' . l("Group Settings", "node/" . $space->id . "/edit") . '</li></ul>';
+      $vars['space_settings'] = theme('group_settings_dropdown', $space); 
     }
   }
-  
+
   // Add custom breadcrumb.
   $active_menu = "";
   if (!empty($context['context'])) {
@@ -181,6 +198,14 @@ function phptemplate_preprocess_box(&$vars) {
   if (strpos($vars['title'], 'Post new comment') === 0) {
     $vars['title'] = 'Add your comment';
   }
+}
+
+/**
+ * Preprocessor for group-settings-dropdown.tpl.php template file.
+ */
+function dewey_preprocess_group_settings_dropdown(&$vars) {
+  $space = $vars['space'];
+  $vars['admin_edit_links'] = theme('links', eduglu_core_admin_links($space));
 }
 
 /**

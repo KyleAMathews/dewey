@@ -14,30 +14,8 @@
 </head>
 
 <body class="<?php print $body_classes; ?>">
-  <?php print $my_groups; ?>
+  <?php if (!empty($top_bar)) { print $top_bar; } ?>
   <div id="page" class="container-16 clear-block">
-
-    <div id="site-header" class="clear-block">
-      <div id="branding" class="clear-block">
-        <div id="logo" class="grid-4 alpha">
-          <a class="logo" title="<?php print $site_name; ?><?php if ($site_slogan != '') print ' &ndash; '. $site_slogan; ?>" href="<?php print base_path() ?>">
-          <img id="logo-image" src= "<?php if (isset($logo)) {print $logo;} ?>" />
-          </a>
-        </div>
-        <?php if ($search_box): ?>
-          <div id="search-box" class="grid-4"><?php print $search_box; ?></div>
-        <?php endif; ?>
-        <div id="global_nav" class="grid-8">
-          <?php if ($secondary_menu_links): ?>
-            <?php print $secondary_menu_links; ?>
-          <?php endif; ?>
-          <?php if ($user_account): ?>
-           <?php print $user_account; ?>
-          <?php endif; ?>
-        </div>
-      </div>
-
-    </div>
 
     <div id="space-title" class="clear-block grid-16 alpha">
       <?php if ($space_title): ?>
