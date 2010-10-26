@@ -28,13 +28,13 @@ function dewey_preprocess_page(&$vars, $hook) {
   $vars['context'] = $context;
   
   // If user is not a member of the group, add an "Join group" button.
-  if (($space->controllers->variable->space_type == "og") && !in_array($space->id, array_keys($user->og_groups))) {
+  if (!empty($space) && ($space->controllers->variable->space_type == "og") && !in_array($space->id, array_keys($user->og_groups))) {
     $add_group = array('add-group' => array('title' => t('Join group'), 'href' => 'og/subscribe/' . $space->id));
     $vars['context_links'] = theme('links', $add_group);
   }
 
   // If we're on on a user page or a group page, add an add group link.
-  if (empty($vars['context_links']) && !in_array($space->controllers->variable->space_type, array('og', 'user')) && $user->uid != 0) {
+  if (empty($vars['context_links']) && !empty($space) && !in_array($space->controllers->variable->space_type, array('og', 'user')) && $user->uid != 0) {
     $add_group = array('add-group' => array('title' => t('Add Group'), 'href' => 'node/add/group'));
     $vars['context_links'] = theme('links', $add_group);
   }
@@ -67,7 +67,7 @@ function dewey_preprocess_page(&$vars, $hook) {
   }
   
   // Create the menu item for the group settings tab for group admins.
-  if ($space->type == 'og') {
+  if (!empty($space) && $space->type == 'og') {
     $result = db_result(db_query("SELECT uid
                         FROM {og_uid}
                         WHERE is_admin = 1
