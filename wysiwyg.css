@@ -1,0 +1,11 @@
+img.float-left {
+  float: left;
+  margin: 10px 10px 10px 0;
+}
+img.float-right {
+  float: right;
+  margin: 10px 0 10px 10px;
+}
+body {
+  width: 700px
+}

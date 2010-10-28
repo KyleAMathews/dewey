@@ -738,3 +738,11 @@ tr.odd .form-item, tr.even .form-item {
   height: 26px;
   float: none;
 }
+img.float-left {
+  float: left;
+  margin: 10px 10px 10px 0;
+}
+img.float-right {
+  float: right;
+  margin: 10px 0 10px 10px;
+}
