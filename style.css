@@ -288,7 +288,9 @@ ul.links a:hover {
 #comments {
   padding: 10px;
 }
-
+#edit-comment-wrapper {
+  width: 760px;
+}
 #page .author {
   background: #FFFFE8;
 }
@@ -675,11 +677,6 @@ ul.tabs li a {
   border-radus: 10px;
 }
 
-.block-atrium_book h2 {
-  font-size: 1em;
-  margin: 0;
-}
-
 /**
  * Module: DIFF =======================================================
  */
@@ -745,4 +742,11 @@ img.float-left {
 img.float-right {
   float: right;
   margin: 10px 0 10px 10px;
+}
+.field-field-attachment {
+  clear: both;
+}
+/* Node Edit Form */
+#edit-body-wrapper {
+  width: 760px; /* So body form looks the same as what it'll look published */
 }
