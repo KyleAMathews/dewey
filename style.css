@@ -243,6 +243,7 @@ h2.node-title a:hover {
   line-height: 1.2em;
   position: relative;
   margin-bottom: 30px;
+  overflow: hidden;
 }
 .conversation-bubble img {
   position: absolute;
