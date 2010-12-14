@@ -25,9 +25,11 @@ $group_name = db_result(db_query("SELECT p.value
                                  JOIN {og_ancestry} o
                                  WHERE o.group_nid = p.id
                                  AND o.nid = '%s'", $fields['nid']->raw));
-$group_id = db_result(db_query("SELECT group_nid
-                               FROM {og_ancestry}
-                               WHERE nid = '%s'", $fields['nid']->raw));
+$purl = db_result(db_query("SELECT p.value
+                             FROM {purl} p
+                             JOIN {og_ancestry} o
+                             ON p.id = o.group_nid
+                             WHERE o.nid = '%s'", $fields['nid']->raw));
 if (empty($fields['comment_count']->content)) {
   $comment_count = 0;
 }
@@ -43,7 +45,7 @@ else {
   <div class='grid-10 activity-title omega'>
     <h3>
       <?php
-        print "<span class='activity-item-group-name'>[" . l($group_name, "node/" . $group_id) . "]</span> ";
+        print "<span class='activity-item-group-name'>[" . l($group_name, $purl) . "]</span> ";
         print "<span class='activity-node-title'>" . $fields['title']->content . "</span>";  
       ?>
     </h3>
