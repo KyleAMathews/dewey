@@ -1,3 +1,5 @@
+@import "base";
+
 body {
   background-repeat: no-repeat;
   background-color: #9797a1;
@@ -10,24 +12,24 @@ body {
 a {
   &:hover {
     text-decoration: underline; }
-  color: #183152;
+  color: $dark;
   text-decoration: none; }
 
 .node a, .comment a {
-  color: #009;
+  color: $link_color;
   text-decoration: none; }
 
 .node a:focus, .comment a:focus, .node a:hover, .comment a:hover {
-  color: #009;
+  color: $link_color;
   text-decoration: underline; }
 
 .box {
   padding: 1.5em;
   margin-bottom: 1.5em;
-  background: #F2F2F2; }
+  background: $grey95; }
 
 fieldset {
-  background-color: #F2F2F2;
+  background-color: $grey95;
   margin-bottom: 1em;
   padding: 10px; }
 
@@ -41,7 +43,7 @@ fieldset {
   position: relative;
   background: white;
   float: left;
-  border-top: 1px solid #183152;
+  border-top: 1px solid $dark;
   -moz-box-shadow: 7	px 7px 14px #888;
   -webkit-box-shadow: 7px 7px 14px #888;
   box-shadow: 7px 7px 14px #888; }
@@ -58,7 +60,7 @@ fieldset {
     li {
       padding: 0;
       a {
-        background: #183152;
+        background: $dark;
         padding: 1px 5px 0;
         float: left;
         text-align: center;
@@ -74,17 +76,17 @@ fieldset {
         border-top-left-radius: 5px;
         border-top-right-radius: 5px; }
       &.active a {
-        background: #F2F2F2;
-        color: #183152;
-        border-top: 1px solid #183152;
-        border-right: 1px solid #183152;
-        border-left: 1px solid #183152; }
+        background: $grey95;
+        color: $dark;
+        border-top: 1px solid $dark;
+        border-right: 1px solid $dark;
+        border-left: 1px solid $dark; }
       a:hover {
-        background: #304664;
+        background: $dark_hover;
         color: white; }
       &.active a:hover {
-        background: #F2F2F2;
-        color: #183152; } } } }
+        background: $grey95;
+        color: $dark; } } } }
 
 #breadcrumb {
   margin: -1em 0 1em 0;
@@ -103,18 +105,18 @@ fieldset {
 #footer-message {
   text-align: center;
   padding: 5px;
-  border-top: 1px solid #183152; }
+  border-top: 1px solid $dark; }
 
 /** Pagers **/
 
 .item-list .pager li, .pager li a {
-  background: #183152;
+  background: $dark;
   color: white; }
 
 .item-list .pager li.pager-current {
   background: white;
-  color: #183152;
-  border: 1px solid #183152; }
+  color: $dark;
+  border: 1px solid $dark; }
 
 #space-title h2 {
   font-family: helvatica, arial, sans-serif;
@@ -134,7 +136,7 @@ fieldset {
   display: none;
   z-index: 101;
   padding: 15px;
-  border: 5px solid #183152;
+  border: 5px solid $dark;
   p {
     margin: 7px 0 0 0; }
   h2 {
@@ -142,12 +144,12 @@ fieldset {
   hr {
     margin-top: 0; }
   a {
-    color: #4F76A9;
+    color: $light2;
     text-decoration: none;
     display: block;
     padding: 3px;
     &:hover {
-      background: #183152;
+      background: $dark;
       color: white; } } }
 
 .create-new-group {
@@ -156,7 +158,7 @@ fieldset {
 /* Node Styles */
 
 .node {
-  border-bottom: 1px solid #4F76A9;
+  border-bottom: 1px solid $light2;
   padding-bottom: 1em; }
 
 .meta {
@@ -170,16 +172,16 @@ h2.node-title {
   line-height: 25px;
   a {
     text-decoration: none;
-    color: #183152;
+    color: $dark;
     &:hover {
       text-decoration: underline; } } }
 
 .node-submitted {
   display: table-cell;
   vertical-align: middle;
-  color: #4F76A9;
+  color: $light2;
   a {
-    color: #4F76A9;
+    color: $light2;
     text-decoration: none;
     &:hover {
       text-decoration: underline; } } }
@@ -188,7 +190,7 @@ h2.node-title {
   margin-top: -70px;
   a {
     text-decoration: none;
-    color: #4F76A9; } }
+    color: $light2; } }
 
 .conversation-teaser a:hover {
   text-decoration: underline; }
@@ -216,7 +218,7 @@ h2.node-title {
 .node-links {
   float: right;
   ul {
-    border-top: 1px solid #E6E6E6;
+    border-top: 1px solid $grey90;
     padding-left: 160px;
     clear: both; }
   li {
@@ -229,35 +231,34 @@ ul.links {
     padding: 0; }
   a {
     text-decoration: none;
-    color: #4F76A9;
+    color: $light2;
     &:hover {
-      color: #4F76A9; } } }
+      color: $light2; } } }
 
 /* User Pictures + submitted stuff in comments */
 
 #comments {
-  padding: 10px; }
+  padding: 10px; 
+  .author {
+    background: $author_highlight; } }
 
 #edit-comment-wrapper {
   width: 760px; }
 
-#page .author {
-  background: #FFFFE8; }
-
 .comment {
   &.odd {
-    background: #F2F2F2; }
+    background: $grey95; }
   &.even {
     background: white; } }
 
 h3#comment-number {
-  border-bottom: 1px #A6A6A6 solid;
+  border-bottom: 1px lighten($light2, 33%) solid;
   padding: 10px;
   font-size: 1.75em;
   margin-top: -18px; }
 
 .new {
-  color: #F08514;
+  color: $new;
   float: right;
   margin-right: 10px;
   padding: 10px;
@@ -265,7 +266,7 @@ h3#comment-number {
 
 div.comment-submitted {
   line-height: 30px;
-  background: #EBEBEB;
+  background: $grey90;
   height: 30px;
   padding: 0 5px 0 0;
   a.user-picture {
@@ -291,7 +292,7 @@ div.comment .username a {
   font-weight: bold;
   vertical-align: baseline;
   text-decoration: none;
-  color: #183152;
+  color: $dark;
   &:hover {
     text-decoration: underline; } }
 
@@ -300,7 +301,7 @@ div.comment .username a {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
   border-radius: 10px;
-  background: #fff;
+  background: white;
   line-height: 20px;
   padding: 0 10px;
   margin: 5px 0;
@@ -308,7 +309,7 @@ div.comment .username a {
   a {
     &:hover, &:focus {
       text-decoration: underline; }
-    color: #183152;
+    color: $dark;
     text-decoration: none; } }
 
 div {
@@ -316,10 +317,6 @@ div {
     margin-bottom: 10px; }
   &.comment-content {
     width: 100%; }
-  &#comments div.comment .odd {
-    background: #F7FBFF; }
-  &.container .author {
-    background: #FFFFE8; }
   &.button ul {
     margin: 0; } }
 
@@ -332,7 +329,7 @@ a.button, div.button a {
   font: inherit;
   font-style: normal !important;
   font-weight: bold !important;
-  color: #fff !important;
+  color: white !important;
   line-height: 1;
   /* Special effects */
   text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.25), -2px 0 1px rgba(0, 0, 0, 0.25);
@@ -354,18 +351,18 @@ a.button, div.button a {
   zoom: 1;
   /* Disable text selection (Firefox only)*/
   -moz-user-select: none;
-  background-color: #4F76A9;
+  background-color: $light2;
   z-index: 1; }
 
 a.button {
   &:hover, &:focus {
     background-position: 0 -50px;
-    color: #fff !important; } }
+    color: white !important; } }
 
 div.button a {
   &:hover, &:focus {
     background-position: 0 -50px;
-    color: #fff !important; } }
+    color: white !important; } }
 
 a.button:active {
   background-position: 0 100%;
@@ -374,7 +371,7 @@ a.button:active {
   -webkit-box-shadow: none;
   /* IE only stuff */
   border-bottom: 0\9;
-  border-top: 1px solid #666\9; }
+  border-top: 1px solid $grey40; }
 
 div {
   &.button a:active {
@@ -384,28 +381,31 @@ div {
     -webkit-box-shadow: none;
     /* IE only stuff */
     border-bottom: 0\9;
-    border-top: 1px solid #666\9; }
-  &.messages {
-    margin-bottom: 1.5em;
-    padding: 0.68em;
-    font-weight: bold;
-    background: window;
-    margin-left: 10px;
-    width: 720px;
-    clear: both;
-    &.success {
-      border: 1px solid #7AC142;
-      color: #55872E;
-      background: #F1F8EB; }
-    ul {
-      margin-bottom: 0; } }
-  &.help {
-    float: left; } }
+    border-top: 1px solid $grey40; } }
+
+.help {
+  float: left; }
+
+.messages {
+  margin-bottom: 1.5em;
+  padding: 0.68em;
+  font-weight: bold;
+  background: window;
+  margin-left: 10px;
+  width: 720px;
+  clear: both;
+  &.success {
+    border: 1px solid #7AC142;
+    color: #55872E;
+    background: #F1F8EB; }
+  ul {
+    margin-bottom: 0; } }
+
 
 /** Recent activity **/
 
 .activity-item {
-  border-bottom: 1px solid #808080;
+  border-bottom: 1px solid $grey50;
   margin-bottom: 15px; }
 
 .view-eduglu-recent-activity {
@@ -421,16 +421,16 @@ div {
 .activity-meta {
   font-style: italic;
   font-size: 90%;
-  color: #808080;
+  color: $grey50;
   a {
     font-style: italic;
     font-size: 90%;
-    color: #808080; } }
+    color: $grey50; } }
 
 .activity-item-group-name {
-  color: #4F76A9;
+  color: $light2;
   a {
-    color: #4F76A9; } }
+    color: $light2; } }
 
 .activity-body {
   display: none; }
@@ -438,69 +438,18 @@ div {
 .activity-node-title {
   text-decoration: underline; }
 
-/** front page marketing stuff -- will remove **/
-
-#front-page-marketing {
-  border-collapse: collapse;
-  border-top: 1px solid black;
-  border-bottom: 2px solid black;
-  margin: -20px 0 30px -20px;
-  color: #212629;
-  td {
-    xborder-right: 2px solid black;
-    padding: 5px; }
-  div {
-    height: 260px;
-    width: 268px;
-    padding: 20px;
-    position: relative; }
-  li {
-    font-size: 14px; } }
-
-.join-now {
-  font-size: 16px;
-  margin-left: 1em;
-  position: absolute;
-  bottom: 0; }
-
-#front-teachers {
-  background: #E1E6FA; }
-
-#front-students {
-  background: #C4D7ED; }
-
-#front-alumni {
-  background: #ABC8E2; }
-
-#front-header-search {
-  background-color: #F0F0FE;
-  margin: -3px -10px 0 -20px;
-  padding-left: 100px;
-  font-size: 125%;
-  width: 880px;
-  h2 {
-    font-style: italic;
-    float: left;
-    margin-top: 10px; }
-  #search-theme-form {
-    float: left;
-    padding-left: 80px;
-    padding-top: 20px; } }
-
 #user-login {
   margin-left: 210px; }
 
-/*** End frontpage marketing **/
 /* Messages */
-
 .messages {
-  background-color: #fff;
+  background-color: white;
   border: 1px solid #b8d3e5; }
 
 div {
   &.status {
     color: #33a333;
-    border-color: #c7f2c8; }
+    border-color: $blank_slate; }
   &.error {
     color: #a30000;
     background-color: #FFCCCC; } }
@@ -523,14 +472,14 @@ div.vertical-tabs {
 
 #context-links {
   border: none;
-  border-bottom: 2px solid #E6E6E6;
+  border-bottom: 2px solid $grey90;
   padding: 5px 10px;
-  margin-bottom: 1em;
+  margin-bottom: 2em;
   height: 22px;
-  background: #F2F2F2;
+  background: $grey95;
   /* Yeah for css3! */
-  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #e6e6e6), color-stop(0.7, #f2f2f2));
-  background-image: -moz-linear-gradient(center bottom, #e6e6e6 0%, #f2f2f2 70%);
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, $grey90), color-stop(0.7, $grey95));
+  background-image: -moz-linear-gradient(center bottom, $grey90 0%, $grey95 70%);
   .title {
     margin-top: 5px; } }
 
@@ -553,11 +502,11 @@ ul.tabs li a {
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     border-radus: 10px;
-    color: #333;
-    background: #ddd;
+    color: $grey20;
+    background: $grey87;
     padding: 4px 9px;
-    border: 1px solid #ccc;
-    border-color: #ccc #ddd #fff; }
+    border: 1px solid $grey80;
+    border-color: $grey80 $grey87 white; }
   ul.primary li.active a {
     -webkit-border-top-left-radius: 10px;
     -webkit-border-top-right-radius: 10px;
@@ -609,7 +558,7 @@ h.tabs ul.primary li.active a:hover {
   border-radus: 10px;
   a.active {
     color: white;
-    background-color: #4F76A9;
+    background-color: $light2;
     border: none;
     padding: 4px 9px;
     -moz-border-radius: 10px;
@@ -617,7 +566,7 @@ h.tabs ul.primary li.active a:hover {
     border-radus: 10px;
     &:hover {
       color: white;
-      background-color: #4F76A9;
+      background-color: $light2;
       border: none;
       padding: 4px 9px;
       -moz-border-radius: 10px;
@@ -639,19 +588,19 @@ div {
       max-height: 200px;
       overflow: auto; }
     table.diff-inline-revisions tr {
-      color: #999;
+      color: $grey60;
       background: transparent;
-      border-top: 1px solid #eee;
+      border-top: 1px solid $grey93;
       &:hover {
-        color: #999;
+        color: $grey60;
         background: transparent;
-        border-top: 1px solid #eee; }
+        border-top: 1px solid $grey93; }
       &.active {
-        color: #333; } } } }
+        color: $grey20; } } } }
 
 span {
   &.diff-deleted {
-    color: #ccc; }
+    color: $grey80; }
   &.diff-added, &.diff-changed {
     padding-top: 5px;
     padding-bottom: 5px;
@@ -664,7 +613,7 @@ span {
     border-color: #9c9; } }
 
 .blank-slate {
-  border: 1px solid #C7F2C8;
+  border: 1px solid $blank_slate;
   color: #33A333;
   margin-top: 1em;
   padding: 10px;
