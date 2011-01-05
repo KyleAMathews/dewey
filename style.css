@@ -37,7 +37,7 @@ a {
 }
 fieldset {
   background-color: #F2F2F2;
-  margin-bottom: 10px;
+  margin-bottom: 1em;
   padding: 10px;
 }
 #main {
@@ -46,37 +46,25 @@ fieldset {
 #page {
   margin-top: 60px;
 }
-#site-header {
-  margin-bottom: 10px;
-  width: 970px;
-  margin-left: -5px;
-}
 #content-container {
   position: relative;
   background: white;
-  padding: 20px 0 0 10px;
-  width: 960px;
-  margin-left: -5px;
   float: left;
   border-top: 1px solid #183152;
-  -moz-box-shadow: 7px 7px 14px #888;
+  -moz-box-shadow: 7	px 7px 14px #888;
   -webkit-box-shadow: 7px 7px 14px #888;
   box-shadow: 7px 7px 14px #888;
 }
 #sidebar-right {
-  xpadding-top: 40px;
-  border-left: 3px solid #183152;
-  margin-left: 0;
-  padding-left: 10px;
 }
 #feature-tabs {
-  margin: -10px 0 -1px -10px;
+  margin-top: -1em;
   position: relative;
   z-index: 1;
 }
 #feature-tabs ul {
   float: left;
-  margin-top: 19px;
+  margin: 2em 0 -1px -5px;
 }
 #feature-tabs ul.admin-links {
   margin-left: 30px;
@@ -117,7 +105,7 @@ fieldset {
  color: #183152;
 }
 #breadcrumb {
-  margin: -10px 0 10px 0;
+  margin: -1em 0 1em 0;
 }
 #breadcrumb a {
   text-decoration: underline;
@@ -195,13 +183,13 @@ fieldset {
 /* Node Styles */
 .node {
   border-bottom: 1px solid #4F76A9;
-  padding-bottom: 10px;
+  padding-bottom: 1em;
 }
 .meta {
-  margin-bottom: 10px;
+  margin-bottom: 1em;
 }
 .meta-info {
-  margin-top: 10px;
+  margin-top: 1em;
 }
 h2.node-title {
   margin-bottom: 0;
@@ -239,7 +227,7 @@ h2.node-title a:hover {
 }
 .conversation-bubble {
   border: 1px solid black;
-  padding: 10px; 
+  padding: 1em; 
   line-height: 1.2em;
   position: relative;
   margin-bottom: 30px;
@@ -586,9 +574,8 @@ div.vertical-tabs {
   border: none;
   border-bottom: 2px solid #E6E6E6;
   padding: 5px 10px;
-  margin: -20px 0 15px -10px;
-  width: 950px;
-  xheight: 22px;
+  margin-bottom: 1em;
+  height: 22px;
   background: #F2F2F2;
   /* Yeah for css3! */
   background-image: -webkit-gradient(
@@ -606,9 +593,6 @@ div.vertical-tabs {
 }
 #context-links .title {
   margin-top: 5px;
-}
-#context-links {
-  margin-left: -10px;
 }
 .tabs ul.primary {
   margin: 0;
@@ -722,7 +706,7 @@ span.diff-added {
 .blank-slate {
   border: 1px solid #C7F2C8;
   color: #33A333;
-  margin-top: 10px;
+  margin-top: 1em;
   padding: 10px;
   display: block;
   text-align: center;
