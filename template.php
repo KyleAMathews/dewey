@@ -135,10 +135,6 @@ function dewey_preprocess_page(&$vars, $hook) {
  */
 function dewey_preprocess_node(&$vars) {
   $node = $vars['node'];
-  // Create conversation bubble.
-  if ($vars['teaser']) {
-    $vars['conversation_bubble'] = dewey_make_conversation_bubble($vars); 
-  }
 
   // Stick with node.tpl.php, not node-og-group-post
   $key = array_search('node-og-group-post', $vars['template_files']);
@@ -233,85 +229,6 @@ function dewey_comment_wrapper($content, $node) {
   $output .= $msg;
 
   return $output .'</div>';
-}
-
-function dewey_make_conversation_bubble($vars) {
-  $output .= '<div class="grid-3 conversation-bubble-container">';
-  if ($vars['comment_count'] > 0) {
-    
-    // Fetch text of first comment and format.
-    $first_comment = db_result(db_query("SELECT comment
-                                        FROM {comments}
-                                        WHERE nid = %d
-                                        ORDER BY timestamp
-                                        LIMIT 1", $vars['node']->nid));
-
-    // Remove any quotes if the comment came via email.
-    $first_comment = _og_mailinglist_remove_quotes($first_comment);
-
-    // Remove line breaks / html / and trim.
-    $first_comment = dewey_trim_text($first_comment);
-    
-    // Fetch pictures of commenters
-    $results = db_query("SELECT DISTINCT c.uid, c.cid, u.picture
-                        FROM {comments} c
-                        JOIN {users} u
-                        WHERE c.uid = u.uid
-                        AND nid = %d
-                        ORDER BY c.timestamp
-                        LIMIT 20", $vars['node']->nid);
-    $commenters = array();
-    while ($data = db_fetch_array($results)) {
-      $commenters[$data['uid']] = array('cid' => $data['cid'],
-                                        'picture' => $data['picture']);
-    }
-    
-    $output .= '<p class="conversation-bubble">';
-    $output .= "<em>" . l($first_comment, "node/" . $vars['node']->nid) . "</em>";
-    $output .= "<img src='" . base_path() . path_to_theme() . "/images/conversation-angle.png' />";
-    $output .= '<br /><br />';
-    // Add pictures
-    $output .= dewey_add_conversation_bubble_pictures($commenters, $vars['node']->nid);
-    $output .= '</p>';
-    if ($vars['comment_count'] > 1) {
-      $output .= '<p class="conversation-teaser">' . l('See all ' . $vars['comment_count']
-          . ' comments >>', "node/" . $vars['node']->nid) . '</p>';
-    }
-    else {
-      $output .= '<p class="conversation-teaser">' . l('See the ' . $vars['comment_count']
-          . ' comment >>', "node/" . $vars['node']->nid) . '</p>';
-      
-    }
-  }
-  
-  $output .= '</div>';
-  
-  return $output;
-}
-
-function dewey_add_conversation_bubble_pictures($commenters, $nid) {
-  foreach ($commenters as $uid => $data) {
-    if (isset($data['picture']) && module_exists('imagecache')) {
-      $attr = array('class' => 'commenter-picture');
-      $preset = '25x25_crop';
-      
-      $attr['class'] .= ' picture-'. $preset;
-      if (file_exists($data['picture'])) {
-        $image = theme('imagecache', $preset, $data['picture']);
-      }
-      else {
-        $default_image = variable_get('user_picture_default', '');
-        $image = theme("imagecache", $preset, $default_image);
-      }
-      $path = 'node/'. $nid;
-      $fragment = "comment-" . $data['cid'];
-      $output .= l($image, $path, array('attributes' => $attr,
-                                        'fragment' => $fragment,
-                                        'html' => true));
-    }
-  }
-  
-  return $output;
 }
 
 /*

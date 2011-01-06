@@ -15,8 +15,6 @@
     <?php print $content ?>
   </div>
   
-  <?php print $conversation_bubble; ?>
-  <?php print $groups_string; ?>
   <?php
     if ($links || $terms) {
       print '<div class="node-links alpha grid-10">';
