@@ -38,11 +38,6 @@ fieldset {
 #page {
   margin-top: 60px; }
 
-#sidebar-right {
-  background: url(images/vline.png) no-repeat;
-  margin-left: 0;
-  padding-left: 10px; }
-
 #content-container {
   position: relative;
   background: white;
@@ -245,11 +240,6 @@ ul.links {
 
 #edit-comment-wrapper {
   width: 760px; }
-
-.comment.odd {
-  background: #f2f2f2; }
-.comment.even {
-  background: white; }
 
 h3#comment-number {
   border-bottom: 1px #bfcee1 solid;
