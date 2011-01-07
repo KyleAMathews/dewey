@@ -269,9 +269,9 @@ function dewey_node_submitted($node) {
     $group_str .= l($title, "node/" . $gid) . ", ";
   }
 
-  // Generate timestamp. If posted < 24 hours, use x ago sytax.
+  // Generate timestamp. If posted < 48 hours, use x ago sytax.
   // Else use regular date.
-  if ((time() - $node->created) < 86400) {
+  if ((time() - $node->created) < 172800) {
     $time = "about " . format_interval(time() - $node->created, 1) . " ago";
   }
   else {
