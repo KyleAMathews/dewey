@@ -158,18 +158,20 @@ fieldset {
 /* Node Styles */
 
 .node {
-  border-bottom: 1px solid $light2;
+  border-bottom: 1px solid $grey90;
   padding-bottom: 1em; }
 
 .meta {
   margin-bottom: 1em; }
 
-.meta-info {
-  margin-top: 1em; }
+.not-page .full-content {
+  display:none }
 
-h2.node-title {
+#page-title {
+  margin-bottom: 9px; }
+
+h3.node-title, h2.node-title {
   margin-bottom: 0;
-  line-height: 25px;
   a {
     text-decoration: none;
     color: $dark;
@@ -179,7 +181,8 @@ h2.node-title {
 .node-submitted {
   display: table-cell;
   vertical-align: middle;
-  color: $light2;
+  color: $grey60;
+  font-size: 12px;
   a {
     color: $light2;
     text-decoration: none;
@@ -641,3 +644,8 @@ img {
 #edit-body-wrapper {
   width: 760px;
   /* So body form looks the same as what it'll look published */ }
+
+#sidebar-right {
+    background: url(images/vline.png) no-repeat scroll 0 0 transparent;
+    margin-left: 0;
+    padding-left: 10px; }

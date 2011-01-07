@@ -141,7 +141,7 @@ function dewey_preprocess_node(&$vars) {
   if ($key !== FALSE) {
     $vars['template_files'][$key] = NULL;
   }
-  
+ 
   // Remove the comment count from node teasers.
   $new_links = array();
   if (!empty($vars['node']->links)) {
@@ -156,6 +156,11 @@ function dewey_preprocess_node(&$vars) {
   $vars['links'] = theme('links', $new_links, array('class' => 'links inline'));
   
   $vars['last_changed'] = "<em>Last changed " . format_date($vars['changed']) . "</em>";
+
+  // Even if teaser, build the full view as we'll use that sometimes.
+//  if ($node->teaser) {
+//    $vars['full_content'] = dewey_render_node_body($node->nid);
+//  }
 }
 
 /*
@@ -232,7 +237,7 @@ function dewey_comment_wrapper($content, $node) {
 }
 
 /*
- * Override $submit in comments and nodes
+ * Override $submit in comments.
  */
 function dewey_comment_submitted($comment) {
   $url = check_url(url('node/'. $comment->nid));
@@ -253,11 +258,31 @@ function dewey_comment_submitted($comment) {
   }
 }
 
+/*
+ * Override $submit in nodes. 
+ */
 function dewey_node_submitted($node) {
-  return t('<em>!username, <span class="date">!datetime</span></em>',
+  // Generate group's string.
+  $groups = og_get_node_groups($node);
+  $group_str = "";
+  foreach ($groups as $gid => $title) {
+    $group_str .= l($title, "node/" . $gid) . ", ";
+  }
+
+  // Generate timestamp. If posted < 24 hours, use x ago sytax.
+  // Else use regular date.
+  if ((time() - $node->created) < 86400) {
+    $time = "about " . format_interval(time() - $node->created, 1) . " ago";
+  }
+  else {
+    $time = "on " . format_date($node->created, 'custom', "j M Y");
+  }
+  $group_str = trim($group_str, ", ");
+  return t('In !group_name by !username <span class="date">!datetime</span>',
     array(
+      '!group_name' => $group_str,
       '!username' => theme('username', $node),
-      '!datetime' => format_date($node->created, 'custom', "j M Y - g:i A"),
+      '!datetime' => $time,
     ));
 }
 
@@ -399,3 +424,32 @@ function capitalizeWords($words, $charList = null) {
 
     return $words;
 }
+
+/*
+ * Render nodes according to the default input filter.
+ *
+ * Code taken and modified from the core node_view function.
+ *
+ * @param $nid
+ *  Node ID
+ *
+ * @return
+ *  The rendered body.
+ */
+function dewey_render_node_body($nid) {
+  $node = node_load($nid);
+  $node->build_mode = DEWEY_BUILD_FULL;
+  $node = node_build_content($node, FALSE, TRUE);
+
+  // Set the proper node part, then unset unused $node part so that a bad
+  // theme can not open a security hole.
+  $content = drupal_render($node->content);
+  $node->body = $content;
+  unset($node->teaser);
+
+  // Allow modules to modify the fully-built node.
+  node_invoke_nodeapi($node, 'alter');
+
+  return $node->body;
+}
+
