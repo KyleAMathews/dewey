@@ -71,9 +71,9 @@
           <?php print $breadcrumb;?>
         <?php endif; ?>
         <?php if ($title && $space && !$title_tabs): ?>
-          <h1 class="title grid-13" id="page-title">
+          <h2 class="title grid-13" id="page-title">
             <?php print $title; ?>
-          </h1>
+          </h2>
         <?php endif; ?>
         <?php print $messages; ?>
         <?php print $help; ?>

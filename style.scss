@@ -39,6 +39,9 @@ fieldset {
 #page {
   margin-top: 60px; }
 
+#site-header, #site-subheader, #footer-region, .column, .node, .comment, .block {
+    margin-bottom: 1.5em; }
+
 #content-container {
   position: relative;
   background: white;
@@ -168,9 +171,9 @@ fieldset {
   display:none }
 
 #page-title {
-  margin-bottom: 9px; }
+  margin-bottom: 0.2em; }
 
-h3.node-title, h2.node-title {
+h4.node-title, h3.node-title, h2.node-title {
   margin-bottom: 0;
   a {
     text-decoration: none;
