@@ -242,16 +242,18 @@ ul.links {
 #comments {
   padding: 10px; }
   #comments .author {
-    background: #fffdd2; }
+    background-color: #fffdd2; }
 
 #edit-comment-wrapper {
   width: 760px; }
 
-h3#comment-number {
-  border-bottom: 1px #bfcee1 solid;
-  padding: 10px;
-  font-size: 1.75em;
-  margin-top: -18px; }
+#comment-number {
+  border-bottom: 1px #e6e6e6 solid;
+  padding: 0.5em;
+  margin-top: -1.25em; }
+
+.comment.odd {
+  background-color: #fafafa; }
 
 .new {
   color: #f08514;

@@ -220,7 +220,7 @@ function dewey_comment_wrapper($content, $node) {
     if ($node->type != 'forum') {
       $count = $node->comment_count .' '. format_plural($node->comment_count, 'comment', 'comments');
       $count = ($count > 0) ? $count : 'No comments';
-      $output .= '<h3 id="comment-number">'. $count .'</h3>';
+      $output .= '<h4 id="comment-number">'. $count .'</h4>';
     }
   }
 

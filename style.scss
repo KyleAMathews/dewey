@@ -246,16 +246,18 @@ ul.links {
 #comments {
   padding: 10px; 
   .author {
-    background: $author_highlight; } }
+    background-color: $author_highlight; } }
 
 #edit-comment-wrapper {
   width: 760px; }
 
-h3#comment-number {
-  border-bottom: 1px lighten($light2, 33%) solid;
-  padding: 10px;
-  font-size: 1.75em;
-  margin-top: -18px; }
+#comment-number {
+  border-bottom: 1px $grey90 solid;
+  padding: 0.5em;
+  margin-top: -1.25em; }
+
+.comment.odd {
+  background-color: $grey98; }
 
 .new {
   color: $new;
