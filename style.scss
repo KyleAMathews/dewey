@@ -23,6 +23,9 @@ a {
   color: $link_color;
   text-decoration: underline; }
 
+.node .content {
+  clear: both; }
+
 .box {
   padding: 1.5em;
   margin-bottom: 1.5em;
@@ -105,6 +108,18 @@ fieldset {
 .block {
   xpadding-left: 10px; }
 
+.block h2 {
+  font-size: 1.5em;
+  line-height: 1;
+  margin-bottom: 0.5em; }
+
+.view-recent-discussion-comments ul {
+  padding: 0; 
+  .username {
+    font-size: 81.25%; }
+  .views-field-timestamp {
+    font-size: 75%; } }
+
 #footer-message {
   text-align: center;
   padding: 5px;
@@ -186,6 +201,7 @@ h4.node-title, h3.node-title, h2.node-title {
   vertical-align: middle;
   color: $grey60;
   font-size: 12px;
+  float: left;
   a {
     color: $light2;
     text-decoration: none;
@@ -249,7 +265,7 @@ ul.links {
     background-color: $author_highlight; } }
 
 #edit-comment-wrapper {
-  width: 760px; }
+  width: 700px; }
 
 #comment-number {
   border-bottom: 1px $grey90 solid;
@@ -259,11 +275,8 @@ ul.links {
 .comment.odd {
   background-color: $grey98; }
 
-.new {
+.new-comment-count {
   color: $new;
-  float: right;
-  margin-right: 10px;
-  padding: 10px;
   font-weight: bold; }
 
 div.comment-submitted {
@@ -647,7 +660,7 @@ img {
 /* Node Edit Form */
 
 #edit-body-wrapper {
-  width: 760px;
+  width: 640px;
   /* So body form looks the same as what it'll look published */ }
 
 #sidebar-right {

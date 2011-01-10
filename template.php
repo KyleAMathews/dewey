@@ -134,6 +134,7 @@ function dewey_preprocess_page(&$vars, $hook) {
  * Preprocessor for node.tpl.php template file.
  */
 function dewey_preprocess_node(&$vars) {
+  global $user;
   $node = $vars['node'];
 
   // Stick with node.tpl.php, not node-og-group-post
@@ -156,11 +157,12 @@ function dewey_preprocess_node(&$vars) {
   $vars['links'] = theme('links', $new_links, array('class' => 'links inline'));
   
   $vars['last_changed'] = "<em>Last changed " . format_date($vars['changed']) . "</em>";
-
-  // Even if teaser, build the full view as we'll use that sometimes.
-//  if ($node->teaser) {
-//    $vars['full_content'] = dewey_render_node_body($node->nid);
-//  }
+  if ($node->new_comment_count > 0) {
+    $vars['new_comment_count'] = $node->new_comment_count . " new";
+  }
+  else {
+    $vars['new_comment_count'] = "";
+  }
 }
 
 /*
@@ -266,7 +268,7 @@ function dewey_node_submitted($node) {
   $groups = og_get_node_groups($node);
   $group_str = "";
   foreach ($groups as $gid => $title) {
-    $group_str .= l($title, "node/" . $gid) . ", ";
+    $group_str .= l($title, "node/" . $gid, array('purl' => array('disabled' => TRUE))) . ", ";
   }
 
   // Generate timestamp. If posted < 48 hours, use x ago sytax.
@@ -278,11 +280,12 @@ function dewey_node_submitted($node) {
     $time = "on " . format_date($node->created, 'custom', "j M Y");
   }
   $group_str = trim($group_str, ", ");
-  return t('In !group_name by !username <span class="date">!datetime</span>',
+  return t('In !group_name by !username <span class="date">!datetime</span> &bull; @replies &bull; Follow',
     array(
       '!group_name' => $group_str,
       '!username' => theme('username', $node),
       '!datetime' => $time,
+      '@replies' => format_plural($node->comment_count, '1 Reply', '@count Replies'),
     ));
 }
 
