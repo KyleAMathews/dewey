@@ -280,12 +280,13 @@ function dewey_node_submitted($node) {
     $time = "on " . format_date($node->created, 'custom', "j M Y");
   }
   $group_str = trim($group_str, ", ");
-  return t('In !group_name by !username <span class="date">!datetime</span> &bull; @replies &bull; Follow',
+  return t('In !group_name by !username <span class="date">!datetime</span> &bull; @replies &bull; !follow',
     array(
       '!group_name' => $group_str,
       '!username' => theme('username', $node),
       '!datetime' => $time,
       '@replies' => format_plural($node->comment_count, '1 Reply', '@count Replies'),
+      '!follow' => flag_create_link('follow_node', $node->nid),
     ));
 }
 
