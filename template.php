@@ -303,27 +303,25 @@ function dewey_node_submitted($node) {
  *   suggests that this is a site user. Otherwise, only the username is returned.
  */
 function dewey_username($object, $nohtml = false) {
-  if ($object->uid && $object->name) {
-    
-  	// Pull the name from the user profile node
-    $fullname = db_result(db_query("SELECT c.field_name_value FROM 
-    {content_type_uprofile} c JOIN {node} n WHERE c.nid = n.nid AND uid = %d", 
-    $object->uid));
+  if ($object->uid) {
+    $account = user_load($object->uid);
 
-    if (empty($fullname)) {
-      $fullname = $object->name;
+    $realname = $account->realname;
+
+    if (empty($account->realname)) {
+      $realname = $account->name;
     }
     
     if ($nohtml) {
-      return $fullname;
+      return $realname;
     }
     
     // Shorten the name when it is too long or it will break many tables.
-    if (drupal_strlen($fullname) > 30) {
-      $name = drupal_substr($fullname, 0, 25) .'...';
+    if (drupal_strlen($realname) > 30) {
+      $name = drupal_substr($realname, 0, 25) .'...';
     }
     else {
-      $name = $fullname;
+      $name = $realname;
     }
 
     if (user_access('access user profiles')) {
