@@ -26,9 +26,17 @@ a {
   clear: both; }
 
 .box {
-  padding: 1.5em;
-  margin-bottom: 1.5em;
-  background: #f2f2f2; }
+  padding-left: 10px;
+  margin-bottom: 1.5em; }
+  .box h4 {
+    margin-bottom: 0.5em;
+    color: #999999; }
+  .box .tips {
+    display: none; }
+  .box #comment-form p {
+    display: none; }
+  .box fieldset {
+    background: none; }
 
 fieldset {
   background-color: #f2f2f2;
@@ -112,11 +120,11 @@ fieldset {
   line-height: 1;
   margin-bottom: 0.5em; }
 
-.view-recent-discussion-comments ul {
+.view-recent-discussion-comments ul, .view-recent-poll-comments ul {
   padding: 0; }
-  .view-recent-discussion-comments ul .username {
+  .view-recent-discussion-comments ul .username, .view-recent-poll-comments ul .username {
     font-size: 81.25%; }
-  .view-recent-discussion-comments ul .views-field-timestamp {
+  .view-recent-discussion-comments ul .views-field-timestamp, .view-recent-poll-comments ul .views-field-timestamp {
     font-size: 75%; }
 
 #footer-message {
@@ -183,7 +191,8 @@ fieldset {
   display: none; }
 
 #page-title {
-  margin-bottom: 0.2em; }
+  margin-bottom: 0.2em;
+  line-height: 1.25em; }
 
 h4.node-title, h3.node-title, h2.node-title {
   margin-bottom: 0; }
@@ -263,13 +272,21 @@ ul.links {
 #edit-comment-wrapper {
   width: 640px; }
 
-.cke_contents {
-  width: 640px !important; }
+body.cke_show_borders {
+  width: auto; }
 
 #comment-number {
   border-bottom: 1px #e6e6e6 solid;
   padding: 0.5em;
   margin-top: -1.25em; }
+
+.comment {
+  border-bottom: 1px solid #e6e6e6;
+  position: relative; }
+  .comment div.links {
+    position: absolute;
+    bottom: 5px;
+    right: 0; }
 
 .comment.odd {
   background-color: #fafafa; }
@@ -312,9 +329,6 @@ div.comment-submitted {
   #comments a.username:hover {
     text-decoration: underline; }
 
-.box h4 {
-  margin-bottom: 0.5em; }
-
 .comment .date {
   float: right;
   -moz-border-radius: 10px;
@@ -332,7 +346,7 @@ div.comment-submitted {
       text-decoration: underline; }
 
 div.comment div.meta {
-  margin-bottom: 10px; }
+  margin-bottom: 0.75em; }
 div.comment-content {
   width: 100%; }
 div.button ul {

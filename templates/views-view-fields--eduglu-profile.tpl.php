@@ -22,7 +22,7 @@
 <?php
  // dpm($fields);
 ?>
-<div class = "grid-2">
+<div class = "grid-1">
   <?php print $fields['picture']->content; ?>
 </div>
 <div class = "grid-8">
