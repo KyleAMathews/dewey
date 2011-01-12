@@ -10,7 +10,7 @@
           <div class="picture grid-1 alpha">
             <?php print $picture ?>
           </div>
-          <div class="username grid-8">
+          <div class="username grid-7">
           <?php print theme('username', $comment); ?>
           </div> 
           <div class="date grid-3">
@@ -26,7 +26,7 @@
       <div class="new">new</div>
     <?php endif; ?>
         
-    <div class="content grid-12 clear-block">
+    <div class="content grid-11 clear-block">
       
       <?php print $content ?>
       <?php if ($signature): ?>
@@ -38,7 +38,7 @@
     </div>
 
     <?php if ($links): ?>
-      <div class="links grid-12"><?php print $links ?></div>
+      <div class="links grid-11"><?php print $links ?></div>
     <?php endif; ?>
   </div>
 </div>

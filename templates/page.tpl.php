@@ -36,11 +36,11 @@
       <?php if ($tabs || $space_user_links || $context_links): ?>
         <div id="context-links">
           <?php if ($tabs): ?>
-            <div class="tabs alpha grid-13">
+            <div class="tabs alpha grid-12">
               <?php print $tabs; ?>
             </div>
           <?php endif; ?>
-          <div id="space-context-links" class="omega grid-3 <?php if (!$tabs) { echo "prefix-13"; } ?> ">
+          <div id="space-context-links" class="omega grid-4 <?php if (!$tabs) { echo "prefix-13"; } ?> ">
             <?php if ($space_user_links): ?>
               <div class="button">
                 <?php print $space_user_links; ?>
@@ -58,7 +58,7 @@
         <div id="context-links">
           <?php if ($title && $space && $logged_in): ?>
             <?php $title_tabs = TRUE ?>
-            <h3 class="title grid-13" id="page-title">
+            <h3 class="title grid-12" id="page-title">
               <?php print $title; ?>
             </h3>
           <?php endif; ?>        
@@ -66,19 +66,19 @@
       
       <?php endif; ?>
   
-      <div id="main" class="column <?php print ns('grid-16', $left, 4, $right, 3) . ' ' . ns('push-4', !$left, 4); ?>">
+      <div id="main" class="column <?php print ns('grid-16', $left, 4, $right, 4) . ' ' . ns('push-4', !$left, 4); ?>">
         <?php if ($breadcrump): ?>
           <?php print $breadcrumb;?>
         <?php endif; ?>
         <?php if ($title && $space && !$title_tabs): ?>
-          <h2 class="title grid-13" id="page-title">
+          <h2 class="title grid-12" id="page-title">
             <?php print $title; ?>
           </h2>
         <?php endif; ?>
         <?php print $messages; ?>
         <?php print $help; ?>
             
-        <div id="main-content" class="region alpha <?php print ns('grid-16', $left, 4, $right, 3); ?>">
+        <div id="main-content" class="region alpha <?php print ns('grid-16', $left, 4, $right, 4); ?>">
           <?php print $pre_content; ?>
           <?php print $content; ?>
           <?php print $post_content; ?>
@@ -96,7 +96,7 @@
         </div>
       <?php endif; ?>
 
-      <div id="sidebar-right" class="sidebar grid-3">
+      <div id="sidebar-right" class="sidebar grid-4">
         <?php if ($right): ?>
           <?php print $right; ?>
         <?php endif; ?>
