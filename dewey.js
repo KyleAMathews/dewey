@@ -16,4 +16,10 @@ if (Drupal.jsEnabled) {
       return false;
     });
   }
+  // Clean up tipsy tooltips after clicking on a flag.
+  Drupal.behaviors.eduglu_flag_tipsy = function(context) {
+    $("a.flag").click(function() {
+      $(".tipsy").fadeOut();
+    });
+  }
 }
