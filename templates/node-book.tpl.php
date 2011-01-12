@@ -6,12 +6,13 @@
         <?php print $last_changed; ?>
       <?php endif; ?>
       <?php if ($teaser): ?>
-        <h2 class="node-title"><a href="<?php print $node_url ?>" title="<?php print $title ?>"><?php print $title ?></a></h2>
+        <h3 class="node-title grid-8 alpha"><a href="<?php print $node_url ?>" title="<?php print $title ?>"><?php print $title ?></a></h3>
+        <div class="new-comment-count grid-2 omega"><?php print $new_comment_count; ?></div>
       <?php endif; ?>
     </div>
   </div>
 
-  <div class="content grid-12 clear-block">
+  <div class="content clear-block">
     <?php print $content ?>
   </div>
   
