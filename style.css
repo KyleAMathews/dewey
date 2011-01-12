@@ -280,17 +280,18 @@ div.comment-submitted {
   background: #e6e6e6;
   height: 30px;
   padding: 0 5px 0 0; }
-  div.comment-submitted a.user-picture {
-    text-indent: 100px;
-    overflow: hidden;
-    display: block;
-    background-repeat: no-repeat;
-    height: 30px; }
-  div.comment-submitted div.picture {
-    float: left;
-    margin: 0 10px 0 0;
-    height: 30px;
-    width: 30px; }
+
+#comments a.user-picture {
+  text-indent: 100px;
+  overflow: hidden;
+  display: block;
+  background-repeat: no-repeat;
+  height: 30px; }
+#comments div.picture {
+  float: left;
+  margin: 0 10px 0 0;
+  height: 30px;
+  width: 30px; }
 
 .views-field-picture .user-picture {
   display: block;
@@ -298,14 +299,18 @@ div.comment-submitted {
   height: 30px;
   text-indent: -900px; }
 
-div.comment .username a {
+#comments a.username {
   font-size: 13px;
   font-weight: bold;
+  line-height: 30px;
   vertical-align: baseline;
   text-decoration: none;
   color: #183152; }
-  div.comment .username a:hover {
+  #comments a.username:hover {
     text-decoration: underline; }
+
+.box h4 {
+  margin-bottom: 0.5em; }
 
 .comment .date {
   float: right;

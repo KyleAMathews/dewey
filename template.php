@@ -196,11 +196,16 @@ function dewey_preprocess_comment(&$vars) {
  * @param $vars
  *   A sequential array of variables passed to the theme function.
  */
-function phptemplate_preprocess_box(&$vars) {
-  // rename to more common text
-  if (strpos($vars['title'], 'Post new comment') === 0) {
-    $vars['title'] = 'Add your comment';
-  }
+function dewey_preprocess_box(&$vars) {
+  global $user;
+
+  // Rename to more common text.
+  $vars['title'] = 'Add comment';
+
+  // Add vars for picture + name.
+  list($user_picture, $user_picture_preset) = dewey_comment_user_picture($user->picture, $user->uid);
+  $vars['user_picture'] = $user_picture;
+  $vars['user_name'] = theme('username', $user);
 }
 
 /**

@@ -283,7 +283,9 @@ div.comment-submitted {
   line-height: 30px;
   background: $grey90;
   height: 30px;
-  padding: 0 5px 0 0;
+  padding: 0 5px 0 0; }
+
+#comments {
   a.user-picture {
     text-indent: 100px;
     overflow: hidden;
@@ -295,21 +297,25 @@ div.comment-submitted {
     margin: 0 10px 0 0;
     height: 30px;
     width: 30px; } }
-
+    
 .views-field-picture .user-picture {
   display: block;
   width: 30px;
   height: 30px;
   text-indent: -900px; }
 
-div.comment .username a {
+#comments a.username {
   font-size: 13px;
   font-weight: bold;
+  line-height: 30px;
   vertical-align: baseline;
   text-decoration: none;
   color: $dark;
   &:hover {
     text-decoration: underline; } }
+
+.box h4 {
+  margin-bottom: 0.5em; }
 
 .comment .date {
   float: right;
