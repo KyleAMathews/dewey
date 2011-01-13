@@ -290,6 +290,13 @@ body.cke_show_borders {
   color: $new;
   font-weight: bold; }
 
+.new {
+  color: $new;
+  font-size: 125%;
+  position: absolute;
+  right: 10px;
+  top: 30px; }
+    
 div.comment-submitted {
   line-height: 30px;
   background: $grey90;
@@ -370,7 +377,8 @@ a.button, div.button a {
   a {
     color: $grey40; }
   img {
-    padding: 0 3px 3px 0; }}
+    padding: 0 3px 3px 0;
+    float: left; }}
   
 .help {
   float: left; }

@@ -318,6 +318,13 @@ body.cke_show_borders {
   color: #ff9a01;
   font-weight: bold; }
 
+.new {
+  color: #ff9a01;
+  font-size: 125%;
+  position: absolute;
+  right: 10px;
+  top: 30px; }
+
 div.comment-submitted {
   line-height: 30px;
   background: #e6e6e6;
@@ -469,7 +476,8 @@ a.button, div.button a {
   #block-eduglu_core-thread_stats a {
     color: #666666; }
   #block-eduglu_core-thread_stats img {
-    padding: 0 3px 3px 0; }
+    padding: 0 3px 3px 0;
+    float: left; }
 
 .help {
   float: left; }
