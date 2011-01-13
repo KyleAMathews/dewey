@@ -1,13 +1,10 @@
 @import "base";
+@import 'compass/css3';
 
 body {
   background-repeat: no-repeat;
   background-color: #9797a1;
-  /* fallback color */
-  background-image: url(images/gradient.jpg) repeat-x #9797a1;
-  /* fallback image */
-  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.07, #9797a1), color-stop(0.75, #dddce1));
-  background-image: -moz-linear-gradient(center bottom, #9797a1 7%, #dddce1 75%); }
+  @include linear-gradient(color-stops(#9797a1 7%, #dddce1 75%), bottom, image-url('gradient.jpg')); }
 
 a {
   &:hover {
@@ -58,9 +55,7 @@ fieldset {
   background: white;
   float: left;
   border-top: 1px solid $dark;
-  -moz-box-shadow: 7	px 7px 14px #888;
-  -webkit-box-shadow: 7px 7px 14px #888;
-  box-shadow: 7px 7px 14px #888; }
+  @include box-shadow(#888, 7px, 7px, 14px); }
 
 #feature-tabs {
   margin-top: -1em;
@@ -83,12 +78,8 @@ fieldset {
         min-width: 65px;
         text-decoration: none;
         color: white;
-        -moz-border-radius-topleft: 5px;
-        -moz-border-radius-topright: 5px;
-        -webkit-border-top-left-radius: 5px;
-        -webkit-border-top-right-radius: 5px;
-        border-top-left-radius: 5px;
-        border-top-right-radius: 5px; }
+        @include border-top-radius(5px);
+        @include border-bottom-radius(0); }
       &.active a {
         background: $grey95;
         color: $dark;
@@ -112,9 +103,6 @@ fieldset {
   margin-right: 50px;
   a {
     margin-left: 10px; } }
-
-.block {
-  xpadding-left: 10px; }
 
 .block h2 {
   font-size: 1.5em;
@@ -269,10 +257,13 @@ ul.links {
 /* User Pictures + submitted stuff in comments */
 
 #comments {
-  padding: 10px; 
-  .author {
-    background-color: $author_highlight; } }
+  padding: 10px; }
 
+#comments .comment.author {
+  background-color: $author_highlight;
+  @include linear-gradient(color-stops($author_highlight, lighten($author_highlight, 2%)), bottom);
+  border-bottom: 1px solid darken($author_highlight, 20%); }
+  
 #edit-comment-wrapper {
   width: 640px; }
 
@@ -293,7 +284,8 @@ body.cke_show_borders {
     right: 0; } }
 
 .comment.odd {
-  background-color: $grey98; }
+  background-color: $grey98;
+  @include linear-gradient(color-stops($grey95, $grey98), bottom); }
 
 .new-comment-count {
   color: $new;
@@ -302,6 +294,7 @@ body.cke_show_borders {
 div.comment-submitted {
   line-height: 30px;
   background: $grey90;
+  @include linear-gradient(color-stops($grey90 25%, $grey95), bottom);
   height: 30px;
   padding: 0 5px 0 0; }
 
@@ -336,9 +329,7 @@ div.comment-submitted {
 
 .comment .date {
   float: right;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
+  @include border-radius(10px);
   background: white;
   line-height: 20px;
   padding: 0 10px;
@@ -370,12 +361,10 @@ a.button, div.button a {
   color: white !important;
   line-height: 1;
   /* Special effects */
-  text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.25), -2px 0 1px rgba(0, 0, 0, 0.25);
-  border-radius: 5px;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  @include text-shadow(rgba(0, 0, 0, 0.25), 0, -1px, 1px);
+  @include text-shadow(rgba(0, 0, 0, 0.25), -2px, 0, 1px);
+  @include border-radius(5px);
+  @include box-shadow(rgba(0, 0, 0, 0.5), 0, 1px, 2px);
   /* IE only stuff */
   border-bottom: 1px solid transparent\9;
   _background-image: none;
@@ -404,9 +393,7 @@ div.button a {
 
 a.button:active {
   background-position: 0 100%;
-  -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.7);
-  /* Unfortunately, Safari doesn't support inset yet */
-  -webkit-box-shadow: none;
+  @include box-shadow(rgba(0, 0, 0, 0.7), 0, 1px, 2px, 0, 'inset');
   /* IE only stuff */
   border-bottom: 0\9;
   border-top: 1px solid $grey40; }
@@ -414,9 +401,7 @@ a.button:active {
 div {
   &.button a:active {
     background-position: 0 100%;
-    -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.7);
-    /* Unfortunately, Safari doesn't support inset yet */
-    -webkit-box-shadow: none;
+    @include box-shadow(rgba(0,0,0,0.7), 0, 1px, 2px, 0, 'inset');
     /* IE only stuff */
     border-bottom: 0\9;
     border-top: 1px solid $grey40; } }
@@ -514,10 +499,8 @@ div.vertical-tabs {
   padding: 5px 10px;
   margin-bottom: 2em;
   height: 22px;
-  background: $grey95;
-  /* Yeah for css3! */
-  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, $grey90), color-stop(0.7, $grey95));
-  background-image: -moz-linear-gradient(center bottom, $grey90 0%, $grey95 70%);
+  background: #f2f2f2;
+  @include linear-gradient(color-stops($grey90, $grey95 70%), bottom);
   .title {
     margin-top: 5px; } }
 
@@ -537,48 +520,26 @@ ul.tabs li a {
 
 .tabs {
   .tabs li a:hover {
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    border-radus: 10px;
+    @include border-radius(10px);
     color: $grey20;
     background: $grey87;
     padding: 4px 9px;
     border: 1px solid $grey80;
     border-color: $grey80 $grey87 white; }
   ul.primary li.active a {
-    -webkit-border-top-left-radius: 10px;
-    -webkit-border-top-right-radius: 10px;
-    -webkit-border-bottom-left-radius: 0;
-    -webkit-border-bottom-right-radius: 0;
-    -moz-border-radius-topleft: 10px;
-    -moz-border-radius-topright: 10px;
-    -moz-border-radius-bottomleft: 0;
-    -moz-border-radius-bottomright: 0;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
+    @include border-top-radius(10px);
+    @include border-bottom-radius(0);
     background-color: white;
     padding: 5px 10px;
     border-top: 1px solid black;
     border-right: 1px solid black;
     border-left: 1px solid black;
     border-bottom: 2px solid white;
-    color: black; } }
+    color: black; }}
 
 h.tabs ul.primary li.active a:hover {
-  -webkit-border-top-left-radius: 10px;
-  -webkit-border-top-right-radius: 10px;
-  -webkit-border-bottom-left-radius: 0;
-  -webkit-border-bottom-right-radius: 0;
-  -moz-border-radius-topleft: 10px;
-  -moz-border-radius-topright: 10px;
-  -moz-border-radius-bottomleft: 0;
-  -moz-border-radius-bottomright: 0;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
+  @include border-top-radius(10px);
+  @include border-bottom-radius(0);
   background-color: white;
   padding: 5px 10px;
   border-top: 1px solid black;
@@ -591,25 +552,19 @@ h.tabs ul.primary li.active a:hover {
   margin-top: 7px;
   padding: 5px;
   background: white;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  border-radus: 10px;
+  @include border-radius(10px);
   a.active {
     color: white;
     background-color: $light2;
     border: none;
     padding: 4px 9px;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    border-radus: 10px;
+    @include border-radius(10px);
     &:hover {
       color: white;
       background-color: $light2;
       border: none;
       padding: 4px 9px;
-      -moz-border-radius: 10px;
-      -webkit-border-radius: 10px;
-      border-radus: 10px; } } }
+      @include border-radius(10px); } } }
 
 /**
  * Module: DIFF =======================================================
@@ -644,8 +599,7 @@ span {
     padding-bottom: 5px;
     background: #ffc;
     border-bottom: 1px solid #fe9;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px; }
+    @include border-radius(3px); }
   &.diff-added {
     background: #cfc;
     border-color: #9c9; } }

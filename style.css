@@ -1,12 +1,11 @@
+@charset "UTF-8";
 /** Color Scheme **/
 body {
   background-repeat: no-repeat;
   background-color: #9797a1;
-  /* fallback color */
-  background-image: url(images/gradient.jpg) repeat-x #9797a1;
-  /* fallback image */
-  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.07, #9797a1), color-stop(0.75, #dddce1));
-  background-image: -moz-linear-gradient(center bottom, #9797a1 7%, #dddce1 75%); }
+  background-image: url('/images/gradient.jpg?1287805802'), -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(7%, #9797a1), color-stop(75%, #dddce1));
+  background-image: url('/images/gradient.jpg?1287805802'), -moz-linear-gradient(bottom, #9797a1 7%, #dddce1 75%);
+  background-image: url('/images/gradient.jpg?1287805802'), linear-gradient(bottom, #9797a1 7%, #dddce1 75%); }
 
 a {
   color: #183152;
@@ -57,9 +56,10 @@ fieldset {
   background: white;
   float: left;
   border-top: 1px solid #183152;
-  -moz-box-shadow: 7	px 7px 14px #888;
-  -webkit-box-shadow: 7px 7px 14px #888;
-  box-shadow: 7px 7px 14px #888; }
+  -moz-box-shadow: 7px 7px 14px #888888;
+  -webkit-box-shadow: 7px 7px 14px #888888;
+  -o-box-shadow: 7px 7px 14px #888888;
+  box-shadow: 7px 7px 14px #888888; }
 
 #feature-tabs {
   margin-top: -1em;
@@ -83,11 +83,29 @@ fieldset {
         text-decoration: none;
         color: white;
         -moz-border-radius-topleft: 5px;
-        -moz-border-radius-topright: 5px;
         -webkit-border-top-left-radius: 5px;
-        -webkit-border-top-right-radius: 5px;
+        -o-border-top-left-radius: 5px;
+        -ms-border-top-left-radius: 5px;
+        -khtml-border-top-left-radius: 5px;
         border-top-left-radius: 5px;
-        border-top-right-radius: 5px; }
+        -moz-border-radius-topright: 5px;
+        -webkit-border-top-right-radius: 5px;
+        -o-border-top-right-radius: 5px;
+        -ms-border-top-right-radius: 5px;
+        -khtml-border-top-right-radius: 5px;
+        border-top-right-radius: 5px;
+        -moz-border-radius-bottomleft: 0;
+        -webkit-border-bottom-left-radius: 0;
+        -o-border-bottom-left-radius: 0;
+        -ms-border-bottom-left-radius: 0;
+        -khtml-border-bottom-left-radius: 0;
+        border-bottom-left-radius: 0;
+        -moz-border-radius-bottomright: 0;
+        -webkit-border-bottom-right-radius: 0;
+        -o-border-bottom-right-radius: 0;
+        -ms-border-bottom-right-radius: 0;
+        -khtml-border-bottom-right-radius: 0;
+        border-bottom-right-radius: 0; }
       #feature-tabs ul li.active a {
         background: #f2f2f2;
         color: #183152;
@@ -111,9 +129,6 @@ fieldset {
   margin-right: 50px; }
   .user-links a {
     margin-left: 10px; }
-
-.block {
-  xpadding-left: 10px; }
 
 .block h2 {
   font-size: 1.5em;
@@ -266,8 +281,13 @@ ul.links {
 /* User Pictures + submitted stuff in comments */
 #comments {
   padding: 10px; }
-  #comments .author {
-    background-color: #fffdd2; }
+
+#comments .comment.author {
+  background-color: #fffdd2;
+  background-image: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(0%, #fffdd2), color-stop(100%, #fffddc));
+  background-image: -moz-linear-gradient(bottom, #fffdd2, #fffddc);
+  background-image: linear-gradient(bottom, #fffdd2, #fffddc);
+  border-bottom: 1px solid #fff86c; }
 
 #edit-comment-wrapper {
   width: 640px; }
@@ -289,7 +309,10 @@ body.cke_show_borders {
     right: 0; }
 
 .comment.odd {
-  background-color: #fafafa; }
+  background-color: #fafafa;
+  background-image: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(0%, #f2f2f2), color-stop(100%, #fafafa));
+  background-image: -moz-linear-gradient(bottom, #f2f2f2, #fafafa);
+  background-image: linear-gradient(bottom, #f2f2f2, #fafafa); }
 
 .new-comment-count {
   color: #ff9a01;
@@ -298,6 +321,9 @@ body.cke_show_borders {
 div.comment-submitted {
   line-height: 30px;
   background: #e6e6e6;
+  background-image: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(25%, #e6e6e6), color-stop(100%, #f2f2f2));
+  background-image: -moz-linear-gradient(bottom, #e6e6e6 25%, #f2f2f2);
+  background-image: linear-gradient(bottom, #e6e6e6 25%, #f2f2f2);
   height: 30px;
   padding: 0 5px 0 0; }
 
@@ -333,6 +359,9 @@ div.comment-submitted {
   float: right;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -khtml-border-radius: 10px;
   border-radius: 10px;
   background: white;
   line-height: 20px;
@@ -363,12 +392,18 @@ a.button, div.button a {
   color: white !important;
   line-height: 1;
   /* Special effects */
-  text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.25), -2px 0 1px rgba(0, 0, 0, 0.25);
-  border-radius: 5px;
+  text-shadow: rgba(0, 0, 0, 0.25) 0 -1px 1px;
+  text-shadow: rgba(0, 0, 0, 0.25) -2px 0 1px;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
   -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
   /* IE only stuff */
   border-bottom: 1px solid transparent\9;
   _background-image: none;
@@ -395,18 +430,20 @@ div.button a:hover, div.button a:focus {
 
 a.button:active {
   background-position: 0 100%;
-  -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.7);
-  /* Unfortunately, Safari doesn't support inset yet */
-  -webkit-box-shadow: none;
+  -moz-box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.7);
+  -webkit-box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.7);
+  -o-box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.7);
+  box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.7);
   /* IE only stuff */
   border-bottom: 0\9;
   border-top: 1px solid #666666; }
 
 div.button a:active {
   background-position: 0 100%;
-  -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.7);
-  /* Unfortunately, Safari doesn't support inset yet */
-  -webkit-box-shadow: none;
+  -moz-box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.7);
+  -webkit-box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.7);
+  -o-box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.7);
+  box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.7);
   /* IE only stuff */
   border-bottom: 0\9;
   border-top: 1px solid #666666; }
@@ -498,9 +535,9 @@ div.vertical-tabs {
   margin-bottom: 2em;
   height: 22px;
   background: #f2f2f2;
-  /* Yeah for css3! */
-  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #e6e6e6), color-stop(0.7, #f2f2f2));
-  background-image: -moz-linear-gradient(center bottom, #e6e6e6 0%, #f2f2f2 70%); }
+  background-image: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(0%, #e6e6e6), color-stop(70%, #f2f2f2));
+  background-image: -moz-linear-gradient(bottom, #e6e6e6, #f2f2f2 70%);
+  background-image: linear-gradient(bottom, #e6e6e6, #f2f2f2 70%); }
   #context-links .title {
     margin-top: 5px; }
 
@@ -521,24 +558,39 @@ ul.tabs li a {
 .tabs .tabs li a:hover {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
-  border-radus: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  border-radius: 10px;
   color: #333333;
   background: #dddddd;
   padding: 4px 9px;
   border: 1px solid #cccccc;
   border-color: #cccccc #dddddd white; }
 .tabs ul.primary li.active a {
-  -webkit-border-top-left-radius: 10px;
-  -webkit-border-top-right-radius: 10px;
-  -webkit-border-bottom-left-radius: 0;
-  -webkit-border-bottom-right-radius: 0;
   -moz-border-radius-topleft: 10px;
-  -moz-border-radius-topright: 10px;
-  -moz-border-radius-bottomleft: 0;
-  -moz-border-radius-bottomright: 0;
+  -webkit-border-top-left-radius: 10px;
+  -o-border-top-left-radius: 10px;
+  -ms-border-top-left-radius: 10px;
+  -khtml-border-top-left-radius: 10px;
   border-top-left-radius: 10px;
+  -moz-border-radius-topright: 10px;
+  -webkit-border-top-right-radius: 10px;
+  -o-border-top-right-radius: 10px;
+  -ms-border-top-right-radius: 10px;
+  -khtml-border-top-right-radius: 10px;
   border-top-right-radius: 10px;
+  -moz-border-radius-bottomleft: 0;
+  -webkit-border-bottom-left-radius: 0;
+  -o-border-bottom-left-radius: 0;
+  -ms-border-bottom-left-radius: 0;
+  -khtml-border-bottom-left-radius: 0;
   border-bottom-left-radius: 0;
+  -moz-border-radius-bottomright: 0;
+  -webkit-border-bottom-right-radius: 0;
+  -o-border-bottom-right-radius: 0;
+  -ms-border-bottom-right-radius: 0;
+  -khtml-border-bottom-right-radius: 0;
   border-bottom-right-radius: 0;
   background-color: white;
   padding: 5px 10px;
@@ -549,17 +601,29 @@ ul.tabs li a {
   color: black; }
 
 h.tabs ul.primary li.active a:hover {
-  -webkit-border-top-left-radius: 10px;
-  -webkit-border-top-right-radius: 10px;
-  -webkit-border-bottom-left-radius: 0;
-  -webkit-border-bottom-right-radius: 0;
   -moz-border-radius-topleft: 10px;
-  -moz-border-radius-topright: 10px;
-  -moz-border-radius-bottomleft: 0;
-  -moz-border-radius-bottomright: 0;
+  -webkit-border-top-left-radius: 10px;
+  -o-border-top-left-radius: 10px;
+  -ms-border-top-left-radius: 10px;
+  -khtml-border-top-left-radius: 10px;
   border-top-left-radius: 10px;
+  -moz-border-radius-topright: 10px;
+  -webkit-border-top-right-radius: 10px;
+  -o-border-top-right-radius: 10px;
+  -ms-border-top-right-radius: 10px;
+  -khtml-border-top-right-radius: 10px;
   border-top-right-radius: 10px;
+  -moz-border-radius-bottomleft: 0;
+  -webkit-border-bottom-left-radius: 0;
+  -o-border-bottom-left-radius: 0;
+  -ms-border-bottom-left-radius: 0;
+  -khtml-border-bottom-left-radius: 0;
   border-bottom-left-radius: 0;
+  -moz-border-radius-bottomright: 0;
+  -webkit-border-bottom-right-radius: 0;
+  -o-border-bottom-right-radius: 0;
+  -ms-border-bottom-right-radius: 0;
+  -khtml-border-bottom-right-radius: 0;
   border-bottom-right-radius: 0;
   background-color: white;
   padding: 5px 10px;
@@ -575,7 +639,10 @@ h.tabs ul.primary li.active a:hover {
   background: white;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
-  border-radus: 10px; }
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  border-radius: 10px; }
   .tabs ul.secondary a.active {
     color: white;
     background-color: #4f76a9;
@@ -583,7 +650,10 @@ h.tabs ul.primary li.active a:hover {
     padding: 4px 9px;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
-    border-radus: 10px; }
+    -o-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -khtml-border-radius: 10px;
+    border-radius: 10px; }
     .tabs ul.secondary a.active:hover {
       color: white;
       background-color: #4f76a9;
@@ -591,7 +661,10 @@ h.tabs ul.primary li.active a:hover {
       padding: 4px 9px;
       -moz-border-radius: 10px;
       -webkit-border-radius: 10px;
-      border-radus: 10px; }
+      -o-border-radius: 10px;
+      -ms-border-radius: 10px;
+      -khtml-border-radius: 10px;
+      border-radius: 10px; }
 
 /**
  * Module: DIFF =======================================================
@@ -622,8 +695,12 @@ span.diff-added, span.diff-changed {
   padding-bottom: 5px;
   background: #ffc;
   border-bottom: 1px solid #fe9;
+  -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
-  -moz-border-radius: 3px; }
+  -o-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -khtml-border-radius: 3px;
+  border-radius: 3px; }
 span.diff-added {
   background: #cfc;
   border-color: #9c9; }
