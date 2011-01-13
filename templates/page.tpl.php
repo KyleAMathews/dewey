@@ -40,7 +40,7 @@
               <?php print $tabs; ?>
             </div>
           <?php endif; ?>
-          <div id="space-context-links" class="omega grid-4 <?php if (!$tabs) { echo "prefix-13"; } ?> ">
+          <div id="space-context-links">
             <?php if ($space_user_links): ?>
               <div class="button">
                 <?php print $space_user_links; ?>

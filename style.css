@@ -1,11 +1,12 @@
 @charset "UTF-8";
 /** Color Scheme **/
+/* Mixins */
 body {
   background-repeat: no-repeat;
   background-color: #9797a1;
-  background-image: url('/images/gradient.jpg?1287805802'), -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(7%, #9797a1), color-stop(75%, #dddce1));
-  background-image: url('/images/gradient.jpg?1287805802'), -moz-linear-gradient(bottom, #9797a1 7%, #dddce1 75%);
-  background-image: url('/images/gradient.jpg?1287805802'), linear-gradient(bottom, #9797a1 7%, #dddce1 75%); }
+  background-image: url('images/gradient.jpg?1287805802'), -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(7%, #9797a1), color-stop(75%, #dddce1));
+  background-image: url('images/gradient.jpg?1287805802'), -moz-linear-gradient(bottom, #9797a1 7%, #dddce1 75%);
+  background-image: url('images/gradient.jpg?1287805802'), linear-gradient(bottom, #9797a1 7%, #dddce1 75%); }
 
 a {
   color: #183152;
@@ -25,7 +26,6 @@ a {
   clear: both; }
 
 .box {
-  padding-left: 10px;
   margin-bottom: 1.5em; }
   .box h4 {
     margin-bottom: 0.5em;
@@ -381,72 +381,95 @@ div.comment-content {
 div.button ul {
   margin: 0; }
 
-/** Button CSS code borrowed from http://code.google.com/p/sexybuttons/ **/
 a.button, div.button a {
-  text-decoration: none;
-  position: relative;
-  padding: 5px 10px 5px;
-  font: inherit;
-  font-style: normal !important;
-  font-weight: bold !important;
-  color: white !important;
-  line-height: 1;
-  /* Special effects */
-  text-shadow: rgba(0, 0, 0, 0.25) 0 -1px 1px;
-  text-shadow: rgba(0, 0, 0, 0.25) -2px 0 1px;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  border-radius: 5px;
-  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-  -o-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-  /* IE only stuff */
-  border-bottom: 1px solid transparent\9;
-  _background-image: none;
-  /* Cross browser inline block hack - http://blog.mozilla.com/webdev/2009/02/20/cross-browser-inline-block/ */
-  display: -moz-inline-stack;
+  -webkit-box-sizing: border-box;
   display: inline-block;
-  vertical-align: middle;
-  *display: inline !important;
-  position: relative;
-  /* Force hasLayout in IE */
-  zoom: 1;
-  /* Disable text selection (Firefox only)*/
-  -moz-user-select: none;
-  background-color: #4f76a9;
-  z-index: 1; }
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.143em;
+  padding: 0 1em;
+  -moz-border-radius: 0.667em;
+  -webkit-border-radius: 0.667em;
+  -o-border-radius: 0.667em;
+  -ms-border-radius: 0.667em;
+  -khtml-border-radius: 0.667em;
+  border-radius: 0.667em;
+  border: 1px solid #2f4563;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #b5c6dc), color-stop(4%, #819ec4), color-stop(100%, #4f76a9));
+  background-image: -moz-linear-gradient(top, #b5c6dc, #819ec4 4%, #4f76a9);
+  background-image: linear-gradient(top, #b5c6dc, #819ec4 4%, #4f76a9);
+  text-shadow: #3f5e86 0 -1px 0;
+  -webkit-box-shadow: inset white 0 0 2px; }
+  a.button:active, div.button a:active {
+    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #1e2d41), color-stop(4%, #375275), color-stop(100%, #446591));
+    background-image: -moz-linear-gradient(top, #1e2d41, #375275 4%, #446591);
+    background-image: linear-gradient(top, #1e2d41, #375275 4%, #446591);
+    -webkit-box-shadow: inset #1e2d41 0 0 0.5em; }
 
-a.button:hover, a.button:focus {
-  background-position: 0 -50px;
-  color: white !important; }
+#block-eduglu_core-thread_tools {
+  text-align: center; }
 
-div.button a:hover, div.button a:focus {
-  background-position: 0 -50px;
-  color: white !important; }
+.flag-button .unflag-action {
+  -webkit-box-sizing: border-box;
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.921em;
+  padding: 0 0.806em;
+  -moz-border-radius: 0.538em;
+  -webkit-border-radius: 0.538em;
+  -o-border-radius: 0.538em;
+  -ms-border-radius: 0.538em;
+  -khtml-border-radius: 0.538em;
+  border-radius: 0.538em;
+  border: 1px solid #b3b3b3;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(4%, #ffffff), color-stop(100%, #e6e6e6));
+  background-image: -moz-linear-gradient(top, #ffffff, #ffffff 4%, #e6e6e6);
+  background-image: linear-gradient(top, #ffffff, #ffffff 4%, #e6e6e6);
+  text-shadow: #cdcdcd 0 -1px 0;
+  -webkit-box-shadow: inset white 0 0 2px;
+  color: gray; }
+  .flag-button .unflag-action:active {
+    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #9a9a9a), color-stop(4%, #c0c0c0), color-stop(100%, #d4d4d4));
+    background-image: -moz-linear-gradient(top, #9a9a9a, #c0c0c0 4%, #d4d4d4);
+    background-image: linear-gradient(top, #9a9a9a, #c0c0c0 4%, #d4d4d4);
+    -webkit-box-shadow: inset #9a9a9a 0 0 0.5em; }
 
-a.button:active {
-  background-position: 0 100%;
-  -moz-box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.7);
-  -webkit-box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.7);
-  -o-box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.7);
-  box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.7);
-  /* IE only stuff */
-  border-bottom: 0\9;
-  border-top: 1px solid #666666; }
+.flag-button .flag-action {
+  -webkit-box-sizing: border-box;
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.143em;
+  padding: 0 1em;
+  -moz-border-radius: 0.667em;
+  -webkit-border-radius: 0.667em;
+  -o-border-radius: 0.667em;
+  -ms-border-radius: 0.667em;
+  -khtml-border-radius: 0.667em;
+  border-radius: 0.667em;
+  border: 1px solid #895a0e;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #f6d5a0), color-stop(4%, #efb65b), color-stop(100%, #e69717));
+  background-image: -moz-linear-gradient(top, #f6d5a0, #efb65b 4%, #e69717);
+  background-image: linear-gradient(top, #f6d5a0, #efb65b 4%, #e69717);
+  text-shadow: #b87912 0 -1px 0;
+  -webkit-box-shadow: inset white 0 0 2px; }
+  .flag-button .flag-action:active {
+    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #5b3c09), color-stop(4%, #a06910), color-stop(100%, #c68214));
+    background-image: -moz-linear-gradient(top, #5b3c09, #a06910 4%, #c68214);
+    background-image: linear-gradient(top, #5b3c09, #a06910 4%, #c68214);
+    -webkit-box-shadow: inset #5b3c09 0 0 0.5em; }
 
-div.button a:active {
-  background-position: 0 100%;
-  -moz-box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.7);
-  -webkit-box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.7);
-  -o-box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.7);
-  box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.7);
-  /* IE only stuff */
-  border-bottom: 0\9;
-  border-top: 1px solid #666666; }
+#block-eduglu_core-thread_stats {
+  font-size: 90%; }
+  #block-eduglu_core-thread_stats strong {
+    font-size: 110%; }
+  #block-eduglu_core-thread_stats .block-content {
+    color: gray; }
+  #block-eduglu_core-thread_stats a {
+    color: #666666; }
+  #block-eduglu_core-thread_stats img {
+    padding: 0 3px 3px 0; }
 
 .help {
   float: left; }

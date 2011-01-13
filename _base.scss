@@ -7,6 +7,7 @@ $link_color: #000099;
 $new: #FF9A01;
 $author_highlight: #FFFDD2;
 $blank_slate: #C7F2C8;
+$attention_color: #E69717;
 
 $grey20: #333333;
 $grey40: #666666;
@@ -19,3 +20,24 @@ $grey93: #eeeeee;
 $grey95: #F2F2F2;
 $grey98: #FAFAFA;
 $grey99: #FCFCFC;
+
+/* Mixins */
+@mixin buttonize($base_color: $light2, $button_size: 2em) {
+  -webkit-box-sizing: border-box;
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  font-size: $button_size/1.75;
+  padding: 0 $button_size/2;
+  
+  @include border-radius($button_size/3);
+  border: 1px solid darken($base_color, 20%);
+  @include linear-gradient(color-stops(lighten($base_color, 30%), lighten($base_color, 15%) 4%, $base_color));
+  text-shadow: darken($base_color, 10%) 0 -1px 0;
+  -webkit-box-shadow: inset lighten($base_color, 80%) 0 0 2px;
+
+  &:active {
+    @include linear-gradient(color-stops(darken($base_color, 30%), darken($base_color, 15%) 4%, darken($base_color, 7%)));
+    -webkit-box-shadow: inset darken($base_color, 30%) 0 0 .5em;
+  }
+}

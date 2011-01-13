@@ -198,14 +198,22 @@ function dewey_preprocess_comment(&$vars) {
  */
 function dewey_preprocess_box(&$vars) {
   global $user;
+  // Rename to more common text. We need the check as boxes not always comments.
+  // Yes, this is stupid.
+  if ($vars['title'] == 'Post new comment') {
+    $vars['title'] = 'Add comment';
+  }
 
-  // Rename to more common text.
-  $vars['title'] = 'Add comment';
-
-  // Add vars for picture + name.
-  list($user_picture, $user_picture_preset) = dewey_comment_user_picture($user->picture, $user->uid);
-  $vars['user_picture'] = $user_picture;
-  $vars['user_name'] = theme('username', $user);
+  // Add vars for picture + name if this is a comment box.
+  $pos = strpos($vars['content'], 'form');
+  if($pos === FALSE) {
+    // Do nothing
+  }
+  else {
+    list($user_picture, $user_picture_preset) = dewey_comment_user_picture($user->picture, $user->uid);
+    $vars['user_picture'] = $user_picture;
+    $vars['user_name'] = theme('username', $user);
+  }
 }
 
 /**
