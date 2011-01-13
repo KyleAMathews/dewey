@@ -39,6 +39,12 @@ function dewey_preprocess_page(&$vars, $hook) {
     $vars['context_links'] = theme('links', $add_group);
   }
 
+  // If we're in the discussion context, add an add discussion link.
+  if (empty($vars['context_links']) && isset($context['context']['spaces-feature-discussion'])) {
+    $add_discussion = array('add-discussion' => array('title' => t('Add Discussion'), 'href' => 'node/add/story'));
+    $vars['context_links'] = theme('links', $add_discussion);
+  }
+
   // Path to theme
   $vars['path'] = base_path() . path_to_theme() .'/';
   
