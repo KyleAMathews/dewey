@@ -772,3 +772,8 @@ img.float-right {
   background: url(images/vline.png) no-repeat scroll 0 0 transparent;
   margin-left: 0;
   padding-left: 10px; }
+  #sidebar-right .block-apachesolr h2 {
+    font-size: 1em;
+    font-weight: bold;
+    color: inherit;
+    background-color: none; }
