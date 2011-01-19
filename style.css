@@ -777,3 +777,7 @@ img.float-right {
     font-weight: bold;
     color: inherit;
     background: none; }
+
+.view-groups-listing .views-field p {
+  margin: 0;
+  font-size: 81.25%; }
