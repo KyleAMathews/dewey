@@ -780,4 +780,6 @@ img.float-right {
 
 .view-groups-listing .views-field p {
   margin: 0;
-  font-size: 81.25%; }
+  font-size: 87.5%; }
+.view-groups-listing .views-field a {
+  font-size: 112.5%; }
