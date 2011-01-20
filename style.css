@@ -4,9 +4,9 @@
 body {
   background-repeat: no-repeat;
   background-color: #9797a1;
-  background-image: url('images/gradient.jpg?1287805802'), -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(7%, #9797a1), color-stop(75%, #dddce1));
-  background-image: url('images/gradient.jpg?1287805802'), -moz-linear-gradient(bottom, #9797a1 7%, #dddce1 75%);
-  background-image: url('images/gradient.jpg?1287805802'), linear-gradient(bottom, #9797a1 7%, #dddce1 75%); }
+  background-image: url('images/gradient.jpg?1295550629'), -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(7%, #9797a1), color-stop(75%, #dddce1));
+  background-image: url('images/gradient.jpg?1295550629'), -moz-linear-gradient(bottom, #9797a1 7%, #dddce1 75%);
+  background-image: url('images/gradient.jpg?1295550629'), linear-gradient(bottom, #9797a1 7%, #dddce1 75%); }
 
 a {
   color: #183152;
@@ -783,3 +783,8 @@ img.float-right {
   font-size: 87.5%; }
 .view-groups-listing .views-field a {
   font-size: 112.5%; }
+
+.admin-menu #top-stuff {
+  position: relative; }
+.admin-menu #page {
+  margin-top: 21px; }
