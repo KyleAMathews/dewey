@@ -28,14 +28,19 @@ a {
   h4 {
     margin-bottom: 0.5em;
     color: $grey60; } 
-  .tips {
-    display: none; } 
   #comment-form p {
     display: none }
   fieldset {
     background: none; }
   .username {
     float: none; } }
+
+.body-field-wrapper {
+  p {
+    display: none; } }
+
+.tips {
+  display: none; } 
 
 fieldset {
   background-color: $grey95;
@@ -483,7 +488,7 @@ div.vertical-tabs {
   background: #f2f2f2;
   @include linear-gradient(color-stops($grey90, $grey95 70%), bottom);
   .title {
-    margin-top: 5px; } }
+    margin-top: 1px; } }
 
 .tabs {
   ul {
@@ -643,3 +648,6 @@ img {
     position: relative; }
   #page {
     margin-top: 21px; } }
+
+.teaser-checkbox div.form-item {
+  display: none; }

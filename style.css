@@ -30,14 +30,18 @@ a {
   #main .box h4 {
     margin-bottom: 0.5em;
     color: #999999; }
-  #main .box .tips {
-    display: none; }
   #main .box #comment-form p {
     display: none; }
   #main .box fieldset {
     background: none; }
   #main .box .username {
     float: none; }
+
+.body-field-wrapper p {
+  display: none; }
+
+.tips {
+  display: none; }
 
 fieldset {
   background-color: #f2f2f2;
@@ -581,7 +585,7 @@ div.vertical-tabs {
   background-image: -moz-linear-gradient(bottom, #e6e6e6, #f2f2f2 70%);
   background-image: linear-gradient(bottom, #e6e6e6, #f2f2f2 70%); }
   #context-links .title {
-    margin-top: 5px; }
+    margin-top: 1px; }
 
 .tabs {
   margin-top: 8px; }
@@ -799,3 +803,6 @@ img.float-right {
   position: relative; }
 .admin-menu #page {
   margin-top: 21px; }
+
+.teaser-checkbox div.form-item {
+  display: none; }
