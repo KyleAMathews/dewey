@@ -23,7 +23,7 @@ a {
 .node .content {
   clear: both; }
 
-.box {
+#comments .box {
   margin-bottom: 1.5em;
   h4 {
     margin-bottom: 0.5em;
@@ -33,7 +33,9 @@ a {
   #comment-form p {
     display: none }
   fieldset {
-    background: none; } }
+    background: none; }
+  .username {
+    float: none; } }
 
 fieldset {
   background-color: $grey95;
@@ -323,7 +325,8 @@ div.comment-submitted {
   height: 30px;
   text-indent: -900px; }
 
-#comments a.username {
+#comments .username {
+  float: left;
   font-size: 13px;
   font-weight: bold;
   line-height: 30px;

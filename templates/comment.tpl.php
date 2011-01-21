@@ -10,7 +10,7 @@
           <div class="picture grid-1 alpha">
             <?php print $picture ?>
           </div>
-          <div class="username grid-7">
+          <div class="username">
           <?php print theme('username', $comment); ?>
           </div> 
           <div class="date grid-3">
