@@ -23,7 +23,7 @@ a {
 .node .content {
   clear: both; }
 
-#comments .box {
+#main .box {
   margin-bottom: 1.5em;
   h4 {
     margin-bottom: 0.5em;
@@ -306,6 +306,8 @@ div.comment-submitted {
   height: 30px;
   padding: 0 5px 0 0; }
 
+.box,
+.comment-submitted,
 #comments {
   a.user-picture {
     text-indent: 100px;
@@ -325,6 +327,8 @@ div.comment-submitted {
   height: 30px;
   text-indent: -900px; }
 
+.box .username,
+.comment-submitted .username,
 #comments .username {
   float: left;
   font-size: 13px;

@@ -25,18 +25,18 @@ a {
 .node .content {
   clear: both; }
 
-#comments .box {
+#main .box {
   margin-bottom: 1.5em; }
-  #comments .box h4 {
+  #main .box h4 {
     margin-bottom: 0.5em;
     color: #999999; }
-  #comments .box .tips {
+  #main .box .tips {
     display: none; }
-  #comments .box #comment-form p {
+  #main .box #comment-form p {
     display: none; }
-  #comments .box fieldset {
+  #main .box fieldset {
     background: none; }
-  #comments .box .username {
+  #main .box .username {
     float: none; }
 
 fieldset {
@@ -336,12 +336,16 @@ div.comment-submitted {
   height: 30px;
   padding: 0 5px 0 0; }
 
+.box a.user-picture,
+.comment-submitted a.user-picture,
 #comments a.user-picture {
   text-indent: 100px;
   overflow: hidden;
   display: block;
   background-repeat: no-repeat;
   height: 30px; }
+.box div.picture,
+.comment-submitted div.picture,
 #comments div.picture {
   float: left;
   margin: 0 10px 0 0;
@@ -354,6 +358,8 @@ div.comment-submitted {
   height: 30px;
   text-indent: -900px; }
 
+.box .username,
+.comment-submitted .username,
 #comments .username {
   float: left;
   font-size: 13px;
@@ -362,6 +368,8 @@ div.comment-submitted {
   vertical-align: baseline;
   text-decoration: none;
   color: #183152; }
+  .box .username:hover,
+  .comment-submitted .username:hover,
   #comments .username:hover {
     text-decoration: underline; }
 
