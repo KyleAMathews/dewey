@@ -356,6 +356,10 @@ div.comment-submitted {
   height: 30px;
   width: 30px; }
 
+.page-search .box .picture,
+.page-search .box .username {
+  display: none; }
+
 .views-field-picture .user-picture {
   display: block;
   width: 30px;
