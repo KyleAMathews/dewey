@@ -1,5 +1,5 @@
 name = "Dewey"
-version = "6.x-1.0-alpha7"
+version = "6.x-1.0-alpha8"
 description = "Eduglu's default theme."
 core = "6.x"
 engine = "phptemplate"
