@@ -1,0 +1,369 @@
+@charset "UTF-8";
+/** Color Scheme **/
+/* Mixins */
+/* Glass color can be taken from the profile drop down. The technique used to produce the color there
+  is unfortuantely not replicatable (afaik) on the your groups drop down hence this kludge */
+#top-stuff {
+  color: #cadffc;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 12; }
+
+#top-bar-outer {
+  display: block;
+  height: 40px;
+  position: relative;
+  text-align: center;
+  width: 100%; }
+
+#top-bar-bg {
+  -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
+  background-repeat: no-repeat;
+  background-color: #4b71a1;
+  background-image: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(7%, #1b3557), color-stop(75%, #4b71a1));
+  background-image: -moz-linear-gradient(bottom, #1b3557 7%, #4b71a1 75%);
+  background-image: linear-gradient(bottom, #1b3557 7%, #4b71a1 75%);
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%; }
+
+#top-bar {
+  margin-bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  max-width: 1120px;
+  min-width: 1000px;
+  text-align: left; }
+  #top-bar .top-bar-inside {
+    margin-bottom: 0;
+    margin-left: 85px;
+    margin-right: 40px;
+    margin-top: 0;
+    max-width: 970px;
+    min-width: 920px;
+    position: relative; }
+  #top-bar .static-links {
+    float: left; }
+
+#logo {
+  float: left; }
+  #logo a {
+    height: 40px;
+    margin-right: 5px;
+    text-indent: -9999px;
+    width: 140px; }
+
+#logo-image {
+  margin-top: 6px; }
+
+#top-bar .static-links form {
+  float: left; }
+#top-bar #search-form {
+  float: left;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 6px;
+  opacity: 1;
+  position: relative; }
+  #top-bar #search-form span.glass {
+    cursor: pointer;
+    display: block;
+    margin-bottom: 0;
+    margin-left: 224px;
+    margin-right: 0;
+    margin-top: 1px;
+    padding-bottom: 5px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 6px;
+    position: absolute;
+    right: 0; }
+    #top-bar #search-form span.glass i {
+      background-image: url("images/search.png");
+      background-position: -224px -96px;
+      display: block;
+      font-size: 0;
+      height: 14px;
+      width: 14px; }
+  #top-bar #search-form .form-text {
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: 0px 1px 0px #5e7ca1;
+    -moz-box-shadow: 0px 1px 0px #5e7ca1;
+    box-shadow: 0px 1px 0px #5e7ca1;
+    background-color: #5e7ca1;
+    border: 1px solid #3d270b;
+    color: #cadffc;
+    font-family: Arial,sans-serif;
+    font-size: 13px;
+    padding-bottom: 4px;
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-top: 6px;
+    width: 240px; }
+    #top-bar #search-form .form-text:focus, #top-bar #search-form .form-text:hover {
+      background-color: #7e96b4;
+      color: #fafcff; }
+
+#global-nav {
+  float: left;
+  margin-left: 8px; }
+
+#top-bar ul {
+  float: left;
+  list-style-type: none;
+  margin: 0; }
+  #top-bar ul li {
+    float: left;
+    margin: 0;
+    padding: 0; }
+    #top-bar ul li a {
+      color: #cadffc;
+      display: block;
+      font-weight: normal;
+      padding-bottom: 10px;
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-top: 10px; }
+
+#group-settings #group-settings-dropdown ul li a {
+  color: #cadffc;
+  display: block;
+  font-weight: normal;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px; }
+
+#global-nav li a {
+  margin-right: 1px; }
+  #global-nav li a:hover {
+    color: #fafcff; }
+
+#session, #your-groups {
+  cursor: pointer;
+  float: right;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  padding-right: 18px;
+  padding-top: 10px;
+  vertical-align: top; }
+
+#session #screen-name, #your-groups #your-groups-label, #login-top-bar {
+  color: #cadffc;
+  cursor: pointer;
+  font-weight: normal; }
+
+#session:hover #screen-name, #session.active #screen-name {
+  color: #fafcff; }
+
+#your-groups:hover #your-groups-label, #your-groups.active #your-groups-label {
+  color: #fafcff; }
+
+.down-arrow {
+  color: #cadffc;
+  font-size: 80%; }
+
+#session:hover .down-arrow, #session.active .down-arrow {
+  color: #fafcff; }
+
+#your-groups:hover .down-arrow, #your-groups.active .down-arrow {
+  color: #fafcff; }
+
+#top-bar #session:hover, #top-bar #session.active {
+  background: rgba(255, 255, 255, 0.1); }
+
+#your-groups:hover, #your-groups.active {
+  background: rgba(255, 255, 255, 0.1); }
+
+#session img {
+  cursor: pointer;
+  display: inline-block;
+  height: 20px;
+  margin-right: 6px;
+  margin-top: -4px;
+  vertical-align: middle;
+  width: 20px; }
+
+#top-bar .vr {
+  border-left: 1px solid #678bb8;
+  border-right: 1px solid #2b405b;
+  display: block;
+  float: right;
+  height: 26px;
+  margin-bottom: 1px;
+  margin-left: 3px;
+  margin-right: 3px;
+  margin-top: 6px; }
+#top-bar ul.profile-dropdown {
+  -webkit-border-bottom-right-radius: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+  -moz-border-radius-bottomright: 5px;
+  -moz-border-radius-bottomleft: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.6);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.6);
+  clear: both;
+  display: none;
+  position: absolute;
+  padding: 0;
+  top: 40px;
+  z-index: 0; }
+
+#your-groups-dropdown {
+  -webkit-border-bottom-right-radius: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+  -moz-border-radius-bottomright: 5px;
+  -moz-border-radius-bottomleft: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.6);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.6);
+  clear: both;
+  display: none;
+  position: absolute;
+  padding: 0;
+  top: 40px;
+  z-index: 0; }
+
+#group-settings-dropdown {
+  -webkit-border-bottom-right-radius: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+  -moz-border-radius-bottomright: 5px;
+  -moz-border-radius-bottomleft: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.6);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.6);
+  clear: both;
+  display: none;
+  position: absolute;
+  padding: 0;
+  top: 40px;
+  z-index: 0;
+  top: 46px;
+  margin-left: 5px; }
+
+#group-settings #group-settings-dropdown ul {
+  margin: 0;
+  border-top: 1px solid #1b3557;
+  -webkit-border-bottom-right-radius: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+  -moz-border-radius-bottomright: 5px;
+  -moz-border-radius-bottomleft: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px; }
+#group-settings #group-settings-dropdown li a {
+  float: none;
+  margin: 0;
+  min-width: 0;
+  background: none;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  border: 0;
+  text-align: left; }
+#group-settings .group-settings-down-arrow {
+  font-size: 80%; }
+#group-settings.active ul li a {
+  background-color: #314867;
+  color: white; }
+  #group-settings.active ul li a:hover {
+    background-color: #314867; }
+
+#top-bar ul.profile-dropdown, #group-settings-dropdown ul.links {
+  width: 150px;
+  right: 0;
+  background-color: #1b3557; }
+
+#your-groups-dropdown {
+  right: 10px;
+  background-color: #314867; }
+  #your-groups-dropdown ul li {
+    clear: both;
+    text-decoration: none;
+    display: block; }
+    #your-groups-dropdown ul li a {
+      padding: 6px 15px;
+      text-decoration: none;
+      width: 469px; }
+    #your-groups-dropdown ul li a:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fafcff; }
+  #your-groups-dropdown hr {
+    border-top: 1px solid #678bb8;
+    border-bottom: 1px solid #2b405b;
+    border-left: none;
+    border-right: none;
+    margin: 0; }
+
+.your-groups-links {
+  width: 100%; }
+  .your-groups-links a {
+    color: #cadffc;
+    font-size: 150%;
+    padding: 6px 15px; }
+
+.create-new-group {
+  color: #cadffc;
+  font-size: 150%;
+  padding: 6px 15px; }
+
+.your-groups-links a:hover, .create-new-group:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fafcff;
+  text-decoration: none; }
+
+.your-groups-container {
+  overflow: auto;
+  min-height: 150px;
+  max-height: 350px;
+  margin-top: 10px; }
+
+#top-bar ul.profile-dropdown li, #group-settings #group-settings-dropdown li {
+  background: rgba(255, 255, 255, 0.1);
+  clear: both;
+  display: block;
+  width: 100%; }
+
+#top-bar ul.profile-dropdown li a, #top-bar ul.profile-dropdown li h2 {
+  background-image: none;
+  text-decoration: none;
+  clear: both;
+  display: block;
+  padding: 6px 15px;
+  width: 120px; }
+
+#group-settings #group-settings-dropdown ul li a {
+  background-image: none;
+  text-decoration: none;
+  clear: both;
+  display: block;
+  padding: 6px 15px;
+  width: 120px; }
+
+#top-bar ul.profile-dropdown a:hover, #group-settings #group-settings-dropdown li a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fafcff; }
+
+#login-top-bar {
+  float: right;
+  padding: 10px 18px 10px 15px; }
+
+.admin-menu #top-bar {
+  position: relative; }
+.admin-menu #page {
+  margin-top: 41px; }

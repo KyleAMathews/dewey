@@ -3,13 +3,14 @@
 
 body {
   background-repeat: no-repeat;
-  background-color: #9797a1;
-  @include linear-gradient(color-stops(#9797a1 7%, #dddce1 75%), bottom, image-url('gradient.jpg')); }
+  background-color: $body_gradient_base;
+  @include linear-gradient(color-stops($body_gradient_base 7%, lighten($body_gradient_base, 10%) 75%), bottom); }
 
 a {
-  &:hover {
-    text-decoration: underline; }
-  color: $dark;
+  &:hover, &:active, &:focus {
+    text-decoration: underline;
+    color: $darker; }
+  color: $darkest;
   text-decoration: none; }
 
 .node a, .comment a {
@@ -61,7 +62,7 @@ fieldset {
   background: white;
   float: left;
   border-top: 1px solid $dark;
-  @include box-shadow(#888, 7px, 7px, 14px); }
+  @include box-shadow(desaturate($darker, 10%), 7px, 7px, 21px); }
 
 #feature-tabs {
   margin-top: -1em;
@@ -75,7 +76,7 @@ fieldset {
     li {
       padding: 0;
       a {
-        background: $dark;
+        background: $darkest;
         padding: 1px 5px 0;
         float: left;
         text-align: center;
@@ -83,21 +84,21 @@ fieldset {
         margin-left: 5px;
         min-width: 65px;
         text-decoration: none;
-        color: white;
+        color: lighten($lightest, 50%);
         @include border-top-radius(5px);
-        @include border-bottom-radius(0); }
-      &.active a {
-        background: $grey95;
-        color: $dark;
+        @include border-bottom-radius(0);
+      &.active {
+        background: lighten($other_gradients_base, 10%);
+        color: $darkest;
         border-top: 1px solid $dark;
         border-right: 1px solid $dark;
         border-left: 1px solid $dark; }
-      a:hover {
-        background: $dark_hover;
-        color: white; }
-      &.active a:hover {
-        background: $grey95;
-        color: $dark; } } } }
+      &:hover {
+        background: lighten($darkest, 10%);
+        color: lighten($lightest, 60%);
+        &.active {
+          background: lighten($other_gradients_base, 10%);
+          color: $darkest; } } } } } }
 
 #breadcrumb {
   margin: -1em 0 1em 0;
@@ -148,30 +149,6 @@ fieldset {
     color: black;
     text-decoration: none; } }
 
-#ayour-groups-dropdown {
-  background: white;
-  position: absolute;
-  left: 24px;
-  top: 23px;
-  display: none;
-  z-index: 101;
-  padding: 15px;
-  border: 5px solid $dark;
-  p {
-    margin: 7px 0 0 0; }
-  h2 {
-    margin-bottom: 0; }
-  hr {
-    margin-top: 0; }
-  a {
-    color: $light2;
-    text-decoration: none;
-    display: block;
-    padding: 3px;
-    &:hover {
-      background: $dark;
-      color: white; } } }
-
 .create-new-group {
   font-size: 110%; }
 
@@ -195,9 +172,10 @@ h4.node-title, h3.node-title, h2.node-title {
   margin-bottom: 0;
   a {
     text-decoration: none;
-    color: $dark;
+    color: $darkest;
     &:hover {
-      text-decoration: underline; } } }
+      text-decoration: underline;
+      color: $darker; } } }
 
 .node-submitted {
   display: table-cell;
@@ -206,7 +184,7 @@ h4.node-title, h3.node-title, h2.node-title {
   font-size: 12px;
   float: left;
   a {
-    color: $light2;
+    color: $darker;
     text-decoration: none;
     &:hover {
       text-decoration: underline; } } }
@@ -215,7 +193,7 @@ h4.node-title, h3.node-title, h2.node-title {
   margin-top: -70px;
   a {
     text-decoration: none;
-    color: $light2; } }
+    color: $lighter; } }
 
 .conversation-teaser a:hover {
   text-decoration: underline; }
@@ -256,9 +234,9 @@ ul.links {
     padding: 0; }
   a {
     text-decoration: none;
-    color: $light2;
+    color: $lighter;
     &:hover {
-      color: $light2; } } }
+      color: $lighter; } } }
 
 /* User Pictures + submitted stuff in comments */
 
@@ -414,6 +392,9 @@ a.button, div.button a {
   ul {
     margin-bottom: 0; } }
 
+.marker, .form-required {
+    color: $attention_color;
+}
 
 /** Recent activity **/
 
@@ -441,9 +422,9 @@ a.button, div.button a {
     color: $grey50; } }
 
 .activity-item-group-name {
-  color: $light2;
+  color: $lighter;
   a {
-    color: $light2; } }
+    color: $lighter; } }
 
 .activity-body {
   display: none; }
@@ -490,7 +471,7 @@ div.vertical-tabs {
   margin-bottom: 2em;
   height: 22px;
   background: #f2f2f2;
-  @include linear-gradient(color-stops($grey90, $grey95 70%), bottom);
+  @include linear-gradient(color-stops($other_gradients_base, lighten($other_gradients_base, 10%) 70%), bottom);
   .title {
     margin-top: 1px; } }
 
@@ -545,13 +526,13 @@ h.tabs ul.primary li.active a:hover {
   @include border-radius(10px);
   a.active {
     color: white;
-    background-color: $light2;
+    background-color: $lighter;
     border: none;
     padding: 4px 9px;
     @include border-radius(10px);
     &:hover {
       color: white;
-      background-color: $light2;
+      background-color: $lighter;
       border: none;
       padding: 4px 9px;
       @include border-radius(10px); } } }
@@ -603,11 +584,77 @@ span {
   text-align: center;
   background-color: window; }
 
-/* Table overrides */
+/**
+ * Tables.
+ */
+
+table {
+  width: 100%;
+  xfont-size: 12px;
+  margin: 0 0 10px;
+  td, th {
+    vertical-align: middle;
+    padding: 8px 10px;
+    border: 0; } }
+
+tr {
+  &.even {
+    background: lighten($lightest, 45%);
+    border: none; }
+  &.odd {
+    background: #fff;
+    border: none; }
+  &.drag {
+    background: #fe7; }
+  &.drag-previous {
+    background: #ffb; } }
+
+table {
+  th {
+    xfont-size: 12px;
+    background: lighten($comp_lightest, 35%);
+    font-weight: normal;
+    padding: 3px 10px;
+    &.active {
+      background: $darker;
+      a {
+        color: lighten($lightest, 55%);
+        &:hover, &:active, &:focus {
+          color: lighten($lightest, 65%); } } }
+    a {
+      display: block;
+      position: relative;
+      color: $darker;
+      &:hover, &:active, &:focus {
+        color: $darkest; }
+      }
+    &.active img {
+      position: absolute;
+      top: 3px;
+      right: 3px; } }
+  td.active {
+    background: lighten($lightest, 35%); }
+  tr {
+    &.odd td.active {
+      background: lighten($lightest, 45%); }
+    &.selected td {
+      &.active {
+        background: #ffc; }
+      background: #ffc; } }
+  &.system-status-report tr {
+    &.ok td {
+      background-color: #dfd; }
+    &.info td {
+      background-color: #bdf; }
+    &.warning td {
+      background-color: #ffd; }
+    &.error td {
+      background-color: #fdd; } } }
 
 tr {
   &.odd .form-item, &.even .form-item {
     max-width: 100%; } }
+
 
 .ahah-progress {
   height: 26px;

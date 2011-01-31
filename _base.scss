@@ -1,11 +1,24 @@
 /** Color Scheme **/
-$dark: #183152;
-$dark_hover: #304664;
-$light2: #4F76A9;
-$link_color: #000099;
+$darkest: #0B213D;
+$darker: #1F3044;
+$dark: #1B3557;
+$lighter: #4B71A1;
+$lightest: #5E7CA1;
+
+$comp_darkest: complement($darkest);
+$comp_darker: complement($darker);
+$comp_dark: complement($dark);
+$comp_lighter: complement($lighter);
+$comp_lightest: complement($lightest);
+
+$body_gradient_base: lighten(desaturate($lightest, 30%), 25%);
+$other_gradients_base: lighten(desaturate($lightest, 50%), 40%);
+$link_color: $darkest;
+
+$var: lightness($lighter);
 
 $new: #FF9A01;
-$author_highlight: #FFFDD2;
+$author_highlight: adjust_hue(lighten($comp_lightest, 40%), 90deg);
 $blank_slate: #C7F2C8;
 $attention_color: #E69717;
 
@@ -22,7 +35,7 @@ $grey98: #FAFAFA;
 $grey99: #FCFCFC;
 
 /* Mixins */
-@mixin buttonize($base_color: $light2, $button_size: 2em) {
+@mixin buttonize($base_color: $comp_lighter, $button_size: 2em) {
   -webkit-box-sizing: border-box;
   display: inline-block;
   color: #fff;
@@ -39,5 +52,8 @@ $grey99: #FCFCFC;
   &:active {
     @include linear-gradient(color-stops(darken($base_color, 30%), darken($base_color, 15%) 4%, darken($base_color, 7%)));
     -webkit-box-shadow: inset darken($base_color, 30%) 0 0 .5em;
+  }
+  &:hover {
+    color: #fff;
   }
 }
