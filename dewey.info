@@ -3,13 +3,18 @@ version = "6.x-1.0-alpha8"
 description = "Eduglu's default theme."
 core = "6.x"
 engine = "phptemplate"
-base theme = ninesixty 
 
 scripts[] = dewey.js
+
+; Stylesheets. Anything within the "framework" folder will be placed before all others.
+stylesheets[all][] = styles/framework/reset.css
+stylesheets[all][] = styles/framework/text.css
+stylesheets[all][] = styles/framework/960.css
 
 stylesheets[screen][] = "typography.css"
 stylesheets[screen][] = "form.css"
 stylesheets[screen][] = "style.css"
+stylesheets[all][]   = top_bar.css
 
 regions[left] = "Left sidebar"
 regions[right] = "Right sidebar"
