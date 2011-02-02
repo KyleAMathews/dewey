@@ -857,3 +857,7 @@ img.float-right {
 
 .teaser-checkbox div.form-item {
   display: none; }
+
+/* Hide the "Disable rich-text link" */
+.wysiwyg-toggle-wrapper {
+  display: none; }
