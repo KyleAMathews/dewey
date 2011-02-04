@@ -85,8 +85,7 @@ div.print-header {
   font-family: Arial, sans-serif;
   clear:both;
   border-bottom:1pt solid #ccc;
-  padding: 0pt 0pt 10pt;
-  margin: 0pt 0pt 10pt;
+  margin: 0pt 0pt 20pt;
   line-height:20pt;
   }
 
@@ -189,3 +188,7 @@ table td {
     border:5pt solid #eee;
     }
 }
+
+.meta-info em {
+  display: block;
+  margin: -12.5pt 0 20pt 0; }

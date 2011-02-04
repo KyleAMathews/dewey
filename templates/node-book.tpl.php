@@ -1,7 +1,7 @@
 <div id="node-<?php print $node->nid; ?>" class="container node<?php if ($sticky) { print ' sticky'; } ?><?php if (!$status) { print ' node-unpublished'; } ?> clear-block">
-
   <div class="meta grid-10 clear-block">
     <div class="grid-8 omega meta-info">
+      <?php if ($title && $print): ?><h2><?php print $title ?></h2><?php endif; ?>
       <?php if ($last_changed): ?>
         <?php print $last_changed; ?>
       <?php endif; ?>
@@ -13,7 +13,7 @@
   </div>
 
   <div class="content clear-block">
-    <?php print $content ?>
+    <div class="prose"><?php print $content ?></div>
     <?php if (!empty($post_object)) print $post_object ?>
 
   </div>

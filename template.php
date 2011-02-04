@@ -175,6 +175,7 @@ function dewey_preprocess_node(&$vars) {
   // Add print customizations
   if (isset($_GET['print'])) {
     $vars['post_object'] = dewey_print_book_children($vars['node']);
+    $vars['print'] = TRUE;
   }
 
   // Stick with node.tpl.php, not node-og-group-post
@@ -284,7 +285,7 @@ function dewey_comment_wrapper($content, $node) {
   $output = '';
 
   if ($node = menu_get_object()) {
-    if ($node->type != 'forum') {
+    if (!in_array($node->type, array('forum', 'book'))) {
       $count = $node->comment_count .' '. format_plural($node->comment_count, 'comment', 'comments');
       $count = ($count > 0) ? $count : 'No comments';
       $output .= '<h4 id="comment-number">'. $count .'</h4>';
