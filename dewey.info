@@ -14,7 +14,8 @@ stylesheets[all][] = styles/framework/960.css
 stylesheets[screen][] = "typography.css"
 stylesheets[screen][] = "form.css"
 stylesheets[screen][] = "style.css"
-stylesheets[all][]   = top_bar.css
+stylesheets[print][] = "print.css"
+stylesheets[screen][]   = top_bar.css
 
 regions[left] = "Left sidebar"
 regions[right] = "Right sidebar"
