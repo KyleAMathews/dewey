@@ -13,6 +13,14 @@ function dewey_theme() {
     'path' => drupal_get_path('theme', 'dewey') .'/templates',
   );
 
+  // Print friendly page headers.
+  $items['print_header'] = array(
+    'arguments' => array(),
+    'template' => 'print-header',
+    'path' => drupal_get_path('theme', 'dewey') .'/templates',
+  );
+
+
   return $items;
 }
 
@@ -22,10 +30,31 @@ function dewey_theme() {
 function dewey_preprocess_page(&$vars, $hook) {
   global $user;
   $space = spaces_get_space();
-  //print_r($space);
   $context = context_get();
   $vars['space'] = $space;
   $vars['context'] = $context;
+
+  // Replace screen/all stylesheets with print
+  // We want a minimal print representation here for full control.
+  if (isset($_GET['print'])) {
+    $css = drupal_add_css();
+    unset($css['all']);
+    unset($css['screen']);
+    $css['all'] = $css['print'];
+    $vars['styles'] = drupal_get_css($css);
+
+    // Add print header
+    $vars['print_header'] = theme('print_header');
+
+    // Replace all body classes
+    $attr['class'] = 'print';
+
+    // Use print template
+    $vars['template_file'] = 'print-page';
+
+    // Suppress devel output
+    $GLOBALS['devel_shutdown'] = FALSE;
+  }
   
   // If user is not a member of the group, add an "Join group" button.
   if (!empty($space) && ($space->controllers->variable->space_type == "og") && !in_array($space->id, array_keys($user->og_groups))) {
@@ -143,6 +172,11 @@ function dewey_preprocess_node(&$vars) {
   global $user;
   $node = $vars['node'];
 
+  // Add print customizations
+  if (isset($_GET['print'])) {
+    $vars['post_object'] = dewey_print_book_children($vars['node']);
+  }
+
   // Stick with node.tpl.php, not node-og-group-post
   $key = array_search('node-og-group-post', $vars['template_files']);
   if ($key !== FALSE) {
@@ -169,6 +203,18 @@ function dewey_preprocess_node(&$vars) {
   else {
     $vars['new_comment_count'] = "";
   }
+}
+
+/**
+ * Preprocessor for theme_print_header().
+ */
+function dewey_preprocess_print_header(&$vars) {
+  $vars = array(
+    'base_path' => base_path(),
+    'theme_path' => base_path() .'/'. path_to_theme(),
+    'site_name' => variable_get('site_name', 'Drupal'),
+  );
+  $count ++;
 }
 
 /*
@@ -392,6 +438,56 @@ function dewey_comment_user_picture($picture, $uid) {
     $picture = l("k", $path, array('attributes' => $attr,
                              'purl' => array('disabled' => true)));
     return array($picture, $preset);
+  }
+}
+
+/**
+ * Print all child pages of a book.
+ */
+function dewey_print_book_children($node) {
+  // We use a semaphore here since this function calls and is called by the
+  // node_view() stack so that it may be called multiple times for a single book tree.
+  static $semaphore;
+
+  if (module_exists('book') && book_type_is_allowed($node->type)) {
+    if (isset($_GET['print']) && isset($_GET['book_recurse']) && !isset($semaphore)) {
+      $semaphore = TRUE;
+
+      $child_pages = '';
+      $zomglimit = 0;
+      $tree = array_shift(book_menu_subtree_data($node->book));
+      if (!empty($tree['below'])) {
+        foreach ($tree['below'] as $link) {
+          _dewey_print_book_children($link, $child_pages, $zomglimit);
+        }
+      }
+
+      unset($semaphore);
+
+      return $child_pages;
+    }
+  }
+
+  return '';
+}
+
+/**
+ * Book printing recursion.
+ */
+function _dewey_print_book_children($link, &$content, &$zomglimit, $limit = 500) {
+  if ($zomglimit < $limit) {
+    $zomglimit++;
+    if (!empty($link['link']['nid'])) {
+      $node = node_load($link['link']['nid']);
+      if ($node) {
+        $content .= node_view($node);
+      }
+      if (!empty($link['below'])) {
+        foreach ($link['below'] as $child) {
+          _dewey_print_book_children($child, $content);
+        }
+      }
+    }
   }
 }
 
