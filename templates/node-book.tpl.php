@@ -14,6 +14,8 @@
 
   <div class="content clear-block">
     <?php print $content ?>
+    <?php if (!empty($post_object)) print $post_object ?>
+
   </div>
   
   <?php

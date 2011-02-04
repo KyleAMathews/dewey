@@ -463,7 +463,6 @@ function dewey_print_book_children($node) {
       }
 
       unset($semaphore);
-
       return $child_pages;
     }
   }
