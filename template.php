@@ -183,7 +183,13 @@ function dewey_preprocess_node(&$vars) {
   if ($key !== FALSE) {
     $vars['template_files'][$key] = NULL;
   }
- 
+
+  // Remove flag toggle on node page views.
+  if ($vars['page']) {
+    $parts = explode('&bull;', $vars['submitted']);
+    unset($parts[2]);
+    $vars['submitted'] = implode('&bull;', $parts);
+  }
   // Remove the comment count from node teasers.
   $new_links = array();
   if (!empty($vars['node']->links)) {
@@ -346,6 +352,7 @@ function dewey_node_submitted($node) {
     $time = "on " . format_date($node->created, 'custom', "j M Y");
   }
   $group_str = trim($group_str, ", ");
+
   return t('In !group_name by !username <span class="date">!datetime</span> &bull; @replies &bull; !follow',
     array(
       '!group_name' => $group_str,

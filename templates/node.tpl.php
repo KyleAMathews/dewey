@@ -8,7 +8,7 @@
       <h3 class="node-title grid-8 alpha"><a href="<?php print $node_url ?>" title="<?php print $title ?>"><?php print $title ?></a></h3>
       <div class="new-comment-count grid-2 omega"><?php print $new_comment_count; ?></div>
     <?php endif; ?>
-    <?php if ($submitted && !$page): ?>
+    <?php if ($submitted): ?>
       <div class="node-submitted clear-block"><?php print $submitted ?></div>
     <?php endif; ?>
     <div class="content clear-block">
