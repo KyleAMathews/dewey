@@ -114,7 +114,7 @@ fieldset {
         -khtml-border-bottom-right-radius: 0;
         border-bottom-right-radius: 0; }
         #feature-tabs ul li a.active {
-          background: white;
+          background: #fafafa;
           color: #0b213d;
           border-top: 1px solid #1b3557;
           border-right: 1px solid #1b3557;
@@ -572,9 +572,9 @@ div.vertical-tabs {
   margin-bottom: 2em;
   height: 22px;
   background: #f2f2f2;
-  background-image: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(0%, #e6e6e6), color-stop(70%, #ffffff));
-  background-image: -moz-linear-gradient(bottom, #e6e6e6, #ffffff 70%);
-  background-image: linear-gradient(bottom, #e6e6e6, #ffffff 70%); }
+  background-image: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(0%, #e6e6e6), color-stop(70%, #fafafa));
+  background-image: -moz-linear-gradient(bottom, #e6e6e6, #fafafa 70%);
+  background-image: linear-gradient(bottom, #e6e6e6, #fafafa 70%); }
   #context-links .title {
     margin-top: 1px; }
 

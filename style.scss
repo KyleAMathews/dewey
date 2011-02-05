@@ -88,7 +88,7 @@ fieldset {
         @include border-top-radius(5px);
         @include border-bottom-radius(0);
       &.active {
-        background: lighten($other_gradients_base, 10%);
+        background: lighten($other_gradients_base, 8%);
         color: $darkest;
         border-top: 1px solid $dark;
         border-right: 1px solid $dark;
@@ -471,7 +471,7 @@ div.vertical-tabs {
   margin-bottom: 2em;
   height: 22px;
   background: #f2f2f2;
-  @include linear-gradient(color-stops($other_gradients_base, lighten($other_gradients_base, 10%) 70%), bottom);
+  @include linear-gradient(color-stops($other_gradients_base, lighten($other_gradients_base, 8%) 70%), bottom);
   .title {
     margin-top: 1px; } }
 
