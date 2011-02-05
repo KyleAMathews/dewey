@@ -706,3 +706,9 @@ img {
 /* Hide the "Disable rich-text link" */
 .wysiwyg-toggle-wrapper {
   display: none; }
+
+@media screen and (max-width: 1024px) {
+  #top-bar .active-links {
+    float: left;
+    margin-left: 50px; }
+}
