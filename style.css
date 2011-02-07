@@ -866,3 +866,9 @@ img.float-right {
   #top-bar .active-links {
     float: left;
     margin-left: 50px; } }
+ul.node-terms {
+  list-style-type: none;
+  display: inline;
+  padding: 0; }
+  ul.node-terms li {
+    display: inline; }

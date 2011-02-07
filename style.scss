@@ -712,3 +712,10 @@ img {
     float: left;
     margin-left: 50px; }
 }
+
+ul.node-terms {
+  list-style-type: none;
+  display: inline;
+  padding: 0;
+  li {
+    display: inline; } }
