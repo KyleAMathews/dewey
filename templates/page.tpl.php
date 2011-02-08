@@ -102,15 +102,15 @@
         <?php endif; ?>
       </div>
       
-      <div id="footer">
+      <div id="footer" class="grid-16">
         <?php if ($footer): ?>
-          <div id="footer-region" class="grid-16 clear-block">
+          <div id="footer-region" class="clear-block">
             <?php print $footer; ?>
           </div>
         <?php endif; ?>
     
         <?php if ($footer_message): ?>
-          <div id="footer-message" class="grid-14">
+          <div id="footer-message">
             <?php print $footer_message; ?>
           </div>
         <?php endif; ?>
