@@ -117,7 +117,7 @@
             <?php endif; ?>
             <?php if ($footer3): ?>
               <div id="footer3" class="grid-2">
-                <?php print $footer1; ?>
+                <?php print $footer3; ?>
               </div>
             <?php endif; ?>
           </div>
