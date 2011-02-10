@@ -91,7 +91,7 @@
       
   
       <?php if ($left): ?>
-        <div id="sidebar-left" class="sidebar grid-4 <?php print ns('pull-12', $right, 3); ?>">
+        <div id="sidebar-left" class="sidebar grid-4 <?php print ns('pull-11', $right, 3); ?>">
           <?php print $left; ?>
         </div>
       <?php endif; ?>
@@ -102,13 +102,26 @@
         <?php endif; ?>
       </div>
       
-      <div id="footer" class="grid-16">
-        <?php if ($footer): ?>
-          <div id="footer-region" class="clear-block">
-            <?php print $footer; ?>
+      <div id="footer" class="clear-block">
+        <?php if ($footer1 || $footer2 || $footer3): ?>
+          <div id="footer-regions" class="clear-block">
+            <?php if ($footer1): ?>
+              <div id="footer1" class="grid-2 prefix-4 suffix-1">
+                <?php print $footer1; ?>
+              </div>
+            <?php endif; ?>
+            <?php if ($footer2): ?>
+              <div id="footer2" class="grid-2 suffix-1">
+                <?php print $footer2; ?>
+              </div>
+            <?php endif; ?>
+            <?php if ($footer3): ?>
+              <div id="footer3" class="grid-2">
+                <?php print $footer1; ?>
+              </div>
+            <?php endif; ?>
           </div>
         <?php endif; ?>
-    
         <?php if ($footer_message): ?>
           <div id="footer-message">
             <?php print $footer_message; ?>

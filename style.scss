@@ -123,10 +123,29 @@ fieldset {
   .views-field-timestamp {
     font-size: 75%; } }
 
+#footer {
+  background-color: $grey95;
+  width: 960px;
+  float: left; }
+
+#footer-regions {
+  padding: 2em 0;
+  .block {
+    margin-bottom: 0; }
+  h2 {
+    font-size: 1em;
+    font-style: bolder;
+    color: $darkest; }
+  p {
+    font-size: .8em;
+    margin-bottom: 0; }
+  a {
+    color: $lighter; } }
+
 #footer-message {
   text-align: center;
   padding: 5px;
-  border-top: 1px solid $dark; }
+  border-top: 1px solid $grey87; }
 
 /** Pagers **/
 

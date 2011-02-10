@@ -149,10 +149,29 @@ fieldset {
   .view-recent-discussion-comments ul .views-field-timestamp, .view-recent-poll-comments ul .views-field-timestamp {
     font-size: 75%; }
 
+#footer {
+  background-color: #f2f2f2;
+  width: 960px;
+  float: left; }
+
+#footer-regions {
+  padding: 2em 0; }
+  #footer-regions .block {
+    margin-bottom: 0; }
+  #footer-regions h2 {
+    font-size: 1em;
+    font-style: bolder;
+    color: #0b213d; }
+  #footer-regions p {
+    font-size: .8em;
+    margin-bottom: 0; }
+  #footer-regions a {
+    color: #4b71a1; }
+
 #footer-message {
   text-align: center;
   padding: 5px;
-  border-top: 1px solid #1b3557; }
+  border-top: 1px solid #dddddd; }
 
 /** Pagers **/
 .item-list .pager li, .pager li a {
