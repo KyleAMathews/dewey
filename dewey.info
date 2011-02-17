@@ -8,7 +8,6 @@ scripts[] = dewey.js
 
 ; Stylesheets. Anything within the "framework" folder will be placed before all others.
 stylesheets[all][] = styles/framework/reset.css
-stylesheets[all][] = styles/framework/text.css
 stylesheets[all][] = styles/framework/960.css
 
 stylesheets[screen][] = "typography.css"
