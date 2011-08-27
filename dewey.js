@@ -22,4 +22,14 @@ if (Drupal.jsEnabled) {
       $(".tipsy").fadeOut();
     });
   }
+  // prevent double-click on submit
+  $('input[type=submit]').click(function(){
+    if($.data(this, 'clicked')){
+      return false;
+    }
+    else{
+      $.data(this, 'clicked', true);
+      return true;
+    }
+  });
 }
