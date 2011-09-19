@@ -1,11 +1,13 @@
-@charset "UTF-8";
 /** Color Scheme **/
 /* Mixins */
 body {
   background-repeat: no-repeat;
   background-color: #bfbfbf;
   background-image: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(7%, #bfbfbf), color-stop(75%, #d9d9d9));
+  background-image: -webkit-linear-gradient(bottom, #bfbfbf 7%, #d9d9d9 75%);
   background-image: -moz-linear-gradient(bottom, #bfbfbf 7%, #d9d9d9 75%);
+  background-image: -o-linear-gradient(bottom, #bfbfbf 7%, #d9d9d9 75%);
+  background-image: -ms-linear-gradient(bottom, #bfbfbf 7%, #d9d9d9 75%);
   background-image: linear-gradient(bottom, #bfbfbf 7%, #d9d9d9 75%); }
 
 a {
@@ -288,7 +290,10 @@ ul.links {
 #comments .comment.author {
   background-color: #dfece0;
   background-image: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(0%, #dfece0), color-stop(100%, #e5f0e6));
+  background-image: -webkit-linear-gradient(bottom, #dfece0, #e5f0e6);
   background-image: -moz-linear-gradient(bottom, #dfece0, #e5f0e6);
+  background-image: -o-linear-gradient(bottom, #dfece0, #e5f0e6);
+  background-image: -ms-linear-gradient(bottom, #dfece0, #e5f0e6);
   background-image: linear-gradient(bottom, #dfece0, #e5f0e6);
   border-bottom: 1px solid #9ec7a1; }
 
@@ -314,7 +319,10 @@ body.cke_show_borders {
 .comment.odd {
   background-color: #fafafa;
   background-image: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(0%, #f2f2f2), color-stop(100%, #fafafa));
+  background-image: -webkit-linear-gradient(bottom, #f2f2f2, #fafafa);
   background-image: -moz-linear-gradient(bottom, #f2f2f2, #fafafa);
+  background-image: -o-linear-gradient(bottom, #f2f2f2, #fafafa);
+  background-image: -ms-linear-gradient(bottom, #f2f2f2, #fafafa);
   background-image: linear-gradient(bottom, #f2f2f2, #fafafa); }
 
 .new-comment-count {
@@ -332,7 +340,10 @@ div.comment-submitted {
   line-height: 30px;
   background: #e6e6e6;
   background-image: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(25%, #e6e6e6), color-stop(100%, #f2f2f2));
+  background-image: -webkit-linear-gradient(bottom, #e6e6e6 25%, #f2f2f2);
   background-image: -moz-linear-gradient(bottom, #e6e6e6 25%, #f2f2f2);
+  background-image: -o-linear-gradient(bottom, #e6e6e6 25%, #f2f2f2);
+  background-image: -ms-linear-gradient(bottom, #e6e6e6 25%, #f2f2f2);
   background-image: linear-gradient(bottom, #e6e6e6 25%, #f2f2f2);
   height: 30px;
   padding: 0 5px 0 0; }
@@ -419,13 +430,19 @@ a.button, div.button a {
   border-radius: 0.667em;
   border: 1px solid #5b462b;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #d9c5ac), color-stop(4%, #c0a078), color-stop(100%, #a17b4b));
+  background-image: -webkit-linear-gradient(top, #d9c5ac, #c0a078 4%, #a17b4b);
   background-image: -moz-linear-gradient(top, #d9c5ac, #c0a078 4%, #a17b4b);
+  background-image: -o-linear-gradient(top, #d9c5ac, #c0a078 4%, #a17b4b);
+  background-image: -ms-linear-gradient(top, #d9c5ac, #c0a078 4%, #a17b4b);
   background-image: linear-gradient(top, #d9c5ac, #c0a078 4%, #a17b4b);
   text-shadow: #7e603b 0 -1px 0;
   -webkit-box-shadow: inset white 0 0 2px; }
   a.button:active, div.button a:active {
     background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #392b1a), color-stop(4%, #6d5333), color-stop(100%, #896840));
+    background-image: -webkit-linear-gradient(top, #392b1a, #6d5333 4%, #896840);
     background-image: -moz-linear-gradient(top, #392b1a, #6d5333 4%, #896840);
+    background-image: -o-linear-gradient(top, #392b1a, #6d5333 4%, #896840);
+    background-image: -ms-linear-gradient(top, #392b1a, #6d5333 4%, #896840);
     background-image: linear-gradient(top, #392b1a, #6d5333 4%, #896840);
     -webkit-box-shadow: inset #392b1a 0 0 0.5em; }
   a.button:hover, div.button a:hover {
@@ -449,14 +466,20 @@ a.button, div.button a {
   border-radius: 0.538em;
   border: 1px solid #b3b3b3;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(4%, #ffffff), color-stop(100%, #e6e6e6));
+  background-image: -webkit-linear-gradient(top, #ffffff, #ffffff 4%, #e6e6e6);
   background-image: -moz-linear-gradient(top, #ffffff, #ffffff 4%, #e6e6e6);
+  background-image: -o-linear-gradient(top, #ffffff, #ffffff 4%, #e6e6e6);
+  background-image: -ms-linear-gradient(top, #ffffff, #ffffff 4%, #e6e6e6);
   background-image: linear-gradient(top, #ffffff, #ffffff 4%, #e6e6e6);
   text-shadow: #cdcdcd 0 -1px 0;
   -webkit-box-shadow: inset white 0 0 2px;
   color: gray; }
   .flag-button .unflag-action:active {
     background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #9a9a9a), color-stop(4%, #c0c0c0), color-stop(100%, #d4d4d4));
+    background-image: -webkit-linear-gradient(top, #9a9a9a, #c0c0c0 4%, #d4d4d4);
     background-image: -moz-linear-gradient(top, #9a9a9a, #c0c0c0 4%, #d4d4d4);
+    background-image: -o-linear-gradient(top, #9a9a9a, #c0c0c0 4%, #d4d4d4);
+    background-image: -ms-linear-gradient(top, #9a9a9a, #c0c0c0 4%, #d4d4d4);
     background-image: linear-gradient(top, #9a9a9a, #c0c0c0 4%, #d4d4d4);
     -webkit-box-shadow: inset #9a9a9a 0 0 0.5em; }
   .flag-button .unflag-action:hover {
@@ -477,13 +500,19 @@ a.button, div.button a {
   border-radius: 0.667em;
   border: 1px solid #895a0e;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #f6d5a0), color-stop(4%, #efb65b), color-stop(100%, #e69717));
+  background-image: -webkit-linear-gradient(top, #f6d5a0, #efb65b 4%, #e69717);
   background-image: -moz-linear-gradient(top, #f6d5a0, #efb65b 4%, #e69717);
+  background-image: -o-linear-gradient(top, #f6d5a0, #efb65b 4%, #e69717);
+  background-image: -ms-linear-gradient(top, #f6d5a0, #efb65b 4%, #e69717);
   background-image: linear-gradient(top, #f6d5a0, #efb65b 4%, #e69717);
   text-shadow: #b87912 0 -1px 0;
   -webkit-box-shadow: inset white 0 0 2px; }
   .flag-button .flag-action:active {
     background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #5b3c09), color-stop(4%, #a06910), color-stop(100%, #c68214));
+    background-image: -webkit-linear-gradient(top, #5b3c09, #a06910 4%, #c68214);
     background-image: -moz-linear-gradient(top, #5b3c09, #a06910 4%, #c68214);
+    background-image: -o-linear-gradient(top, #5b3c09, #a06910 4%, #c68214);
+    background-image: -ms-linear-gradient(top, #5b3c09, #a06910 4%, #c68214);
     background-image: linear-gradient(top, #5b3c09, #a06910 4%, #c68214);
     -webkit-box-shadow: inset #5b3c09 0 0 0.5em; }
   .flag-button .flag-action:hover {
@@ -592,7 +621,10 @@ div.vertical-tabs {
   height: 22px;
   background: #f2f2f2;
   background-image: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(0%, #e6e6e6), color-stop(70%, #fafafa));
+  background-image: -webkit-linear-gradient(bottom, #e6e6e6, #fafafa 70%);
   background-image: -moz-linear-gradient(bottom, #e6e6e6, #fafafa 70%);
+  background-image: -o-linear-gradient(bottom, #e6e6e6, #fafafa 70%);
+  background-image: -ms-linear-gradient(bottom, #e6e6e6, #fafafa 70%);
   background-image: linear-gradient(bottom, #e6e6e6, #fafafa 70%); }
   #context-links .title {
     margin-top: 1px; }
