@@ -55,7 +55,7 @@ function dewey_preprocess_page(&$vars, $hook) {
     // Suppress devel output
     $GLOBALS['devel_shutdown'] = FALSE;
   }
-  
+
   // If user is not a member of the group, add an "Join group" button.
   if (!empty($space) && ($space->controllers->variable->space_type == "og") && !in_array($space->id, array_keys($user->og_groups))) {
     $add_group = array('add-group' => array('title' => t('Join group'), 'href' => 'og/subscribe/' . $space->id));
@@ -76,13 +76,13 @@ function dewey_preprocess_page(&$vars, $hook) {
 
   // Path to theme
   $vars['path'] = base_path() . path_to_theme() .'/';
-  
+
   // Create login or account page.
   list($user_picture, $user_picture_preset) = dewey_comment_user_picture($user->picture, $user->uid);
   $user_picture = "<div class='picture grid-1'>" . $user_picture . "</div>";
   $vars['user_picture'] = $user_picture;
   if ($user->uid) {
-    $vars['user_account'] = $user_picture . " " . l($user->name, 'user') . "   " 
+    $vars['user_account'] = $user_picture . " " . l($user->name, 'user') . "   "
       . l('logout', 'logout');
   }
   else {
@@ -90,7 +90,7 @@ function dewey_preprocess_page(&$vars, $hook) {
   }
   $vars['user_account'] = "<span class='user-links'>"
     . $vars['user_account'] . "</span>";
-  
+
   // Set title
   if ($space) {
     if (!empty($space->group->title)) {
@@ -100,7 +100,7 @@ function dewey_preprocess_page(&$vars, $hook) {
   else {
     $vars['space_title'] = $vars['title'];
   }
-  
+
   // Create the menu item for the group settings tab for group admins.
   if (!empty($space) && $space->type == 'og') {
     $result = db_result(db_query("SELECT uid
@@ -110,7 +110,7 @@ function dewey_preprocess_page(&$vars, $hook) {
                         AND uid = %d", $space->id, $user->uid));
 
     if ($result || $user->uid == 1) {
-      $vars['space_settings'] = theme('group_settings_dropdown', $space); 
+      $vars['space_settings'] = theme('group_settings_dropdown', $space);
     }
   }
 
@@ -137,7 +137,7 @@ function dewey_preprocess_page(&$vars, $hook) {
   }
   $breadcrumb .= "</div>";
   $vars['breadcrumb'] = $breadcrumb;
-  
+
   $vars['meta'] = '';
   // SEO optimization, add in the node's teaser, or if on the homepage, the mission statement
   // as a description of the page that appears in search engines
@@ -202,7 +202,7 @@ function dewey_preprocess_node(&$vars) {
 
   // Overwrite the $links variable with our new links.
   $vars['links'] = theme('links', $new_links, array('class' => 'links inline'));
-  
+
   $vars['last_changed'] = "<em>Last changed " . format_date($vars['changed']) . "</em>";
   if ($node->new_comment_count > 0) {
     $vars['new_comment_count'] = $node->new_comment_count . " new";
@@ -234,7 +234,7 @@ function dewey_preprocess_comment(&$vars) {
   if ($vars['comment']->uid == $node->uid) {
     $vars['author_comment'] = TRUE;
   }
-  
+
   // Add "edit this comment" link to comments for authors of the comment.
   if ($user->uid == $vars['comment']->uid) {
     $vars['edit_this_comment'] = l('Edit this comment',
@@ -242,7 +242,7 @@ function dewey_preprocess_comment(&$vars) {
                 array('attributes' => array('class' => 'edit-this-comment')));
 
   }
-  
+
   // Override default picture size.
   list($picture, $preset) = dewey_comment_user_picture($vars['comment']->picture, $vars['comment']->uid);
   $vars['picture'] = $picture;
@@ -333,7 +333,7 @@ function dewey_comment_submitted($comment) {
 }
 
 /*
- * Override $submit in nodes. 
+ * Override $submit in nodes.
  */
 function dewey_node_submitted($node) {
   // Generate group's string.
@@ -384,11 +384,11 @@ function dewey_username($object, $nohtml = false) {
     if (empty($account->realname)) {
       $realname = $account->name;
     }
-    
+
     if ($nohtml) {
       return $realname;
     }
-    
+
     // Shorten the name when it is too long or it will break many tables.
     if (drupal_strlen($realname) > 30) {
       $name = drupal_substr($realname, 0, 25) .'...';
@@ -431,7 +431,7 @@ function dewey_comment_user_picture($picture, $uid) {
   if (isset($picture) && module_exists('imagecache')) {
     $attr = array('class' => 'user-picture');
     $preset = '30x30_crop';
-    
+
     $attr['class'] .= ' picture-'. $preset;
     if (file_exists($picture)) {
       $image = imagecache_create_url($preset, $picture);
